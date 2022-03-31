@@ -1,2 +1,2 @@
 <h1><?= $page->title() ?></h1>
-<p>testy westy</p>
+<p><?= $page->Text() ?></p>
