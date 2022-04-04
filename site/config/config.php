@@ -7,12 +7,11 @@
  * This setting must be set to false in production.
  * All config options: https://getkirby.com/docs/reference/system/options
  */
-return [
-    'debug' => true,
-];
+ <?php
 
-return [
-  'panel' =>[
-    'install' => true
-  ]
-];
+ return [
+     'debug' => true,
+     'panel' =>[
+       'install' => true
+     ]
+ ];
