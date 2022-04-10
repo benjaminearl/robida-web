@@ -1,0 +1,30 @@
+Title: Robida 8
+
+----
+
+Number: 8
+
+----
+
+Year: 2021
+
+----
+
+Intro: The 8th issue of Robida Magazine is about forests.
+
+----
+
+Text: Intro intro intro about forests forests forests
+
+----
+
+Editors:
+
+- oxb2AKko
+- tGt8BQu0
+
+----
+
+Contributors:
+
+- oxb2AKko

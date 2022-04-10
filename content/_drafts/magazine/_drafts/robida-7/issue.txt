@@ -1,0 +1,29 @@
+Title: Robida 7
+
+----
+
+Number: 7
+
+----
+
+Year: 2020
+
+----
+
+Intro: Robida Magazine Issue 7 is....
+
+----
+
+Text: The magazine is about
+
+----
+
+Editors:
+
+- oxb2AKko
+
+----
+
+Contributors:
+
+- oxb2AKko
