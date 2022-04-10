@@ -1,0 +1,48 @@
+title: Person
+
+columns:
+  - width: 1/2
+    sections:
+      info:
+          type: fields
+          fields:
+            authors:
+              label: Profile of
+              help: (select the user that this profile belongs to)
+              type: users
+              max: 1
+            text:
+              type: textarea
+              label: Bio
+            birthyear:
+              type: text
+              label: Year of birth
+              help: (e.g. 1990)
+              width: 1/2
+            birthcountry:
+              type: text
+              label: Country of origin
+              help: (e.g. Italy)
+              width: 1/2
+            link1:
+              type: url
+              label: Link 1
+              help: (e.g. website)
+            link2:
+              type: url
+              label: Link 2
+              help: (e.g. instagram)
+            category:
+              label: Status
+              type: select
+              options:
+                home: Topolò
+                away: Elsewhere
+              help: (where are you currently?)
+
+  - width: 1/2
+    sections:
+      gallery:
+        type: files
+        max: 1
+        layout: cards
