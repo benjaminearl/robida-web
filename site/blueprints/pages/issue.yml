@@ -1,0 +1,31 @@
+title: Issue
+
+status:
+  draft: Draft
+  listed: Published
+
+fields:
+  title:
+    type: text
+    width: 3/4
+    required: true
+  number:
+    label: Issue Number
+    type: number
+    required: true
+  year:
+    type: number
+    required: true
+    width: 1/4
+  intro:
+    type: textarea
+    size: small
+  text:
+    type: textarea
+    size: large
+  editors:
+    label: Editors
+    type: users
+  contributors:
+    label: Contibuters
+    type: users
