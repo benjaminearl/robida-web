@@ -2,7 +2,7 @@
 
 ## TO DO
 - [x] Make plan for Topolo
-- [ ] Fix links
+- [x] Fix links
 
 ## Plan for Robida
 6th – 13th April
