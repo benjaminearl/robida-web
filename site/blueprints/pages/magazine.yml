@@ -1,0 +1,8 @@
+title: Magazine
+preset: page
+
+fields:
+  about:
+    label: About
+    type: textarea
+    size: large

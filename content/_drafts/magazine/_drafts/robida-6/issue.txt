@@ -1,0 +1,30 @@
+Title: Robida 6
+
+----
+
+Number: 6
+
+----
+
+Year: 2019
+
+----
+
+Intro: Another Issue
+
+----
+
+Text: Magazine issue number 6
+
+----
+
+Editors:
+
+- oxb2AKko
+- tGt8BQu0
+
+----
+
+Contributors:
+
+- oxb2AKko
