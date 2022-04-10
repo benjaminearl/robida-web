@@ -1,0 +1,36 @@
+Title: Broadcast
+
+sections:
+      info:
+        type: fields
+        fields:
+          date:
+            type: date
+            label: Date of broadcast
+          schedule:
+            type: structure
+            columns:
+              time:
+                width: 1/8
+              title:
+                width: 4/8
+              who:
+                width: 2/8
+              link:
+                width: 1/8
+
+
+            fields:
+              time:
+                type: text
+              title:
+                type: text
+              who:
+                label: Who
+                type: pages
+                query: site.find('people')
+                help: (related profile)
+              link:
+                type: url
+                label: Link to mixcloud
+                help: (once the show is archived)

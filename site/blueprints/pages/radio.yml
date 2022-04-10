@@ -1,0 +1,19 @@
+Title: Radio Robida
+
+columns:
+  - width: 1/2
+    sections:
+      content:
+        type: fields
+        fields:
+          text:
+            type: textarea
+            label: About
+          archive:
+            type: url
+            label: Link to archive
+  - width: 1/2
+    sections:
+      broadcasts:
+        type: pages
+        template: radiobroadcast

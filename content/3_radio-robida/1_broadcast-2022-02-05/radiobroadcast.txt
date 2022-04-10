@@ -1,0 +1,25 @@
+Title: broadcast-2022-02-05
+
+----
+
+Date: 2022-02-05
+
+----
+
+Schedule:
+
+-
+  time: 07:00-08:00
+  title: Morning Reading Room w/ Vida Rucli
+  who:
+    - people/vida-rucli
+  link: ""
+-
+  time: 10:00-11:15
+  title: 'Lost in Nature con Elsa Merlino & Tanja Marmai'
+  who: [ ]
+  link: ""
+
+----
+
+Headline: 05-02
