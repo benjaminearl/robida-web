@@ -1,0 +1,10 @@
+Title: entry
+
+fields:
+  date:
+    type: date
+    label: Published on
+    default: today
+  content:
+   type: blocks
+   label: Content

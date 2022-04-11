@@ -1,0 +1,12 @@
+title: Journal
+preset: journal
+
+
+sections:
+  entries:
+    type: pages
+    label: Entries
+    template: entry
+    info: "{{ page.date.toDate('d.m.Y') }}"
+    empty: No entries yet
+    sortBy: date desc

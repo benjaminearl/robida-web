@@ -1,4 +1,7 @@
 Title: Radio Robida
+image:
+  icon: 📡
+  back: "#fff9e8"
 
 columns:
   - width: 1/2
@@ -17,3 +20,5 @@ columns:
       broadcasts:
         type: pages
         template: radiobroadcast
+        title: Broadcast
+        info: "{{ page.date }}"

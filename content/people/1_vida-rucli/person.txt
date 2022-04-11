@@ -2,12 +2,32 @@ Title: Vida Rucli
 
 ----
 
+Authors: 
+
+----
+
 Text: 
 
 ----
 
-Nationality: 
+Birthyear: 1993
+
+----
+
+Birthcountry: Italy
+
+----
+
+Link1: 
+
+----
+
+Link2: 
 
 ----
 
 Category: home
+
+----
+
+Nationality: 
