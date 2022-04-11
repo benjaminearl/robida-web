@@ -1,8 +1,18 @@
 title: Magazine
 preset: page
 
-fields:
-  about:
-    label: About
-    type: textarea
-    size: large
+
+sections:
+  content:
+    type: fields
+    fields:
+      text:
+        label: Description
+        type: textarea
+
+  issues:
+    type: pages
+    template: issue
+  news:
+    type: pages
+    template: news
