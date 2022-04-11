@@ -1,3 +1,4 @@
+<?php snippet('header') ?>
 <h1><?= $page->title() ?></h1>
 <p><?= $page->Text() ?></p>
 
@@ -18,3 +19,4 @@ if($items->isNotEmpty()):
   </ul>
 </nav>
 <?php endif ?>
+<?php snippet('footer') ?>
