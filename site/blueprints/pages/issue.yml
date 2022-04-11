@@ -5,6 +5,12 @@ status:
   draft: Draft
   listed: Published
 
+sections:
+  gallery:
+    headline: Gallery
+    type: files
+    template: gallery
+
 fields:
   title:
     type: text
@@ -18,6 +24,11 @@ fields:
     label: Published
     type: date
     width: 1/3
+  cover:
+    headline: Cover
+    template: cover
+    type: files
+    width: 1/3
   theme:
     label: Theme
     type: text
@@ -25,9 +36,17 @@ fields:
     label: Description
     type: textarea
     size: large
-  editors:
-    label: Editors
-    type: users
-  contributors:
-    label: Contibuters
-    type: users
+  index:
+    label: Index
+    type: list
+  colophon:
+    label: Colophon
+    type: structure
+    fields:
+      role:
+        label: Role
+        type: text
+      person:
+        label: Person
+        type: pages
+        multiple: true

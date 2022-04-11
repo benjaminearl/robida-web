@@ -6,11 +6,17 @@ Number: 6
 
 ----
 
-Year: 2019
+Published: 2020-04-16
 
 ----
 
-Intro: Another Issue
+Cover:
+
+- img_6040.jpg
+
+----
+
+Theme: Question?
 
 ----
 
@@ -28,3 +34,11 @@ Editors:
 Contributors:
 
 - oxb2AKko
+
+----
+
+Year: 2019
+
+----
+
+Intro: Another Issue

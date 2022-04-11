@@ -6,15 +6,19 @@ Number: 8
 
 ----
 
-Published: 
+Published: 2022-04-11
 
 ----
 
-Theme: Forests
+Cover: 
 
 ----
 
-Text: Intro intro intro about forests forests forests
+Theme: Island
+
+----
+
+Text: Something about islands
 
 ----
 

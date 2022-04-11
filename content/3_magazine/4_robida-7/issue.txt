@@ -6,24 +6,52 @@ Number: 7
 
 ----
 
+Published: 2021-04-09
+
+----
+
+Cover:
+
+- img_6037.jpg
+
+----
+
+Theme: Forests
+
+----
+
+Text: This seventh issue, entirely dedicated to forests, woods, jungles, trees, animals and insects inhabitating forests will be in our hands and yours very soon! It took us a long time to reflect on the material we received, write our own articles, make interviews, define the final graphic design but this one will be probably the best Robida we ever made! It will be long (336 pages!) and dense, inspirational and deep, heterogeneous and sometimes very specific!
+
+----
+
+Index: <ul><li>Editorial by Editors</li><li>Article by Person 1</li><li>Essay by Person 2</li></ul>
+
+----
+
+Colophon:
+
+- 
+  role: Editors
+  person:
+    - people/vida-rucli
+    - people/aljaz-skrlep
+- 
+  role: Graphic Design
+  person:
+    - people/janja-susnjar
+
+----
+
+Editors: - oxb2AKko
+
+----
+
+Contributors: - oxb2AKko
+
+----
+
 Year: 2020
 
 ----
 
 Intro: Robida Magazine Issue 7 is....
-
-----
-
-Text: The magazine is about
-
-----
-
-Editors:
-
-- oxb2AKko
-
-----
-
-Contributors:
-
-- oxb2AKko

@@ -6,11 +6,17 @@ Number: 5
 
 ----
 
-Year: 2018
+Published: 2019-04-18
 
 ----
 
-Intro: Robida 5 is about...
+Cover:
+
+- img_6038.jpg
+
+----
+
+Theme: Question Mark
 
 ----
 
@@ -27,3 +33,11 @@ Editors:
 Contributors:
 
 - oxb2AKko
+
+----
+
+Year: 2018
+
+----
+
+Intro: Robida 5 is about...

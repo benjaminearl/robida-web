@@ -6,11 +6,17 @@ Number: 4
 
 ----
 
-Year: 2017
+Published: 2018-04-10
 
 ----
 
-Intro: Robida 4...
+Cover:
+
+- img_6039.jpg
+
+----
+
+Theme: Questionnnn
 
 ----
 
@@ -27,3 +33,11 @@ Editors:
 Contributors:
 
 - oxb2AKko
+
+----
+
+Year: 2017
+
+----
+
+Intro: Robida 4...
