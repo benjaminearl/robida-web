@@ -1,5 +1,7 @@
 title: Magazine
-preset: page
+image:
+  icon: 📕
+  back: "#fff9e8"
 
 
 sections:
