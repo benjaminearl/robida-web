@@ -1,7 +1,14 @@
+body {
+  font-family: 'IBM Plex Mono', monospace;
+}
+
 h1 {
     color: red;
 }
+<<<<<<< Updated upstream
 
 img {
   width: 250px;
 }
+=======
+>>>>>>> Stashed changes

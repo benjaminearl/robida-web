@@ -1,0 +1,19 @@
+Title: Event
+image:
+  icon: 🗓
+  back: "#00f"
+template: event
+
+sections:
+  info:
+    type: fields
+    fields:
+      date:
+        type: date
+        width: 1/6
+      time:
+        type: time
+        width: 1/6
+      text:
+        type: textarea
+        width: 1/2

@@ -1,0 +1,18 @@
+Title: Calendar
+image:
+  icon: 🗓
+  back: "#00f"
+template: calendar
+
+sections:
+  info:
+    type: fields
+    fields:
+      text:
+        type: textarea
+        width: 1/2
+  events:
+    type: pages
+    label: Events
+    empty: add an event
+    template: event

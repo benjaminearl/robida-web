@@ -1,0 +1,27 @@
+Title: Radio show
+image:
+  icon: 📡
+  back: "#fff9e8"
+
+
+fields:
+  starttime:
+    label: Start time
+    type: time
+    display: HH:ss
+    width: 1/6
+  endtime:
+    label: End time
+    type: time
+    display: HH:ss
+    width: 1/6
+  people:
+    label: Host(s)
+    type: pages
+    empty: Select profiles
+    query: site.find('people')
+    width: 2/6
+  link:
+    label: Link to episode on mixcloud
+    type: url
+    width: 2/6
