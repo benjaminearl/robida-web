@@ -16,8 +16,8 @@ $items = $page->children();
   <?= $item->image() ?><br>
   <p><?= $item->text() ?></p><br>
   <small><?php foreach ($item->tags()->split() as $tag): ?>
-    <a href="<?= url('journal', ['params' => ['tag' => $tag]]) ?>">#<?= html($tag) ?></a>
-  <?php endforeach ?></small>
+    <a href="<?= url('journal', ['params' => ['tag' => $tag]]) ?>">#<?= html($tag) ?></a></small>
+  <?php endforeach ?>
 <?php endforeach ?>
 
 
