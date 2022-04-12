@@ -8,15 +8,15 @@ $items = $page->children();
 
 <?php foreach($items as $item): ?>
   <h2><?= $item->title() ?></h2>
-  <small>on: <?= $item->date()->toDate('d/m') ?></small><br>
-  <small>by: <?php $people =  $item->people()->toPages();  foreach($people as $person): ?><a href="<?= $person->url() ?>"><?= $person->title() ?></a>
+  on: <?= $item->date()->toDate('d/m') ?><br>
+  by: <?php $people =  $item->people()->toPages();  foreach($people as $person): ?><a href="<?= $person->url() ?>"><?= $person->title() ?></a>
   <?php endforeach ?></small><br>
-  <small>re: <?php $relatedItems =  $item->related()->toPages();  foreach($relatedItems as $relatedItem): ?><a href="<?= $relatedItem->url() ?>"><?= $relatedItem->title() ?></a></small><br>
+  re: <?php $relatedItems =  $item->related()->toPages();  foreach($relatedItems as $relatedItem): ?><a href="<?= $relatedItem->url() ?>"><?= $relatedItem->title() ?></a>
   <?php endforeach ?><br>
   <?= $item->image() ?><br>
   <p><?= $item->text() ?></p><br>
-  <small><?php foreach ($item->tags()->split() as $tag): ?>
-    <a href="<?= url('journal', ['params' => ['tag' => $tag]]) ?>">#<?= html($tag) ?></a></small>
+  <?php foreach ($item->tags()->split() as $tag): ?>
+    <a href="<?= url('journal', ['params' => ['tag' => $tag]]) ?>">#<?= html($tag) ?></a>
   <?php endforeach ?>
 <?php endforeach ?>
 
