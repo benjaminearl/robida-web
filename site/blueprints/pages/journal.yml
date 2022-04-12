@@ -1,5 +1,8 @@
 title: Journal
 preset: journal
+image:
+  icon: 📓
+  back: "#fff9e8"
 
 
 sections:

@@ -5,6 +5,31 @@ fields:
     type: date
     label: Published on
     default: today
-  content:
-   type: blocks
-   label: Content
+    width: 1/6
+  people:
+    label: Author
+    type: pages
+    empty: Select profiles
+    query: site.find('people')
+    width: 2/6
+  related:
+    label: Relates to
+    help: (does this entry relate or react to another piece on the website?)
+    type: pages
+    width: 3/6
+  tags:
+    label: Tags
+    type: tags
+
+  text:
+    type: blocks
+    label: Content
+    fieldsets:
+      - heading
+      - text
+      - list
+      - image
+      - gallery
+      - video
+      - code
+      - markdown
