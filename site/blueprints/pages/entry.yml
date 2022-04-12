@@ -1,35 +1,41 @@
 Title: entry
+image:
+  icon: 📓
+  back: "#fff9e8"
 
-fields:
-  date:
-    type: date
-    label: Published on
-    default: today
-    width: 1/6
-  people:
-    label: Author
-    type: pages
-    empty: Select profiles
-    query: site.find('people')
-    width: 2/6
-  related:
-    label: Relates to
-    help: (does this entry relate or react to another piece on the website?)
-    type: pages
-    width: 3/6
-  tags:
-    label: Tags
-    type: tags
-
-  text:
-    type: blocks
-    label: Content
-    fieldsets:
-      - heading
-      - text
-      - list
-      - image
-      - gallery
-      - video
-      - code
-      - markdown
+columns:
+  - width: 1/2
+    sections:
+      info:
+        type: fields
+        fields:
+          date:
+            type: date
+            label: Published on
+            default: today
+            width: 1/2
+          people:
+            label: Author
+            type: pages
+            empty: Select profiles
+            query: site.find('people')
+            width: 1/2
+          related:
+            label: Relates to
+            help: (does this entry relate or react to another piece on the website?)
+            type: pages
+            width: 1/2
+          tags:
+            label: Tags
+            type: tags
+            width: 1/2
+          text:
+            type: textarea
+            required: true
+  - width: 1/2
+    sections:
+      image:
+        type: files
+        layout: cards
+        image:
+          ratio: 1/1

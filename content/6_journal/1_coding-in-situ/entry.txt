@@ -23,4 +23,4 @@ Tags: coding in situ
 
 ----
 
-Text: [{"content":{"level":"h2","text":"What does it mean to code locally?"},"id":"102221fc-bca1-4790-8fa5-e324cdc40798","isHidden":false,"type":"heading"},{"content":{"text":"<p>Let's see if this shows up...<\/p>"},"id":"47016481-020f-40ca-abd7-9fe2056f33e6","isHidden":false,"type":"text"},{"content":{"code":"<div id=\"upstairs\">\nIzba\n<\/div>","language":"text"},"id":"57bb1fac-8ec8-4d51-895d-68ed21541c09","isHidden":false,"type":"code"},{"content":{"location":"kirby","image":["whatsapp-image-2022-04-08-at-3.57.53-pm.jpeg"],"src":"","alt":"","caption":"","link":"","ratio":"1\/1","crop":"true"},"id":"c15a999f-17c6-418c-863a-87b1870a3ed0","isHidden":false,"type":"image"},{"content":{"text":"<ul><li>One thing<\/li><li>Another thing<\/li><li>One more thing<\/li><\/ul>"},"id":"84f1a936-376c-4b04-87e4-3c095dbb645f","isHidden":false,"type":"list"}]
+Text: Test 1 2 3

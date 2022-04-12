@@ -9,11 +9,17 @@ $events = $site
   ->filter(function ($child) {
     return $child->date()->isNotEmpty();});
 
-// fetch children with a date in the future
-$futureEvents = $events
+// fetch children with a date that is now
+$ongoingEvents = $events
   ->filter(function ($event) {
-  return $event->date()->toDate() >= time();})
+  return $event->date()->toDate() = time();})
   ->sortBy('date', 'asc');
+
+  // fetch children with a date in the future
+  $futureEvents = $events
+    ->filter(function ($event) {
+    return $event->date()->toDate() >= time();})
+    ->sortBy('date', 'asc');
 
 // fetch children with a date in the past
 $pastEvents = $events
