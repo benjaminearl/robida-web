@@ -14,7 +14,7 @@ $items = $page->children();
   re: <?php $relatedItems =  $item->related()->toPages();  foreach($relatedItems as $relatedItem): ?><a href="<?= $relatedItem->url() ?>"><?= $relatedItem->title() ?></a>
   <?php endforeach ?><br>
   <?= $item->image() ?><br>
-  <p><?= $item->text() ?></p><br>
+  <p><?= $item->text()->kt() ?></p><br>
   <?php foreach ($item->tags()->split() as $tag): ?>
     <a href="<?= url('journal', ['params' => ['tag' => $tag]]) ?>">#<?= html($tag) ?></a>
   <?php endforeach ?>
