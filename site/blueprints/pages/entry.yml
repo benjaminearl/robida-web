@@ -30,7 +30,7 @@ columns:
             type: tags
             width: 1/2
           text:
-            type: textarea
+            type: blocks
             required: true
   - width: 1/2
     sections:
