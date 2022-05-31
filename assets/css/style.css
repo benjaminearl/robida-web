@@ -1,11 +1,210 @@
 body {
-  font-family: 'IBM Plex Mono', monospace;
+ font-size: 15px;
+ font-family: 'IBM Plex Mono', monospace;
+ background-color: white;
+ margin: 0;
+ height: 100vh;
+ width: 100vw;
 }
 
-h1 {
-    color: red;
+header {
+  position: fixed;
+  height: 4em;
+  width: 100%;
+  border-bottom: 1px solid;
 }
 
-img {
-  width: 250px;
+#leftSidebar {
+  height: calc(100vh - 8em - 2px);
+  width: 20vw;
+  position: fixed;
+  left: 0;
+  top: calc(4em + 1px);
+  background-color: inherit;
+  z-index: 1;
+  overflow-x: hidden;
+  transition: 0.5s;
+  border-right: 1px solid;
+
+}
+#closeLeft {
+  font-size: 0.8em;
+  display: block;
+  text-align:center;
+  width: 5em;
+  padding-top: 1em;
+
+}
+#openLeft {
+  font-size: 0.8em;
+  display: none;
+  text-align:center;
+  width: 5em;
+  padding-top: 1em;
+
+}
+nav {
+  margin: 0;
+  padding-left: 3em;
+  margin-top: -2.1em;
+
+}
+
+#rightSidebar {
+  height: calc(100vh - 8em - 2px);
+  width: 4em;
+  position: fixed;
+  right: 0;
+  top: 61px;
+  background-color: inherit;
+  transition: 0.5s;
+  border-left: 1px solid;
+  z-index: 1;
+
+}
+#closeRight {
+  font-size: 0.8em;
+  display: none;
+  text-align:center;
+  width: 5em;
+  padding-top: 1em;
+
+}
+#openRight {
+  font-size: 0.8em;
+  display: block;
+  text-align:center;
+  width: 5em;
+  padding-top: 1em;
+
+}
+
+
+#center {
+  height: calc(100vh - 8em - 2px);
+  margin-left: 20vw;
+  transition: margin-left .5s;
+  position: absolute;
+  top: calc(4em + 1px);
+  width: calc(80vw - 4em);
+}
+
+main {
+  width: inherit;
+}
+
+#left {
+  float: left;
+  width: calc(50% - 2em);
+  height: calc(100vh - 8em - 2px);
+  border-right: 1px solid;
+  padding: 1em;
+  overflow: scroll;
+}
+
+#right {
+  float: right;
+  width: calc(50% - 2em - 1px);
+  height: calc(100vh - 8em - 2px);
+  padding: 1em;
+  overflow: scroll;
+}
+
+#top, #middle, #bottom {
+  height: calc(calc(100vh - 120px) / 3);
+  border-bottom: 1px solid;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+#top::-webkit-scrollbar, #middle::-webkit-scrollbar, #bottom::-webkit-scrollbar {
+    display: none;
+}
+
+
+
+.block {
+  display: inline-block;
+  height: 100%;
+  width: calc(calc(100vh - 120px) / 3);
+  background-color: lightblue;
+  border-right: 1px solid;
+}
+
+
+
+h1, h2, h3 {
+  margin: 0;
+  padding: 15px;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  height: 4em;
+  width: 100%;
+  border-top: 1px solid;
+  background-color: inherit;
+  z-index: 1;
+}
+
+#logo {
+  height: 50%;
+  padding: 1em;
+}
+
+
+
+/* MENU TREE ---------------------------------------- */
+
+  ul, li { list-style: none; margin: 0; padding: 0; }
+  nav ul {
+
+    padding-left: 1em;
+  }
+
+  nav li {
+    padding-left: 1em;
+    border: 1px solid black;
+    border-width: 0 0 1px 1px;
+  }
+
+  li.container { border-bottom: 0px; }
+
+  li.empty { font-style: italic;
+    color: silver;
+    border-color: silver;
+  }
+
+  nav p { margin: 0;
+    background: white;
+    position: relative;
+    padding-left: 0.5em;
+    padding-top: 0.5em;
+    top: 0.6em;
+  }
+
+  nav ul {
+    border-top: 1px solid black;
+    margin-left: -1em;
+    padding-left: 2em;
+  }
+  nav li:last-child ul {
+    border-left: 1px solid white;
+    margin-left: calc(-1em - 1px);
+  }
+
+/* ------------------------------------------ */
+
+a.active {
+  color: green;
+}
+
+#center img {
+  max-width: 100%;
 }

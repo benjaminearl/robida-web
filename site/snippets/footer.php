@@ -1,3 +1,6 @@
+<footer>
+</footer>
+
 <?php?>
 
   <?= js([

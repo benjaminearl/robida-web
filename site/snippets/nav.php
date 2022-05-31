@@ -1,19 +1,32 @@
 
-<hr>
 <?php
 
-// main menu items
 $items = $pages->listed();
 
-// only show the menu if items are available
-if($items->isNotEmpty()):
 
 ?>
-<nav>
-  <ul>
-    <?php foreach($items as $item): ?>
-    <li><a<?php e($item->isOpen(), ' class="active"') ?> href="<?= $item->url() ?>"><?= $item->title()->html() ?></a></li>
-    <?php endforeach ?>
-  </ul>
-</nav>
-<?php endif ?>
+<div id="leftSidebar">
+    <span id="closeLeft" onclick="closeNav()">
+      <<
+    </span>
+    <span id="openLeft" onclick="openNav()">
+      Menu
+    </span>
+    <nav>
+      <ul>
+        <?php foreach($items as $item): ?>
+          <?php if ($item->hasChildren()): ?>
+            <li class="container"><p><a<?php e($item->isOpen(), ' class="active"') ?> href="<?= $item->url() ?>"><?= $item->title()->html() ?></a></p>
+              <ul>
+                <?php $children =  $item->children();  foreach($children as $child): ?>
+                  <li><p><a<?php e($child->isOpen(), ' class="active"') ?> href="<?= $child->url() ?>"><?= $child->title()->html() ?></a></p></li>
+                  <?php endforeach ?>
+              </ul>
+            </li>
+          <?php else: ?>
+            <li><p><a<?php e($item->isOpen(), ' class="active"') ?> href="<?= $item->url() ?>"><?= $item->title()->html() ?></a></p></li>
+          <?php endif; ?>
+        <?php endforeach ?>
+      </ul>
+    </nav>
+  </div>

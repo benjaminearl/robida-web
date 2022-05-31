@@ -4,7 +4,7 @@
 <small>on: <?= $page->date()->toDate('d/m') ?></small><br>
 <small>by: <?php $people =  $page->people()->toPages();  foreach($people as $person): ?><a href="<?= $person->url() ?>"><?= $person->title() ?></a>
 <?php endforeach ?></small><br>
-<small>re: <?php $relatedpages =  $page->related()->toPages();  foreach($relatedpages as $relatedpage): ?><a href="<?= $relatedpage->url() ?>"><?= $relatedpage->title() ?></a></small><br>
+<small><?php $relatedpages =  $page->related()->toPages();  foreach($relatedpages as $relatedpage): ?>re: <a href="<?= $relatedpage->url() ?>"><?= $relatedpage->title() ?></a></small><br>
 <?php endforeach ?><br>
 <?= $page->image() ?><br>
 <p><?= $page->text()->kt() ?></p><br>

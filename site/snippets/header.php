@@ -22,14 +22,6 @@
 </head>
 <body>
 
-  <header class="header">
-    <?php
-    /*
-      We use `$site->url()` to create a link back to the homepage
-      for the logo and `$site->title()` as a temporary logo. You
-      probably want to replace this with an SVG.
-    */
-    ?>
-    <a class="logo" href="<?= $site->url() ?>">
-      <?= $site->title()->html() ?>
-    </a>
+  <header>
+    <img id="logo" src="https://robidacollective.com/assets/images/robida_logo_vector.png" alt="Robida" onclick="location.href='<?= $site->url() ?>';">
+  </header>

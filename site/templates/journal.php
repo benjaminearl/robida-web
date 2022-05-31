@@ -1,6 +1,7 @@
 <?php snippet('header') ?>
-<h1><?= $page->title() ?></h1>
-<p><?= $page->Text()->kt() ?></p>
+
+<?php snippet('nav') ?>
+<div id="center">
 
 <?php
 $items = $page->children();
@@ -11,7 +12,7 @@ $items = $page->children();
   on: <?= $item->date()->toDate('d/m') ?><br>
   by: <?php $people =  $item->people()->toPages();  foreach($people as $person): ?><a href="<?= $person->url() ?>"><?= $person->title() ?></a>
   <?php endforeach ?></small><br>
-  re: <?php $relatedItems =  $item->related()->toPages();  foreach($relatedItems as $relatedItem): ?><a href="<?= $relatedItem->url() ?>"><?= $relatedItem->title() ?></a>
+  <?php $relatedItems =  $item->related()->toPages();  foreach($relatedItems as $relatedItem): ?>re: <a href="<?= $relatedItem->url() ?>"><?= $relatedItem->title() ?></a>
   <?php endforeach ?><br>
   <?= $item->image() ?><br>
   <p><?= $item->text()->kt() ?></p><br>
@@ -20,6 +21,8 @@ $items = $page->children();
   <?php endforeach ?>
 <?php endforeach ?>
 
+</div>
 
-<?php snippet('nav') ?>
+
+<?php snippet('rightbar') ?>
 <?php snippet('footer') ?>
