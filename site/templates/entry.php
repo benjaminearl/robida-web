@@ -7,7 +7,7 @@
 <small><?php $relatedpages =  $page->related()->toPages();  foreach($relatedpages as $relatedpage): ?>re: <a href="<?= $relatedpage->url() ?>"><?= $relatedpage->title() ?></a></small><br>
 <?php endforeach ?><br>
 <?= $page->image() ?><br>
-<p><?= $page->text()->kt() ?></p><br>
+<?= $page->text()->toBlocks() ?>
 <small><?php foreach ($page->tags()->split() as $tag): ?>
   <a href="<?= url('journal', ['params' => ['tag' => $tag]]) ?>">#<?= html($tag) ?></a>
 <?php endforeach ?></small>
