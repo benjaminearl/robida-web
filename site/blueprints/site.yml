@@ -1,2 +1,7 @@
 preset: pages
 unlisted: true
+
+homeBlocks:
+  type: pages
+  label: Home page blocks
+  multiple: false

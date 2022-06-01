@@ -2,4 +2,15 @@ Title: Robida
 
 ----
 
+Homeblocks:
+
+- projects/magazine
+- projects/radio-robida
+- projects/academy-of-margins
+- projects/residency
+- topolo
+- community/journal
+
+----
+
 Text: 

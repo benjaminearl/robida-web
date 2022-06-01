@@ -5,13 +5,22 @@
 <?php snippet('nav') ?>
 <div id="center">
   <div id="top">
-      <div class="block"></div><div class="block"></div><div class="block"></div><div class="block"></div><div class="block"></div><div class="block"></div>
+    <?php
+  $HomepageBlocks =  $page->homeBlocks()->toPages();
+  foreach($HomepageBlocks as $HomepageBlocks): ?>
+    <a href="<?= $HomepageBlocks->url() ?>"><div class="block <?= $HomepageBlocks->title() ?>"><?= $HomepageBlocks->title() ?></div></a>
+  <?php endforeach ?>
   </div>
   <div id="middle">
 
   </div>
   <div id="bottom">
-    <div class="block"></div><div class="block"></div><div class="block"></div><div class="block"></div><div class="block"></div><div class="block"></div>
+    <div class="block"></div>
+    <div class="block"></div>
+    <div class="block"></div>
+    <div class="block"></div>
+    <div class="block"></div>
+    <div class="block"></div>
   </div>
 </div>
 
