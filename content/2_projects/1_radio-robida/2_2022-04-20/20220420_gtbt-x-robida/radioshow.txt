@@ -2,6 +2,10 @@ Title: GTBT x Robida
 
 ----
 
+Broadcastdate: 2022-04-20
+
+----
+
 Starttime: 17:00:00
 
 ----
@@ -10,9 +14,7 @@ Endtime: 18:00:00
 
 ----
 
-People:
-
-- people/vida-rucli
+People: 
 
 ----
 

@@ -15,14 +15,3 @@
     document.getElementById("center").style.width = "calc(80vw - 4em)";
   }
 
-  function closeRight() {
-    document.getElementById("rightSidebar").style.width = "4em";
-    document.getElementById("closeRight").style.display = "none";
-    document.getElementById("openRight").style.display = "block";
-  }
-
-  function openRight() {
-    document.getElementById("rightSidebar").style.width = "20vw";
-    document.getElementById("closeRight").style.display = "block";
-    document.getElementById("openRight").style.display = "none";
-  }

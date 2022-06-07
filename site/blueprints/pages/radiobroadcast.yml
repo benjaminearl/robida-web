@@ -21,12 +21,6 @@ sections:
             type: time
             display: HH:ss
             width: 1/4
-          toggle:
-            label: Featured on homepage
-            type: toggle
-            text:
-              - "no"
-              - "yes"
 
 
       shows:

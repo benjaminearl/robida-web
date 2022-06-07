@@ -1,10 +1,18 @@
 Title: Radio show
+navigation:
+  status: all
+  template: all
 image:
   icon: 📡
   back: "#fff9e8"
+num: '{{ page.broadcastdate.toDate("Ymd") }}'
 
 
 fields:
+  broadcastdate:
+    label: Broadcast Date
+    type: date
+    display: DD-MM-YYYY
   starttime:
     label: Start time
     type: time

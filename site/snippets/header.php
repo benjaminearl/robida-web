@@ -23,5 +23,13 @@
 <body>
 
   <header>
-    <img id="logo" src="https://robidacollective.com/assets/images/robida_logo_vector.png" alt="Robida" onclick="location.href='<?= $site->url() ?>';">
+    <div class="logo">
+      <img id="logo" src="https://robidacollective.com/assets/images/robida_logo_vector.png" alt="Robida" onclick="location.href='<?= $site->url() ?>';">
+    </div>
+    <div class="radio-link">
+      <audio controls="">
+        <source src="https://radio.goodtimesbadtimes.club/radio/8060/radio.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+      </audio>
+     </div>
   </header>

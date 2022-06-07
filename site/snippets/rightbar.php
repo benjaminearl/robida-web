@@ -1,4 +1,10 @@
 <div id="rightSidebar">
-    <span id="closeRight" onclick="closeRight()">>></span>
-    <span id="openRight" onclick="openRight()">Chat</span>
+
+
+    <a href="<?= $pages->find('chat')->url() ?>"
+    onclick="window.open('chat', 
+                         'newwindow', 
+                         'width=500,height=600'); 
+              return false;"
+ >Chat</a>
   </div>
