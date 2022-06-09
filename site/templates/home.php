@@ -89,7 +89,6 @@
     <?php endforeach ?>
   </div>
   <div id="middle">
-  <?= snippet('calendar') ?>
   </div>
   <div id="bottom">
     <div class="block"></div>
