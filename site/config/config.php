@@ -1,16 +1,13 @@
  <?php
-/**
- * The config file is optional. It accepts a return array with config options
- * Note: Never include more than one return statement, all options go within this single return array
- * In this example, we set debugging to true, so that errors are displayed onscreen.
- * This setting must be set to false in production.
- * All config options: https://getkirby.com/docs/reference/system/options
- */
-
 
  return [
      'debug' => true,
      'panel' =>[
        'install' => true
      ]
+ ];
+
+ return [
+    'benediktengel.google-calendar-plugin.apikey' => 'AIzaSyB3Tg8w1E0LPx2o5Zmglp8g52WBxzX8760',
+    'benediktengel.google-calendar-plugin.calendarID' => 'meo3754sq65v3etl70m096pbjc@group.calendar.google.com'
  ];

@@ -1,0 +1,19 @@
+Title: Residency
+image:
+  icon: 🏡
+  back: "#fff9e8"
+
+sections:
+  content:
+    type: fields
+    fields:
+      text:
+        label: Description
+        type: blocks
+      currentResidents:
+        label: Current Residents
+        type: pages
+        template: person
+      news:
+        type: pages
+        template: news

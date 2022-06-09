@@ -143,6 +143,15 @@ main {
   position: absolute;
 }
 
+.radio-schedule li {
+  display: block;
+  font-size: 11px;
+}
+
+.aom-cover {
+  height: 100%;
+}
+
 
 
 h1, h2, h3 {
