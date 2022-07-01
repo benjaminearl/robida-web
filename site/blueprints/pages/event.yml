@@ -3,17 +3,33 @@ image:
   icon: 🗓
   back: "#00f"
 template: event
+num: "{{ page.from.toDate('Ymd') }}"
 
 sections:
   info:
     type: fields
     fields:
-      date:
+      from:
+        label: Start
         type: date
-        width: 1/6
-      time:
-        type: time
-        width: 1/6
-      text:
-        type: textarea
         width: 1/2
+        default: today
+      to:
+        label: End
+        type: date
+        width: 1/2
+        default: today + 1day
+      location:
+        label: Location
+        type: text
+        width: 1/2
+      link:
+        label: Link
+        type: url
+        width: 1/2
+      text:
+        label: Description
+        type: textarea
+      project:
+        label: Related Project
+        type: pages

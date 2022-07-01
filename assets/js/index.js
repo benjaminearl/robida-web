@@ -1,4 +1,9 @@
 
+    $(function () {
+      $("#myTimeline").Timeline()
+      console.log("hello")
+  })
+  
   function closeNav() {
     document.getElementById("leftSidebar").style.width = "4em";
     document.getElementById("center").style.marginLeft = "4em";
@@ -14,4 +19,3 @@
     document.getElementById("openLeft").style.display = "none";
     document.getElementById("center").style.width = "calc(80vw - 4em)";
   }
-
