@@ -1,7 +1,17 @@
 
     $(function () {
-      $("#myTimeline").Timeline()
-      console.log("hello")
+      $("#myTimeline").Timeline({
+        type: "bar",
+        scale: "day",
+        rows: 6,
+        headline: { display: false },
+        effects: {
+          presentTime: true,
+          hoverEvent:  true,
+          stripedGridRow: false,
+          horizontalGridStyle: "none",
+        },
+       });
   })
   
   function closeNav() {
