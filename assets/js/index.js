@@ -1,18 +1,42 @@
+// GET START DATE
+var days = 30; // days before current date
+var date = new Date();
+var first = new Date(date.getTime() - (days * 24 * 60 * 60 * 1000));
+var day=first.getDate();
+var month=first.getMonth()+1;
+var year=first.getFullYear();
 
-    $(function () {
-      $("#myTimeline").Timeline({
-        type: "bar",
-        scale: "day",
-        rows: 6,
-        headline: { display: false },
-        effects: {
-          presentTime: true,
-          hoverEvent:  true,
-          stripedGridRow: false,
-          horizontalGridStyle: "none",
-        },
-       });
-  })
+timelineStartDate = day + '/' + month + '/' + year;
+
+
+
+$(function () {
+  $("#myTimeline").Timeline({
+    type: "bar",
+    scale: "day",
+    rows: 6,
+    minGridSize: 25,
+    startDatetime: timelineStartDate,
+    weekday: "short",
+    headline: { display: false },
+    effects: {
+      presentTime: true,
+      hoverEvent:  true,
+      stripedGridRow: false,
+      horizontalGridStyle: "none",
+      verticalGridStyle: "dotted",
+    },
+    ruler: {
+      top: {
+          lines: [ 'month', 'day' ],
+          format: {
+              month: 'long',
+              day:   'numeric',
+          }
+      },
+    },
+  });
+})
   
   function closeNav() {
     document.getElementById("leftSidebar").style.width = "4em";

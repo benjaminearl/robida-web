@@ -84,10 +84,12 @@ nav {
   transition: margin-left .5s;
   position: absolute;
   top: calc(4em + 1px);
+  width: 95vw;
 }
 
 main {
   width: inherit;
+  overflow-x: hidden;
 }
 
 #left {
