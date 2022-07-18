@@ -99,14 +99,14 @@
       </ul>
     </div>
   </div>
-  <div id="bottom">
+  <!-- <div id="bottom">
     <div class="block"></div>
     <div class="block"></div>
     <div class="block"></div>
     <div class="block"></div>
     <div class="block"></div>
     <div class="block"></div>
-  </div>
+  </div> -->
 </div>
 
 
