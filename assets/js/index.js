@@ -6,7 +6,8 @@ var day=first.getDate();
 var month=first.getMonth()+1;
 var year=first.getFullYear();
 
-timelineStartDate = day + '/' + month + '/' + year;
+timelineStartDate = year + '-' + month + '-' + day;
+console.log(timelineStartDate)
 
 
 
@@ -15,7 +16,7 @@ $(function () {
     type: "bar",
     scale: "day",
     rows: 6,
-    minGridSize: 25,
+    minGridSize: 27,
     startDatetime: timelineStartDate,
     weekday: "short",
     headline: { display: false },

@@ -91,11 +91,11 @@
   <div id="middle">
     <div id="myTimeline">
       <ul class="timeline-events">
-        <li data-timeline-node="{ start:'2022-07-01 10:00',end:'2022-07-1 13:00',content:'<p>Event Body...</p>' }">Event Label</li>
+        <!-- <li data-timeline-node="{ start:'2022-07-01 10:00',end:'2022-07-1 13:00',content:'<p>Event Body...</p>' }">Event Label</li>
         <li data-timeline-node="{ start:'2022-07-01 23:10',end:'2022-07-02 1:30' }">
           <span class="event-label">Event Label</span>
           <span class="event-content"><p>Event Body...</p></span>
-        </li>
+        </li> -->
       </ul>
     </div>
   </div>
