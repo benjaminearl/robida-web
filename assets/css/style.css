@@ -109,8 +109,27 @@ main {
   overflow: scroll;
 }
 
-#top, #middle, #bottom {
-  height: calc(calc(100vh - 120px) / 3);
+.mag-issue {
+  display: inline-block;
+}
+
+.mag-issue img {
+  max-height: 300px;
+}
+
+#top, #middle {
+  height: calc(calc(100vh - 120px) / 5 x 2);
+  border-bottom: 1px solid;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+#bottom {
+  height: calc(calc(100vh - 120px) / 5);
   border-bottom: 1px solid;
   overflow-x: scroll;
   overflow-y: hidden;
@@ -127,8 +146,8 @@ main {
 
 .block {
   display: inline-block;
-  height: 100%;
-  width: calc(calc(100vh - 120px) / 3);
+  height: calc(100vh / 3);
+  width: calc(100vh / 3);
   background-color: lightblue;
   border-right: 1px solid;
 }
