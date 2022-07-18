@@ -7,14 +7,14 @@
     <p><?= $page->Text()->kt() ?></p>
   </div>
   <div id="right">
-    <ul>
+    <ul class="mag-list">
       <?php foreach($page->children() as $issue): ?>
-      <li>
+      <li class="mag-issue">
         <a<?php e($issue->isOpen(), ' class="active"') ?> href="<?= $issue->url() ?>">
           <?php if($image = $issue->cover()->toFile()): ?>
-            <img src="<?= $image->url() ?>" alt="">
+            <img src="<?= $image->url() ?>" alt="Robida Magazine Cover">
           <?php endif ?>
-          <?= $issue->title()->html() ?>
+          <p><?= $issue->title()->html() ?></p>
         </a>
       </li>
       <?php endforeach ?>
