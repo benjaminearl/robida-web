@@ -121,9 +121,12 @@ main {
   max-height: 300px;
 }
 
+#top {
+  border-bottom: 1px solid;
+}
+
 #top, #middle {
   height: calc(calc(100vh - 120px) / 2);
-  border-bottom: 1px solid;
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
