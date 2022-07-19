@@ -20,16 +20,42 @@
   <?php?>
   <link rel="shortcut icon" type="image/x-icon" href="<?= url('favicon.ico') ?>">
 </head>
-<body>
+<body data-barba="wrapper">
 
   <header>
     <div class="logo">
       <img id="logo" src="https://robidacollective.com/assets/images/robida_logo_vector.png" alt="Robida" onclick="location.href='<?= $site->url() ?>';">
     </div>
-    <div class="radio-link">
-      <audio controls="">
+    <div class="audio green-audio-player">
+    <p style="display:inline-block; padding-right: 20px;">Robida Radio</p>
+      <div class="play-pause-btn">  
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="24" viewBox="0 0 18 24">
+          <path fill="#000000" fill-rule="evenodd" d="M18 12L0 24V0" class="play-pause-icon" id="playPause"/>
+        </svg>
+      </div>
+      <div class="controls">
+        <span class="current-time">0:00</span>
+        <div class="slider" data-direction="horizontal" style="display:none">
+          <div class="progress">
+          </div>
+        </div>
+      </div>
+      <div class="volume">
+        <div class="volume-btn">
+        </div>
+        <div class="volume-controls hidden">
+          <div class="slider" data-direction="vertical">
+          </div>
+        </div>
+      </div>
+      <audio crossorigin>
         <source src="https://radio.goodtimesbadtimes.club/radio/8060/radio.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
       </audio>
+    </div>
+
+
+
      </div>
   </header>
+  <script src="https://cdn.jsdelivr.net/npm/@barba/core"></script>
+  <main data-barba="container">
