@@ -50,7 +50,7 @@ nav {
 }
 
 #rightSidebar {
-  height: calc(100vh - 8em - 2px);
+  height: calc(100vh - 11em - 2px);
   width: 4em;
   position: fixed;
   right: 0;
@@ -83,7 +83,7 @@ nav {
 }
 
 #center {
-  height: calc(100vh - 8em - 2px);
+  height: calc(100vh - 12em - 2px);
   margin-left: 4em;
   transition: margin-left .5s;
   position: absolute;
@@ -99,7 +99,7 @@ main {
 #left {
   float: left;
   width: calc(50% - 40px);
-  height: calc(100vh - 8em - 2px);
+  height: calc(100vh - 11em - 2px);
   border-right: 1px solid;
   padding: 20px;
   overflow: scroll;
@@ -108,7 +108,7 @@ main {
 #right {
   float: right;
   width: calc(50% - 40px - 1px);
-  height: calc(100vh - 8em - 2px);
+  height: calc(100vh - 11em - 2px);
   padding: 20px;
   overflow: scroll;
 }
@@ -279,10 +279,11 @@ a.active {
 
 /* *********AUDIO PLAYER********* */
 .audio.green-audio-player {
-  height: 56px;
+  height: 40px;
+  margin-top: 15px;
   float: right;
   display: inline-block;
-  margin-right: 15px;
+  margin-right: 8px;
   justify-content: space-between;
   align-items: center;
   user-select: none;
@@ -321,15 +322,15 @@ a.active {
 
 .controls {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 16px;
+  font-size: 12px;
   line-height: 18px;
   color: black;
   display: inline-block;
   flex-grow: 1;
   justify-content: space-between;
   align-items: center;
-  margin-left: 24px;
-  margin-right: 24px;
+  margin-left: 20px;
+  /* margin-right: 24px; */
 }
 
 .slider {
