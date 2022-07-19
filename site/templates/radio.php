@@ -9,16 +9,15 @@
   </div>
 
   <div id="right">
-    <h2>Upcoming broadcast</h2>
     <?php
     $broadcasts = $page->children()->filterBy('toggle', 'true');
     ?>
 
     <?php foreach($broadcasts as $broadcast): ?>
-      <h3><?= $broadcast->title() ?></h3>
+      <h2> <span style="color:lightgrey;">Upcoming broadcast:</span> <?= $broadcast->title() ?></h2>
       <ul>
         <?php $shows = $broadcast->children(); foreach($shows as $show): ?>
-        <li>
+        <li class="roundBorder">
           <?= $show->starttime()->toDate('H:i') ?>-<?= $show->endtime()->toDate('H:i') ?> |
           <?= $show->title()->html() ?> |
           <?php $hosts =  $show->people()->toPages();  foreach($hosts as $host): ?><a href="<?= $host->url() ?>"><?= $host->title() ?></a>

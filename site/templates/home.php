@@ -12,11 +12,12 @@
         <?php $latestIssue = $HomepageBlocks->children()->last() ?>
         <a href="<?= $HomepageBlocks->url() ?>" class="block-link">
           <div class="block">
-            <p class="mag-text-block"><?= $HomepageBlocks->title() ?></p>
+            <h1 class="block-title"><?= $HomepageBlocks->title() ?></h1>
             <?php if ($issueCover = $latestIssue->cover()->toFile()): ?>
-              <img src="<?= $issueCover->url() ?>" class="homepage-mag-cover" /> 
+              <img src="<?= $issueCover->url() ?>" class="block-cover" />
             <?php endif ?>
           </div>
+
         </a>
 
       <!-- RADIO BLOCK -->
@@ -24,17 +25,20 @@
         <?php $upcomingBroadcast = $HomepageBlocks->children()->last() ?>
         <a href="<?= $HomepageBlocks->url() ?>" class="block-link">
           <div class="block">
-            <p><?= $HomepageBlocks->title() ?></p>
-            <p>Upcoming Broadcast: <span><?= $upcomingBroadcast->date() ?></span></p>
+            <h1><?= $HomepageBlocks->title() ?></h1>
+            <div class="block-content">
+            <h3><span style="color:lightgrey;">Upcoming broadcast: </span><?= $upcomingBroadcast->title() ?></h3>
             <?php if($upcomingShows = $upcomingBroadcast->children()): ?>
               <ul class="radio-schedule">
-              <?php foreach($upcomingShows as $upcomingShows): ?>
-              <li>
-                <p><?= $upcomingShows->title() ?></p>
-              </li>
+              <?php foreach($upcomingShows as $upcomingShow): ?>
+                <li class="roundBorder">
+                  <p><?= $upcomingShow->starttime()->toDate('H:i') ?>-<?= $upcomingShow->endtime()->toDate('H:i') ?> |
+                  <?= $upcomingShow->title()->html() ?>
+                </li>
               <?php endforeach ?>
             </ul>
             <?php endif ?>
+          </div>
           </div>
         </a>
       <?php endif; ?>
@@ -43,9 +47,9 @@
       <?php if ($HomepageBlocks->title() == 'Academy of Margins'): ?>
         <a href="<?= $HomepageBlocks->url() ?>" class="block-link">
           <div class="block">
-            <p class="title-text-block"><?= $HomepageBlocks->title() ?></p>
+            <h1 class="title-text-block"><?= $HomepageBlocks->title() ?></h1>
               <?php if($coverPhoto = $HomepageBlocks->coverImage()->toFile()): ?>
-                <img src="<?= $coverPhoto->url() ?>" class="aom-cover" /> 
+                <img src="<?= $coverPhoto->url() ?>" class="block-cover" />
               <?php endif ?>
           </div>
         </a>
@@ -55,14 +59,17 @@
       <?php if ($HomepageBlocks->title() == 'Residency'): ?>
         <a href="<?= $HomepageBlocks->url() ?>" class="block-link">
           <div class="block">
-            <p class="title-text-block"><?= $HomepageBlocks->title() ?></p>
+            <h1 class="title-text-block"><?= $HomepageBlocks->title() ?></h1>
+            <div class="block-content">
             <?php if($residents = $HomepageBlocks->currentResidents()->toPages()): ?>
+              <h3><span style="color:lightgrey;">Current residents: </span></h3>
               <ul>
               <?php foreach($residents as $residents): ?>
-                <li><?= $residents->title() ?></li>
+                <li class="profile"><?= $residents->title() ?></li>
               <?php endforeach ?>
               </ul>
             <?php endif ?>
+          </div>
           </div>
         </a>
       <?php endif ?>
@@ -71,7 +78,7 @@
       <?php if ($HomepageBlocks->title() == 'Topolo'): ?>
         <a href="<?= $HomepageBlocks->url() ?>" class="block-link">
           <div class="block">
-            <p class="title-text-block"><?= $HomepageBlocks->title() ?></p>
+            <h1 class="title-text-block"><?= $HomepageBlocks->title() ?></h1>
           </div>
         </a>
       <?php endif ?>
@@ -81,7 +88,7 @@
       <?php if ($HomepageBlocks->title() == 'Journal'): ?>
         <a href="<?= $HomepageBlocks->url() ?>" class="block-link">
           <div class="block">
-            <p class="title-text-block"><?= $HomepageBlocks->title() ?></p>
+            <h1 class="title-text-block"><?= $HomepageBlocks->title() ?></h1>
           </div>
         </a>
       <?php endif ?>

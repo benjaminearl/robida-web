@@ -2,9 +2,8 @@ body {
  font-size: 15px;
  font-family: 'IBM Plex Mono', monospace;
  background-color: white;
+ color: #333;
  margin: 0;
- height: 100vh;
- width: 100vw;
 }
 
 header {
@@ -59,7 +58,12 @@ nav {
   background-color: inherit;
   transition: 0.5s;
   border-left: 1px solid;
-  z-index: 1;
+  z-index: 20;
+
+  font-size: 0.8em;
+  text-align:center;
+  width: 5em;
+  padding-top: 1em;
 
 }
 #closeRight {
@@ -84,7 +88,7 @@ nav {
   transition: margin-left .5s;
   position: absolute;
   top: calc(4em + 1px);
-  width: 95vw;
+  width: calc(95vw - 40px)
 }
 
 main {
@@ -94,18 +98,18 @@ main {
 
 #left {
   float: left;
-  width: calc(50% - 2em);
+  width: calc(50% - 40px);
   height: calc(100vh - 8em - 2px);
   border-right: 1px solid;
-  padding: 1em;
+  padding: 20px;
   overflow: scroll;
 }
 
 #right {
   float: right;
-  width: calc(50% - 2em - 1px);
+  width: calc(50% - 40px - 1px);
   height: calc(100vh - 8em - 2px);
-  padding: 1em;
+  padding: 20px;
   overflow: scroll;
 }
 
@@ -118,7 +122,7 @@ main {
 }
 
 #top, #middle {
-  height: calc(calc(100vh - 120px) / 5 x 2);
+  height: calc(calc(100vh - 120px) / 2);
   border-bottom: 1px solid;
   overflow-x: scroll;
   overflow-y: hidden;
@@ -128,16 +132,15 @@ main {
   scrollbar-width: none;  /* Firefox */
 }
 
-#bottom {
+/* #bottom {
   height: calc(calc(100vh - 120px) / 5);
   border-bottom: 1px solid;
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
-  /* Hide scrollbar for IE, Edge and Firefox */
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-}
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+} */
 
 /* Hide scrollbar for Chrome, Safari and Opera */
 #top::-webkit-scrollbar, #middle::-webkit-scrollbar, #bottom::-webkit-scrollbar {
@@ -146,37 +149,50 @@ main {
 
 .block {
   display: inline-block;
-  height: calc(100vh / 3);
-  width: calc(100vh / 3);
-  background-color: lightblue;
-  border-right: 1px solid;
+  /* height: calc(calc(100vh - 120px) / 2); */
+  width: calc(calc(100vh - 120px) / 2);
+  height: calc(100% - 40px);
+  border-left: 1px solid #333;
+  margin-right: -9px;
+  position: relative;
+  padding: 20px;
+}
+
+.block-content {
+  bottom: 20px;
+  position: absolute;
+  width: calc(100% - 40px);
 }
 
 .block-link {
   display:inline-block;
   vertical-align: top;
   height: 100%;
+  color: inherit;
 }
 
-.mag-text-block {
-  position: absolute;
+img.block-cover {
+    width: 100%;
+    height: calc(100% - 40px);
+    object-fit: cover;
+    z-index: -10;
+    border-radius: 30px;
 }
+
+/* .block-title {
+  position: absolute;
+} */
 
 .radio-schedule li {
-  display: block;
   font-size: 11px;
+  display: block;
+  white-space: normal;
 }
 
 .aom-cover {
   height: 100%;
 }
 
-
-
-h1, h2, h3 {
-  margin: 0;
-  padding: 15px;
-}
 
 footer {
   position: fixed;
@@ -185,7 +201,7 @@ footer {
   width: 100%;
   border-top: 1px solid;
   background-color: inherit;
-  z-index: 1;
+  z-index: 25;
 }
 
 #logo {
@@ -229,8 +245,9 @@ footer {
     background: white;
     position: relative;
     padding-left: 0.5em;
-    padding-top: 0.5em;
+    padding-top: 1em;
     top: 0.6em;
+    font-size: 15px;
   }
 
   nav ul {
@@ -243,6 +260,11 @@ footer {
     margin-left: calc(-1em - 1px);
   }
 
+  nav a {
+    text-decoration: none;
+    color: inherit;
+  }
+
 /* ------------------------------------------ */
 
 a.active {
@@ -251,4 +273,52 @@ a.active {
 
 #center img {
   max-width: 100%;
+}
+
+/* ------------------------------------------ */
+
+.roundBorder {
+  border: 1px solid lightgrey;
+  border-radius: 30px;
+  padding: 15px;
+  margin-top: 5px;
+}
+
+li.profile {
+  display: inline-block;
+  border: 1px solid lightgrey;
+  background-color: lightgrey;
+  color: white;
+  border-radius: 15px;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 12px;
+}
+
+
+h1, h2, h3, p {
+  margin: 0;
+  /* padding: 15px; */
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+h1 {
+  font-size: 20px;
+  padding-bottom: 15px;
+}
+
+h2 {
+  font-size: 18px;
+  padding-bottom: 15px;
+}
+
+h3 {
+  font-size: 15px;
+  padding-bottom: 15px;
+}
+
+p.bodytext {
+  font-family: serif;
+  font-size: 18px;
 }
