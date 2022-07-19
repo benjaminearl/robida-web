@@ -1,14 +1,15 @@
 barba.init({
-  transitions: [{
-    name: 'default-transition',
-    afterEnter() {
-      // create your stunning leave animation here
+  views: 'home' [{
+    beforeEnter({ next }) {
+    let script = document.createElement('script');
+    script.src = '/assets/js/index.js';
+    next.container.appendChild(script);
     },
-    enter() {
-      // create your amazing enter animation here
+    afterEnter() {
+    console.log('after')
     }
-  }]
-});
+    }],
+  })
 
 // GET START DATE
 var days = 30; // days before current date

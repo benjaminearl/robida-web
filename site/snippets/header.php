@@ -58,4 +58,4 @@
      </div>
   </header>
   <script src="https://cdn.jsdelivr.net/npm/@barba/core"></script>
-  <main data-barba="container">
+  <main data-barba="container" data-barba-namespace="home">
