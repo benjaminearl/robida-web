@@ -1,0 +1,35 @@
+Title: Mystical Ecologies
+
+----
+
+Fromdate: 2022-08-16
+
+----
+
+Fromtime: 10:00:00
+
+----
+
+Todate: 2022-08-17
+
+----
+
+Totime: 17:00:00
+
+----
+
+Location: 
+
+----
+
+Link: 
+
+----
+
+Text: 
+
+----
+
+Project:
+
+- projects/academy-of-margins

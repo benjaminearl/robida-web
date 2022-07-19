@@ -445,3 +445,21 @@ p.bodytext {
   font-family: serif;
   font-size: 18px;
 }
+
+.jqtl-event-node {
+  overflow: visible;
+  border-radius: 50px;
+  min-width: 27px;
+  color: white;
+  border: 1px solid lightgrey;
+}
+
+.jqtl-event-label {
+  overflow: visible;
+  font-size: 11px;
+}
+
+.jqtl-event-label a {
+  text-decoration: none;
+  color: black;
+}

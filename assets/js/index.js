@@ -30,6 +30,9 @@ $(function () {
     minGridSize: 27,
     startDatetime: timelineStartDate,
     weekday: "short",
+    minuteInterval: 30,
+    minGridPer: 2,
+    bgColor: '#ffffff',
     headline: { display: false },
     effects: {
       presentTime: true,

@@ -1,0 +1,43 @@
+Title: Shifting Masses, Broken Vases
+
+----
+
+Fromdate: 2022-07-26
+
+----
+
+Fromtime: 18:00:00
+
+----
+
+Todate: 2022-07-26
+
+----
+
+Totime: 20:00:00
+
+----
+
+Location: Izba and Radio Robida
+
+----
+
+Link: 
+
+----
+
+Text: 
+
+----
+
+Project:
+
+- projects/academy-of-margins
+
+----
+
+From: 2022-07-26
+
+----
+
+To: 2022-07-27

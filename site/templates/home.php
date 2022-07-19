@@ -85,35 +85,32 @@
 
 
       <!-- JOURNAL BLOCK -->
-      <?php if ($HomepageBlocks->title() == 'Journal'): ?>
+      <?php /*
+       <?php if ($HomepageBlocks->title() == 'Journal'): ?>
         <a href="<?= $HomepageBlocks->url() ?>" class="block-link">
           <div class="block">
             <h1 class="title-text-block"><?= $HomepageBlocks->title() ?></h1>
           </div>
         </a>
       <?php endif ?>
-
+*/ ?>
     <?php endforeach ?>
   </div>
   <div id="middle">
+    <?php $items = $site->index()->filterBy('template', 'event'); ?>
     <div id="myTimeline">
       <ul class="timeline-events">
-        <!-- <li data-timeline-node="{ start:'2022-07-01 10:00',end:'2022-07-1 13:00',content:'<p>Event Body...</p>' }">Event Label</li>
-        <li data-timeline-node="{ start:'2022-07-01 23:10',end:'2022-07-02 1:30' }">
-          <span class="event-label">Event Label</span>
-          <span class="event-content"><p>Event Body...</p></span>
-        </li> -->
+      <?php $i = 0; 
+      foreach($items as $items): $i++; ?>
+        <li data-timeline-node="{ start:'<?= $items->fromDate() ?> <?=$items->fromTime() ?>', end:'<?= $items->toDate() ?> <?= $items->toTime() ?>', row:'<?php echo $i ?>' }">
+          <a href="<?= $items->url() ?>"><?= $items->title() ?></a>
+        </li>
+        <?php if($i > 5): $i = 0 ?>
+        <?php endif ?>
+      <?php endforeach ?>
       </ul>
     </div>
   </div>
-  <!-- <div id="bottom">
-    <div class="block"></div>
-    <div class="block"></div>
-    <div class="block"></div>
-    <div class="block"></div>
-    <div class="block"></div>
-    <div class="block"></div>
-  </div> -->
 </div>
 
 

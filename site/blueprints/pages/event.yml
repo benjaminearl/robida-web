@@ -9,23 +9,31 @@ sections:
   info:
     type: fields
     fields:
-      from:
+      fromDate:
         label: Start
         type: date
         width: 1/2
         default: today
-      to:
-        label: End
+      fromTime:
+        label: Start Time
+        type: time
+        width: 1/2
+      toDate:
+        label: End Date
         type: date
         width: 1/2
         default: today + 1day
+      toTime:
+        label: End Time
+        type: time
+        width: 1/2
       location:
         label: Location
         type: text
         width: 1/2
       link:
         label: Link
-        type: url
+        type: url 
         width: 1/2
       text:
         label: Description
