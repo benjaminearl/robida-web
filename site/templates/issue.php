@@ -1,29 +1,43 @@
 <?php snippet('header') ?>
 
-<h1><?= $page->title() ?></h1>
-<?php if($image = $page->cover()->toFile()): ?>
-     <img src="<?= $image->url() ?>" alt="">
-<?php endif ?>
-<p>
-  <?= $page->Theme() ?>
-</p>
-<p><?= $page->Text() ?></p>
+<?php snippet('header') ?>
 
-<?php
+<?php snippet('nav') ?>
+<div id="center">
+  <div id="left">
+    <div class="parent">
+      <a href="<?= $page->parent()->url() ?>"><< <?= $page->parent()->title() ?></a>
+    </div>
 
-$items = $page->colophon()->toStructure();
+    <h1><?= $page->title() ?></h1>
 
-foreach ($items as $item): ?>
+    <p>
+      <?= $page->Theme() ?>
+    </p>
+    <p><?= $page->Text() ?></p>
 
-  <p><?= $item->role()->html() ?></p>
+    <?php
 
-    <?php $people = $item->person()->toPages();
-    foreach ($people as $person): ?>
-      <p><?= $person->title() ?></p>
+    $items = $page->colophon()->toStructure();
+
+    foreach ($items as $item): ?>
+
+      <p><?= $item->role()->html() ?></p>
+
+        <?php $people = $item->person()->toPages();
+        foreach ($people as $person): ?>
+          <p><?= $person->title() ?></p>
+        <?php endforeach ?>
+
     <?php endforeach ?>
+  </div>
+  <div id="right">
+    <?php if($image = $page->cover()->toFile()): ?>
+         <img src="<?= $image->url() ?>" alt="">
+    <?php endif ?>
+  </div>
+</div>
 
-<?php endforeach ?>
 
-
-
+<?php snippet('rightbar') ?>
 <?php snippet('footer') ?>

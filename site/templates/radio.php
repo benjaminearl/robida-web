@@ -4,8 +4,9 @@
 <div id="center">
   <div id="left">
     <h1><?= $page->title() ?></h1>
-    <p><?= $page->Text()->kt() ?></p>
-    <a href="<?= $page->archive() ?>">Go to archive →</a>
+    <div class="bodytext">
+      <p><?= $page->Text()->kt() ?></p>
+    </div>
   </div>
 
   <div id="right">
@@ -14,7 +15,7 @@
     ?>
 
     <?php foreach($broadcasts as $broadcast): ?>
-      <h2> <span style="color:lightgrey;">Upcoming broadcast:</span> <?= $broadcast->title() ?></h2>
+      <h3> <span style="color:lightgrey;">Upcoming broadcast:</span> <?= $broadcast->title() ?></h3>
       <ul>
         <?php $shows = $broadcast->children(); foreach($shows as $show): ?>
         <li class="roundBorder">
@@ -26,6 +27,8 @@
         <?php endforeach ?>
       </ul>
     <?php endforeach ?>
+    <br>
+    <h3> <span style="color:lightgrey;">Past broadcasts:</span> <a href="<?= $page->archive() ?>">Go to archive →</a><h3>
   </div>
 </div>
 

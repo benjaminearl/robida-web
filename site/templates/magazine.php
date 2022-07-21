@@ -7,7 +7,7 @@
     <p><?= $page->Text()->kt() ?></p>
   </div>
   <div id="right">
-    <ul class="mag-list">
+    <ul class="magazine">
       <?php foreach($page->children() as $issue): ?>
       <li class="mag-issue">
         <a<?php e($issue->isOpen(), ' class="active"') ?> href="<?= $issue->url() ?>">

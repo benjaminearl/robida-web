@@ -26,4 +26,4 @@ Link2:
 
 ----
 
-Category: home
+Category: away

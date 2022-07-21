@@ -2,10 +2,28 @@ Title: Aljaž Škrlep
 
 ----
 
-Authors:
-
-- oxb2AKko
+Authors: 
 
 ----
 
 Text: 
+
+----
+
+Birthyear: 
+
+----
+
+Birthcountry: 
+
+----
+
+Link1: 
+
+----
+
+Link2: 
+
+----
+
+Category: home

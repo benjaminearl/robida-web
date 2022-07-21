@@ -4,7 +4,9 @@
 <div id="center">
   <div id="left">
       <h1><?= $page->title() ?></h1>
-      <p><?= $page->Text()->kt() ?></p>
+      <div class="bodytext">
+        <p><?= $page->Text()->kt() ?></p>
+      </div>
   </div>
   <div id="right">
 
