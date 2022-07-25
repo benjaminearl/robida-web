@@ -157,7 +157,6 @@ header {
   float: right;
 }
 
-/* ------------------- End HEADER ------------------- */
 
 /* ------------------- SIDEBARS ------------------- */
 
@@ -201,9 +200,7 @@ nav {
   border-left: 1px solid;
 }
 
-/* ------------------- End SIDEBARS ------------------- */
-
-
+/* ------------------- MAIN SECTIONS ------------------- */
 #center {
   height: calc(100vh - 8em - 2px);
   width: calc(100vw - 8em - 2px);
@@ -260,6 +257,7 @@ nav {
     display: none;
 }
 
+/* ------------ HOMEPAGE BLOCKS -----------*/
 .block {
   display: inline-block;
   width: calc(calc(100vh - 8em) / 2);
@@ -268,6 +266,7 @@ nav {
   margin-right: -0.5em; /* because otherwise there is too much space between the blocks for some reason */
   position: relative;
   padding: 1em;
+  color: inherit;
 }
 
 .block-content {
@@ -276,14 +275,7 @@ nav {
   width: calc(100% - 2em);
 }
 
-.block-link {
-  display:inline-block;
-  vertical-align: top;
-  height: 100%;
-  color: inherit;
-}
-
-img.block-cover {
+.block img {
     width: calc(100% - 2em);
     height: calc(100% - 5em);
     object-fit: cover;
@@ -293,35 +285,52 @@ img.block-cover {
     position: absolute;
 }
 
-/* .block-title {
-  position: absolute;
-} */
+/* ---------- General elements ---------- */
 
-.radio-schedule li {
-  font-size: 0.8em;
-  display: block;
-  white-space: normal;
+h1, h2, h3, p {
+  margin: 0;
 }
 
-.aom-cover {
-  height: 100%;
+h1 {
+  font-size: 1.5em;
+  padding-bottom: 15px;
 }
 
-ul.magazine {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-column-gap: 1em;
-  grid-row-gap: 2em;
-}
-.mag-issue {
-  display: inline-block;
+h2 {
+  font-size: 1.2em;
+  padding-bottom: 15px;
 }
 
-.mag-issue img {
-  background-color: black;
+h3 {
+  font-size: 1em;
+  padding-bottom: 15px;
+  color: lightgrey;
+}
+
+.bodytext p {
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-family: serif;
+  font-size: 1.2em;
+  line-height: 1.2;
+}
+
+a {
+  text-decoration: none;
+}
+
+a.active {
+  color: green;
+}
+
+img {
   width: 100%;
-  object-fit: cover;
+}
 
+.section {
+  margin-bottom: 3em;
 }
 
 .parent {
@@ -330,9 +339,65 @@ ul.magazine {
 .parent a {
   color: lightgrey;
   text-decoration: none;
+  font-size: 0.8rem;
+}
+
+.roundBorder {
+  border: 1px solid lightgrey;
+  border-radius: 30px;
+  padding: 15px;
+  margin-top: 5px;
+}
+
+.profile {
+  display: inline-block;
+  border: 1px solid lightgrey;
+  background-color: lightgrey;
+  color: white;
+  border-radius: 1.5em;
+  padding: 0.5em;
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+  text-decoration: none;
+  font-size: 0.8rem;
+
 }
 
 
+/* ---------- MAGAZINE ---------- */
+
+ul.mag-overview {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 1em;
+  grid-row-gap: 2em;
+}
+
+.mag-overview img {
+  background-color: black;
+  width: 100%;
+  object-fit: cover;
+}
+
+.issue-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 1em;
+  grid-row-gap: 2em;
+  color: lightgrey;
+}
+
+/* ---------- RADIO ----------  */
+
+
+.radio-schedule li {
+  font-size: 0.8em;
+  display: block;
+  white-space: normal;
+}
+
+
+/* ---------- FOOTER ----------  */
 
 footer {
   position: fixed;
@@ -363,7 +428,7 @@ marquee {
 
 #currently-in-topolo {
   display: inline-block;
-  width: calc(100vw - 8em);
+  width: calc(100vw - 4em);
   height: 100%;
   position: absolute;
   padding-top: 1rem;
@@ -415,65 +480,8 @@ marquee {
     color: inherit;
   }
 
-/* ------------------------------------------ */
+/* ------------- TIMELINE --------------- */
 
-a.active {
-  color: green;
-}
-
-#center img {
-  max-width: 100%;
-}
-
-.roundBorder {
-  border: 1px solid lightgrey;
-  border-radius: 30px;
-  padding: 15px;
-  margin-top: 5px;
-}
-
-.profile {
-  display: inline-block;
-  border: 1px solid lightgrey;
-  background-color: lightgrey;
-  color: white;
-  border-radius: 1.5em;
-  padding: 0.5em;
-  padding-left: 0.75em;
-  padding-right: 0.75em;
-  text-decoration: none;
-  font-size: 0.8rem;
-}
-
-
-h1, h2, h3, p {
-  margin: 0;
-}
-
-h1 {
-  font-size: 1.5em;
-  padding-bottom: 15px;
-}
-
-h2 {
-  font-size: 1.2em;
-  padding-bottom: 15px;
-}
-
-h3 {
-  font-size: 1em;
-  padding-bottom: 15px;
-}
-
-.bodytext p {
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  font-family: serif;
-  font-size: 1.2em;
-  line-height: 1.2;
-}
 
 .jqtl-event-node {
   overflow: visible;
@@ -533,7 +541,7 @@ h3 {
   }
 
   nav p {
-    font-size: 1.5em;
+    font-size: 1.2em;
   }
 
   .block {

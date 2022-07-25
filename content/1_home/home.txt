@@ -1,10 +1,10 @@
-Title: Robida
+Title: Home
 
 ----
 
 Homeblocks:
 
-- projects/magazine
+- projects/robida-magazine
 - projects/radio-robida
 - projects/academy-of-margins
 - projects/residency

@@ -1,7 +1,8 @@
 Title: Home
 
-fields: 
+fields:
   homeBlocks:
     type: pages
     label: Home Page Blocks
     multiple: true
+    

@@ -10,12 +10,6 @@ Published: 2021-04-09
 
 ----
 
-Cover:
-
-- img_6037.jpg
-
-----
-
 Theme: Forests
 
 ----
@@ -31,14 +25,17 @@ Index: <ul><li>Editorial by Editors</li><li>Article by Person 1</li><li>Essay by
 Colophon:
 
 - 
-  role: Editors
+  role: Role
   person:
-    - people/vida-rucli
-    - people/aljaz-skrlep
+    - community/people/vida-rucli
 - 
-  role: Graphic Design
+  role: Role role
   person:
-    - people/janja-susnjar
+    - community/people/vida-rucli
+
+----
+
+Cover: 2021_robida-7_cover.jpg
 
 ----
 
