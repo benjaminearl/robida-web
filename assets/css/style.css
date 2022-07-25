@@ -149,7 +149,6 @@ header {
 .logo {
   display: inline-block;
   width: 20%;
-  pointer-events: none;
 }
 
 .radio-link {
