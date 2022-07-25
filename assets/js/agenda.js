@@ -1,8 +1,12 @@
-// GET TODAYS DATE
-var today = new Date();
-var dd = String(today.getDate()).padStart(2, '0');
-var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-var yyyy = today.getFullYear();
-
-today = dd + '/' + mm + '/' + yyyy;
-console.log(today)
+    barba.init({
+        views: [{
+          namespace: 'home',
+          beforeEnter({ next }) {
+      
+          // load your script
+          let script = document.createElement('script');
+          script.src = 'https://r0bida.bnjmnearl.eu/assets/js/index.js';
+          next.container.appendChild(script);
+          }, 
+      }],
+      });

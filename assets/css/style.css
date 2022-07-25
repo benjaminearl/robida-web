@@ -149,7 +149,6 @@ header {
 .logo {
   display: inline-block;
   width: 20%;
-  pointer-events: none;
 }
 
 .radio-link {
@@ -510,6 +509,7 @@ marquee {
 .jqtl-event-label {
   overflow: visible;
   font-size: 0.8em;
+  z-index: 10;
 }
 
 .jqtl-event-label a {
