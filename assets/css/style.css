@@ -509,6 +509,7 @@ marquee {
 .jqtl-event-label {
   overflow: visible;
   font-size: 0.8em;
+  z-index: 10;
 }
 
 .jqtl-event-label a {
