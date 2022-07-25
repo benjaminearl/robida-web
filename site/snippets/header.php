@@ -24,7 +24,7 @@
 
   <header>
     <div class="logo">
-      <img id="logo" src="https://robidacollective.com/assets/images/robida_logo_vector.png" alt="Robida" onclick="location.href='<?= $site->url() ?>';">
+      <a href="<?= $site->url() ?>"><img id="logo" src="https://robidacollective.com/assets/images/robida_logo_vector.png" alt="Robida"></a>
     </div>
     <div class="audio green-audio-player">
     <p style="display:inline-block; padding-right: 20px;">Radio Robida</p>

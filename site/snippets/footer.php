@@ -8,7 +8,9 @@
             return false;"
   >Chat</a>
 </div>
-
+<div id="contact">
+  <a href="https://www.instagram.com/r_o_b_i_d_a/" target="_blank">Instagram</a>
+</div>
 <div id="currently-in-topolo">
   <marquee>
     <span style="color:lightgrey;">Currently in Topolò:</span>
@@ -16,7 +18,6 @@
     <a class="profile" href="<?= $item->url() ?>"><?= html($item->title()) ?></a>
     <?php endforeach ?>
   </marquee>
-
 </div>
 
 

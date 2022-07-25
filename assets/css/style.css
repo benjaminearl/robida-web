@@ -149,7 +149,7 @@ header {
 .logo {
   display: inline-block;
   width: 20%;
-  pointer-events: none
+  pointer-events: none;
 }
 
 .radio-link {
@@ -190,7 +190,7 @@ header {
 nav {
   margin: 0;
   padding-left: 3rem;
-  margin-top: calc(-2rem - 2px);
+  margin-top: calc(-2rem - 3px);
 
 }
 
@@ -267,6 +267,7 @@ nav {
   position: relative;
   padding: 1em;
   color: inherit;
+  white-space: normal;
 }
 
 .block-content {
@@ -319,6 +320,7 @@ h3 {
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 a.active {
@@ -416,11 +418,24 @@ footer {
   display: inline-block;
   text-align: center;
   padding-top: 1.2rem;
+  right: 0;
   position: absolute;
+  background-color: inherit;
+  z-index: 1;
 }
-#chat a {
-  text-decoration: none;
-  color: inherit;
+
+
+#contact {
+  width: auto;
+  height: 100%;
+  display: inline-block;
+  position: absolute;
+  right: 4rem;
+  padding: 1rem;
+  padding-top: 1.2rem;
+  background-color: inherit;
+  z-index: 1;
+
 }
 
 marquee {
@@ -432,7 +447,7 @@ marquee {
   height: 100%;
   position: absolute;
   padding-top: 1rem;
-  left: 4rem;
+  left: 0;
 }
 
 /* MENU TREE ---------------------------------------- */
