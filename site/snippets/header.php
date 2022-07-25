@@ -9,15 +9,15 @@
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ka215/jquery.timeline@main/dist/jquery.timeline.min.css">
 
-  <?php?><title><?= $site->title() ?> | <?= $page->title() ?></title>
+  <?php ?><title><?= $site->title() ?> | <?= $page->title() ?></title>
 
-  <?php?>
+  <?php ?>
   <?= css([
     'assets/css/style.css',
     '@auto'
   ]) ?>
 
-  <?php?>
+  <?php ?>
   <link rel="shortcut icon" type="image/x-icon" href="<?= url('favicon.ico') ?>">
 </head>
 <body data-barba="wrapper">
