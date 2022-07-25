@@ -4,6 +4,7 @@ Title: Home
 
 Homeblocks:
 
+- community/calendar/summer-academy
 - projects/robida-magazine
 - projects/radio-robida
 - projects/academy-of-margins

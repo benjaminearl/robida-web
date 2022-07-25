@@ -18,7 +18,7 @@ Totime: 17:00:00
 
 ----
 
-Location: 
+Location: Topolò
 
 ----
 
@@ -26,8 +26,51 @@ Link:
 
 ----
 
-Text: 
+Text: Test
 
 ----
 
-Project: 
+Project:
+
+- projects/academy-of-margins
+
+----
+
+Programme:
+
+- 
+  day: 2022-08-08
+  timetable:
+    - 
+      start: 10:00:00
+      end: 11:00:00
+      title: Activity 1
+      text: ""
+    - 
+      start: 11:00:00
+      end: 12:00:00
+      title: Activity 2
+      text: "456"
+- 
+  day: 2022-08-09
+  timetable:
+    - 
+      start: 12:00:00
+      end: 13:00:00
+      title: ""
+      text: joeeeee
+
+----
+
+Timetable:
+
+- 
+  day: 2022-08-08
+  start: 10:00:00
+  end: 11:00:00
+  text: First activity
+- 
+  day: ""
+  start: 11:00:00
+  end: 12:00:00
+  text: Second activity

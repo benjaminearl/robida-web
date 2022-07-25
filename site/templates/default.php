@@ -16,9 +16,14 @@
     <?php if($subpages = $page->children()->listed()): ?>
       <ul><?php foreach ($subpages as $subpage): ?>
         <li><h2><?= $subpage->title() ?></h2></li>
-      <?php endforeach ?>
-    </ul>
+        <?php endforeach ?>
+      </ul>
     <?php endif ?>
+
+    <?php $events = $site->find('Community')->find('Calendar')->children()->filterBy(''); ?>
+      <h3>Related events:</h3>
+        <?php foreach($events as $event): ?><a href="<?= $event->url() ?>"><?= $event->title() ?></a>
+      <?php endforeach ?>
   </div>
 </div>
 

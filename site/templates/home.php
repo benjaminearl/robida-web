@@ -23,7 +23,7 @@
         <a href="<?= $HomepageBlocks->url() ?>" class="block">
             <h1><?= $HomepageBlocks->title() ?></h1>
             <div class="block-content">
-            <h3>Upcoming broadcast: <?= $upcomingBroadcast->title() ?></h3>
+            <h3>Upcoming broadcast: <span style="color:#333;"><?= $upcomingBroadcast->date()->toDate('D d M Y') ?></span></h3>
             <?php if($upcomingShows = $upcomingBroadcast->children()): ?>
               <ul class="radio-schedule">
               <?php foreach($upcomingShows as $upcomingShow): ?>

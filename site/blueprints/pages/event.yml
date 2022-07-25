@@ -1,43 +1,88 @@
-Title: Event
-image:
-  icon: 🗓
-  back: "#00f"
+title: Event
 template: event
 num: "{{ page.from.toDate('Ymd') }}"
 
-sections:
-  info:
-    type: fields
-    fields:
-      fromDate:
-        label: Start
-        type: date
-        width: 1/2
-        default: today
-      fromTime:
-        label: Start Time
-        type: time
-        width: 1/2
-      toDate:
-        label: End Date
-        type: date
-        width: 1/2
-        default: today + 1day
-      toTime:
-        label: End Time
-        type: time
-        width: 1/2
-      location:
-        label: Location
-        type: text
-        width: 1/2
-      link:
-        label: Link
-        type: url 
-        width: 1/2
-      text:
-        label: Description
-        type: textarea
-      project:
-        label: Related Project
-        type: pages
+columns:
+  # left/up
+  left:
+    width: 1/2
+    sections:
+      info:
+        type: fields
+        fields:
+          fromDate:
+            label: Start
+            type: date
+            width: 1/2
+            default: today
+          fromTime:
+            label: Start Time
+            type: time
+            width: 1/2
+          toDate:
+            label: End Date
+            type: date
+            width: 1/2
+            default: today + 1day
+          toTime:
+            label: End Time
+            type: time
+            width: 1/2
+          location:
+            label: Location
+            type: text
+            width: 1/2
+          link:
+            label: Link
+            type: url
+            width: 1/2
+          text:
+            label: Description
+            type: textarea
+          project:
+            label: Related Project
+            type: pages
+            query: site.find('projects')
+
+          programme:
+            label: Programme
+            type: structure
+            fields:
+              day:
+                label: Day
+                type: date
+              timetable:
+                type: structure
+                label: Timetable
+                fields:
+                  start:
+                    label: Start Time
+                    type: time
+                    width: 1/2
+                  end:
+                    label: End Time
+                    type: time
+                    width: 1/2
+                  title:
+                    label: Title
+                    type: text
+                  text:
+                    label: Description
+                    type: textarea
+# -------------------------
+
+  # right/down
+  right:
+    width: 1/2
+    sections:
+
+      # images (optional)
+      cover:
+        headline: Cover image
+        type: files
+        multiple: false
+
+
+
+
+# -------------------------
