@@ -80,6 +80,17 @@
         </a>
       <?php endif ?>
 
+            <!-- SUMMER ACADEMY -->
+            <?php if ($HomepageBlocks->title() == 'Summer Academy'): ?>
+        <a href="<?= $HomepageBlocks->url() ?>" class="block">
+            <h1><?= $HomepageBlocks->title() ?></h1>
+            <?php if($coverPhoto = $HomepageBlocks->cover()->toFile()): ?>
+              <img src="<?= $coverPhoto->url() ?>" />
+            <?php endif ?>
+
+        </a>
+      <?php endif ?>
+
 
       <!-- JOURNAL BLOCK -->
       <?php /*
