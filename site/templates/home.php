@@ -87,13 +87,11 @@
             <?php if($coverPhoto = $HomepageBlocks->cover()->toFile()): ?>
               <img src="<?= $coverPhoto->url() ?>" />
             <?php endif ?>
-
         </a>
       <?php endif ?>
 
 
       <!-- JOURNAL BLOCK -->
-      <?php /*
        <?php if ($HomepageBlocks->title() == 'Journal'): ?>
         <a href="<?= $HomepageBlocks->url() ?>" class="block-link">
           <div class="block">
@@ -101,7 +99,7 @@
           </div>
         </a>
       <?php endif ?>
-*/ ?>
+      
     <?php endforeach ?>
   </div>
   <div id="middle">

@@ -176,12 +176,14 @@ header {
   font-size: 0.8em;
   text-align:center;
   padding-top: 1rem;
+  cursor: pointer;
 }
 
 #closeLeft, #closeRight {
   display: none;
   width: 4rem;
 }
+
 #openLeft, #openRight {
   display: block;
 }
@@ -190,13 +192,25 @@ nav {
   margin: 0;
   padding-left: 3rem;
   margin-top: calc(-2rem - 3px);
-
 }
 
 #rightSidebar {
   left: auto;
   right: 0;
   border-left: 1px solid;
+}
+
+#glossary-content {
+  display: none;
+  margin-left: 10px;
+}
+
+#glossary-content h1 {
+  margin-top: 20px;
+}
+
+#closeRight {
+  margin-left: 10px;
 }
 
 /* ------------------- MAIN SECTIONS ------------------- */
