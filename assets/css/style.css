@@ -2,11 +2,16 @@ html {
   font-size: calc(0.8vw);
 }
 
+*{ 
+  scrollbar-width: none /* hide scrollbar in firefox */
+}
+
 body {
- font-family: 'IBM Plex Mono', monospace;
- background-color: white;
- color: #333;
- margin: 0;
+  font-family: 'IBM Plex Mono', monospace;
+  background-color: white;
+  color: #333;
+  margin: 0;
+
 }
 
 /* -------------------- HEADER + contents ------------------- */
@@ -246,7 +251,7 @@ nav {
 }
 
 #top, #middle {
-  height: calc(calc(100% - 2em) / 2);
+  height: calc(calc(100% - 0.1em) / 2);
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
@@ -518,6 +523,7 @@ marquee {
   max-height: 2em;
   color: white;
   border: 1px solid lightgrey;
+  margin-left: -15px; /* events start at rounded edge so need to be moved forward slightly */
 }
 
 .jqtl-event-label {

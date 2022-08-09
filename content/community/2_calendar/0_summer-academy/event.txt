@@ -36,6 +36,12 @@ Project:
 
 ----
 
+Altlink:
+
+- projects/summer-academy
+
+----
+
 Programme:
 
 - 
