@@ -27,7 +27,7 @@
       <a href="<?= $site->url() ?>"><img id="logo" src="https://robidacollective.com/assets/images/robida_logo_vector.png" alt="Robida"></a>
     </div>
     <div class="audio green-audio-player">
-    <p style="display:inline-block; padding-right: 20px;">Radio Robida</p>
+    <p style="display:inline-block; padding-right: 1em;">Radio Robida</p>
       <div class="play-pause-btn">
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="24" viewBox="0 0 18 24">
           <path fill="#000000" fill-rule="evenodd" d="M18 12L0 24V0" class="play-pause-icon" id="playPause"/>
