@@ -80,7 +80,7 @@
         </a>
       <?php endif ?>
 
-            <!-- SUMMER ACADEMY -->
+            <!-- SUMMER SCHOOL -->
             <?php if ($HomepageBlocks->title() == 'Summer School'): ?>
         <a href="<?= $HomepageBlocks->url() ?>" class="block">
             <h1><?= $HomepageBlocks->title() ?></h1>
@@ -102,6 +102,7 @@
       
     <?php endforeach ?>
   </div>
+  
   <!-- CALENDAR -->
   <div id="middle">
     <?php $items = $site->index()->filterBy('template', 'event'); ?>
