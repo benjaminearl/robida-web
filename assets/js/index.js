@@ -9,12 +9,22 @@ var year=first.getFullYear();
 timelineStartDate = year + '-' + month + '-' + day;
 
 
+// GET CALENDAR HEIGHT
+var midSectionHeight = document.getElementById("middle").clientHeight;
+var rowsHeight = midSectionHeight / 30;
+var rowAmount = Math.round(rowsHeight)
+
+
+
+
 // TIMELINE OPTIONS
 $(function () {
   $("#myTimeline").Timeline({
     type: "bar",
     scale: "day",
-    rows: 6,
+    height: midSectionHeight,
+    rowHeight: 35,
+    rows: rowAmount,
     minGridSize: 27,
     startDatetime: timelineStartDate,
     weekday: "short",
