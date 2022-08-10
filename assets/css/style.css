@@ -308,6 +308,7 @@ nav {
     border-radius: 0.8em;
     bottom: 1em;
     position: absolute;
+    margin: 0;
 }
 
 /* ---------- General elements ---------- */
@@ -344,6 +345,11 @@ h3 {
   line-height: 1.2;
 }
 
+.bodytext figure {
+  margin: 0;
+  margin-bottom: 1rem;
+}
+
 a {
   text-decoration: none;
   color: inherit;
@@ -358,6 +364,7 @@ a.active {
 
 img {
   width: 100%;
+  margin-bottom: 1rem;
 }
 
 .section {

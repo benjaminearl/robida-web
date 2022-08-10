@@ -14,9 +14,8 @@
     <?php endif ?>
 
     <?php if($subpages = $page->children()->listed()): ?>
-      <h2>Subpages</h2>
       <ul><?php foreach ($subpages as $subpage): ?>
-        <a href="<?= $subpage->url() ?>"><li><?= $subpage->title() ?></li></a>
+        <a href="<?= $subpage->url() ?>"><li><h2>>> <?= $subpage->title() ?></h2></li></a>
         <?php endforeach ?>
       </ul>
     <?php endif ?>
