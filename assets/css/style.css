@@ -2,8 +2,12 @@ html {
   font-size: calc(0.8vw);
 }
 
-*{ 
-  scrollbar-width: none /* hide scrollbar in firefox */
+* { 
+  scrollbar-width: none; /* hide scrollbar in firefox */
+}
+
+*::-webkit-scrollbar {
+  width: 0px; /* hide scrollbar in edge and opera */
 }
 
 body {
@@ -11,8 +15,8 @@ body {
   background-color: white;
   color: #333;
   margin: 0;
-
 }
+
 
 /* -------------------- HEADER + contents ------------------- */
 header {
@@ -261,9 +265,6 @@ nav {
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
-  /* Hide scrollbar for IE, Edge and Firefox */
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
 }
 
 /* #bottom {
