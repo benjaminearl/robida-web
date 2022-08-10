@@ -102,7 +102,6 @@
       
     <?php endforeach ?>
   </div>
-  
   <!-- CALENDAR -->
   <div id="middle">
     <?php $items = $site->index()->filterBy('template', 'event'); ?>
@@ -110,9 +109,16 @@
       <ul class="timeline-events">
       <?php $i = 0;
       foreach($items as $items): $i++; ?>
+      <?php if($items->altLink()->isNotEmpty()): ?>
+        <?php $alternateLink = $items->altLink()->toPage() ?>
+        <li data-timeline-node="{ start:'<?= $items->fromDate() ?> <?=$items->fromTime() ?>', end:'<?= $items->toDate() ?> <?= $items->toTime() ?>', row:'<?php echo $i ?>' }">
+          <a href="<?= $alternateLink->url() ?>"><?= $items->title() ?></a>
+        </li>
+      <?php else: ?>
         <li data-timeline-node="{ start:'<?= $items->fromDate() ?> <?=$items->fromTime() ?>', end:'<?= $items->toDate() ?> <?= $items->toTime() ?>', row:'<?php echo $i ?>' }">
           <a href="<?= $items->url() ?>"><?= $items->title() ?></a>
         </li>
+        <?php endif ?>
         <?php if($i > 5): $i = 0 ?>
         <?php endif ?>
       <?php endforeach ?>
