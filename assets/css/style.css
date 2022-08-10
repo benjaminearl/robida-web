@@ -24,7 +24,7 @@ header {
   margin-top: 1rem;
   float: right;
   display: inline-block;
-  margin-right: 1em;
+  margin-right: 1rem;
   justify-content: space-between;
   align-items: center;
   user-select: none;
@@ -53,9 +53,9 @@ header {
 }
 
 .pin {
-  height: 1em;
-  width: 1em;
-  border-radius: 0.5em;
+  height: 1rem;
+  width: 1rem;
+  border-radius: 0.5rem;
   background-color: black;
   position: absolute;
   pointer-events: all;
@@ -64,19 +64,19 @@ header {
 .controls {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.8em;
-  line-height: 1em;
+  line-height: 1rem;
   color: black;
   display: inline-block;
   flex-grow: 1;
   justify-content: space-between;
   align-items: center;
-  margin-left: 1em;
+  margin-left: 1rem;
   /* margin-right: 24px; */
 }
 
 .slider {
-  margin-left: 1em;
-  margin-right: 1em;
+  margin-left: 1rem;
+  margin-right: 1rem;
   border-radius: 2px;
   height: 4px;
   vertical-align: middle;
@@ -88,8 +88,8 @@ header {
 }
 
 .pin {
-  right: -0.5em;
-  top: -6px;
+  right: -0.5rem;
+  /* top: -6px; */
 }
 
 .volume {
@@ -122,8 +122,8 @@ header {
 }
 
 .slider {
-  margin-top: 12px;
-  margin-bottom: 12px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   width: 6px;
   border-radius: 3px;
 }
@@ -188,6 +188,11 @@ header {
   display: block;
 }
 
+#closeRight {
+  position: absolute;
+  right: 0;
+}
+
 nav {
   margin: 0;
   padding-left: 3rem;
@@ -197,21 +202,21 @@ nav {
 #rightSidebar {
   left: auto;
   right: 0;
+  position: absolute;
   border-left: 1px solid;
+  border-right: 0px;
 }
 
 #glossary-content {
   display: none;
-  margin-left: 10px;
+  padding: 1rem;
 }
 
-#glossary-content h1 {
-  margin-top: 20px;
+#glossary-title {
+  padding-bottom: 2rem;
 }
 
-#closeRight {
-  margin-left: 10px;
-}
+
 
 /* ------------------- MAIN SECTIONS ------------------- */
 #center {
@@ -238,7 +243,7 @@ nav {
 #right {
   float: right;
   width: calc(50% - 2em - 1px);
-  border-left: 1px solid;
+  border-left: 1px dotted lightgrey;
 }
 
 #top {
@@ -306,26 +311,28 @@ h1, h2, h3, p {
 }
 
 h1 {
-  font-size: 1.5em;
-  padding-bottom: 15px;
+  font-size: 1.2rem;
+  padding-bottom: 1rem;
 }
 
 h2 {
-  font-size: 1.2em;
-  padding-bottom: 15px;
+  font-size: 1rem;
+  padding-bottom: 0.8rem;
+  text-transform: uppercase;
 }
 
 h3 {
-  font-size: 1em;
-  padding-bottom: 15px;
+  font-size: 1rem;
+  padding-bottom: 0.5rem;
   color: lightgrey;
+  text-transform: uppercase;
+
 }
 
 .bodytext p {
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
   font-family: serif;
   font-size: 1.2em;
   line-height: 1.2;
@@ -334,6 +341,9 @@ h3 {
 a {
   text-decoration: none;
   color: inherit;
+}
+.bodytext a {
+  color: #00f;
 }
 
 a.active {
@@ -406,7 +416,7 @@ ul.mag-overview {
 
 
 .radio-schedule li {
-  font-size: 0.8em;
+  font-size: 0.8rem;
   display: block;
   white-space: normal;
 }
@@ -533,9 +543,9 @@ marquee {
 
 /* ------------- MOBILE --------------- */
 
-@media only screen and (max-width: 1250px) {
+@media only screen and (max-width: 1375px) {
   html {
-    font-size: 10px;
+    font-size: 11px;
   }
 }
 
@@ -543,7 +553,7 @@ marquee {
 
   #center {
     height: calc(100vh - 8em - 2px);
-    width: calc(100vw - 4em);
+    width: calc(100vw - 8em);
     margin-left: 4em;
     transition: margin-left .5s;
     position: absolute;
@@ -568,9 +578,6 @@ marquee {
     border-top: 1px solid;
   }
 
-  #rightSidebar {
-    display: none;
-  }
 
   nav p {
     font-size: 1.2em;

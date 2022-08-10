@@ -10,15 +10,14 @@
       </div>
     </div>
     <div class="section">
-      <h3>Current editorial board</h3>
       <ul>
       <?php $items = $page->colophon()->toStructure(); foreach ($items as $item): ?>
         <li>
-          <p><?= $item->role()->html() ?>
+          <h3><?= $item->role()->html() ?></h3>
             <?php $people = $item->person()->toPages(); foreach ($people as $person): ?>
-              | <a href="<?= $person->url() ?>"><?= $person->title() ?></a>
+              <a href="<?= $person->url() ?>"><?= $person->title() ?></a><br>
             <?php endforeach ?>
-          </p>
+          <br>
         </li>
       <?php endforeach ?>
       </ul>

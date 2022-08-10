@@ -2,6 +2,12 @@
 <?php snippet('nav') ?>
 <div id="center">
   <div id="left">
+    <?php if ($page->parent()->isListed()): ?>
+      <div class="parent">
+        <a href="<?= $page->parent()->url() ?>"><< <?= $page->parent()->title() ?></a>
+      </div>
+    <?php endif ?>
+
     <h1><?= $page->title() ?></h1>
     <div class="section">
       <div class="issue-info">
@@ -13,10 +19,7 @@
       <div class="bodytext">
         <p><?= $page->Text()->kt() ?></p>
       </div>
-      <?php if($page->projects()): ?>
-        <p> <span style="color:lightgrey;">Related to:</span> <?php $projects =  $page->project()->toPages();  foreach($projects as $project): ?><a href="<?= $project->url() ?>"><?= $project->title() ?></a>
-        <?php endforeach ?>
-      <?php endif ?>
+
     </div>
   </div>
 
@@ -30,7 +33,9 @@
             <?php $subitems = $item->timetable()->toStructure(); foreach ($subitems as $subitem): ?>
               <li class="roundBorder">
                 <p><?= $subitem->start()->toDate('H:i') ?>-<?= $subitem->end()->toDate('H:i') ?> | <?= $subitem->title() ?>
-                <?= $subitem->text()->kt() ?></p>
+                <?php if($subitem->text()->isNotEmpty()): ?>
+                <br><br><?= $subitem->text()->kt() ?></p>
+              <?php endif ?>
               </li>
             <?php endforeach ?>
           </ul>

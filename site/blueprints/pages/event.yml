@@ -1,6 +1,6 @@
 title: Event
 template: event
-num: "{{ page.from.toDate('Ymd') }}"
+
 
 columns:
   # left/up

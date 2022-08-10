@@ -108,15 +108,17 @@ $(function () {
     function mobRightSidebar(x) {
       if (x.matches) { // If media query matches
         document.getElementById("rightSidebar").style.width = "4em";
-        document.getElementById("center").style.marginRight = "4em";
+        // document.getElementById("center").style.marginRight = "4em";
         document.getElementById("closeRight").style.display = "none";
         document.getElementById("openRight").style.display = "block";
+        document.getElementById("glossary-content").style.display = "none";
       } else {
         document.getElementById("rightSidebar").style.width = "4em";
-        document.getElementById("center").style.marginRight = "4em";
+        document.getElementById("rightSidebar").style.minWidth = "0px";
+        // document.getElementById("center").style.marginRight = "4em";
         document.getElementById("closeRight").style.display = "none";
         document.getElementById("openRight").style.display = "block";
-        document.getElementById("center").style.width = "calc(100vw - 4em)";
+        // document.getElementById("center").style.width = "calc(100vw - 4em)";
         document.getElementById("glossary-content").style.display = "none";
       }
     }
@@ -135,16 +137,18 @@ $(function () {
 
     function mobRightSidebar(x) {
       if (x.matches) { // If media query matches
-        document.getElementById("rightSidebar").style.width = "100vw";
-        document.getElementById("center").style.marginRight = "4em";
+        document.getElementById("rightSidebar").style.width = "calc(100vw - 4em)";
+        // document.getElementById("center").style.marginRight = "4em";
         document.getElementById("closeRight").style.display = "block";
         document.getElementById("openRight").style.display = "none";
+        document.getElementById("glossary-content").style.display = "block";
       } else {
         document.getElementById("rightSidebar").style.width = "20vw";
-        document.getElementById("center").style.marginRight = "20vw";
+        document.getElementById("rightSidebar").style.minWidth = "300px";
+        // document.getElementById("center").style.marginRight = "20vw";
         document.getElementById("closeRight").style.display = "block";
         document.getElementById("openRight").style.display = "none";
-        document.getElementById("center").style.width = "calc(80vw - 4em)";
+        // document.getElementById("center").style.width = "calc(80vw - 4em)";
         document.getElementById("glossary-content").style.display = "block";
       }
     }
