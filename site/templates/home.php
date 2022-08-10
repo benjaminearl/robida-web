@@ -70,7 +70,7 @@
       <?php endif ?>
 
       <!-- TOPOLO BLOCK -->
-      <?php if ($HomepageBlocks->title() == 'Topolo'): ?>
+      <?php if ($HomepageBlocks->title() == 'Topolò'): ?>
         <a href="<?= $HomepageBlocks->url() ?>" class="block">
             <h1><?= $HomepageBlocks->title() ?></h1>
             <?php if($coverPhoto = $HomepageBlocks->cover()->toFile()): ?>
