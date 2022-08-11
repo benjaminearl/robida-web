@@ -80,11 +80,17 @@ columns:
     width: 1/2
     sections:
 
-      # images (optional)
-      cover:
-        headline: Cover image
+      # # images (optional)
+      # cover:
+      #   headline: Cover image
+      #   type: files
+      #   multiple: false
+
+      gallery:
+        headline: Gallery
         type: files
-        multiple: false
+        template: gallery
+        label: gallery
 
 
 

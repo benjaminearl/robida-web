@@ -32,7 +32,7 @@
       <?php endforeach ?>
     </div>
     <div class="section">
-      <h3>Past broadcasts: <span style="color:#333;"><a href="<?= $page->archive() ?>">Go to archive →</a></span><h3>
+      <h3>Past broadcasts: <span style="color:#333;"><a href="<?= $page->archive() ?>" target="_blank">Go to archive →</a></span><h3>
     </div>
   </div>
 </div>

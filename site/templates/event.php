@@ -43,6 +43,12 @@
       <?php endforeach ?>
       </ul>
     </div>
+    <div class="event-img">
+      <?php $images = $page->files()->filterBy('template', 'gallery');
+      foreach ($images as $image): ?>
+        <img src="<?= $image->url() ?>" alt="">
+      <?php endforeach ?>
+    </div>
   </div>
 </div>
 <?php snippet('rightbar') ?>

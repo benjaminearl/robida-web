@@ -102,7 +102,7 @@
       
     <?php endforeach ?>
   </div>
-  
+
   <!-- CALENDAR -->
   <div id="middle">
     <?php $items = $site->index()->filterBy('template', 'event'); ?>
