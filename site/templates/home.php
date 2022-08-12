@@ -19,21 +19,25 @@
 
       <!-- RADIO BLOCK -->
       <?php elseif ($HomepageBlocks->title() == 'Radio Robida'): ?>
-        <?php $upcomingBroadcast = $HomepageBlocks->children()->last() ?>
+        <?php $futureBroadcasts = $HomepageBlocks->children()->sortBy('date', 'asc')->filter(function ($child) {
+          return $child->date()->toDate() > time();
+        }); ?>
+        <?php $upcomingBroadcast = $futureBroadcasts->first(); ?>
         <a href="<?= $HomepageBlocks->url() ?>" class="block">
             <h1><?= $HomepageBlocks->title() ?></h1>
             <div class="block-content">
-            <h3>Upcoming broadcast: <span style="color:#333;"><?= $upcomingBroadcast->date()->toDate('D d M Y') ?></span></h3>
-            <?php if($upcomingShows = $upcomingBroadcast->children()): ?>
-              <ul>
-              <?php foreach($upcomingShows as $upcomingShow): ?>
-                <li class="roundBorder">
-                  <small><?= $upcomingShow->starttime()->toDate('H:i') ?>-<?= $upcomingShow->endtime()->toDate('H:i') ?> |
-                  <?= $upcomingShow->title()->html() ?></small>
-                </li>
-              <?php endforeach ?>
-            </ul>
-            <?php endif ?>
+                <h3>Upcoming broadcast: <span style="color:#333"><?= $upcomingBroadcast->date()->toDate('d M Y') ?></span></h3>
+                <ul>
+                  <?php $shows = $upcomingBroadcast->children(); foreach($shows as $show): ?>
+                  <li class="roundBorder">
+                    <?= $show->starttime()->toDate('H:i') ?>-<?= $show->endtime()->toDate('H:i') ?> |
+                    <?= $show->title()->html() ?> |
+                    <?php $hosts =  $show->people()->toPages();  foreach($hosts as $host): ?><a href="<?= $host->url() ?>"><?= $host->title() ?></a>
+                    <?php endforeach ?>
+                  </li>
+                  <?php endforeach ?>
+                </ul>
+
           </div>
         </a>
       <?php endif; ?>

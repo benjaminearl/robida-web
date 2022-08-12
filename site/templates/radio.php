@@ -15,11 +15,14 @@
     <section>
       <h2>Upcoming</h2>
 
-      <?php $broadcasts = $page->children()->filterBy('toggle', 'true');
-      foreach($broadcasts as $broadcast): ?>
-        <h3><?= $broadcast->title() ?><span></h3>
+      <?php $upcomingBroadcasts = $page->children()->sortBy('date', 'asc')->filter(function ($child) {
+        return $child->date()->toDate() > time();
+      }); ?>
+
+      <?php foreach($upcomingBroadcasts as $upcomingBroadcast): ?>
+        <h3><?= $upcomingBroadcast->date()->toDate('d M Y') ?><span></h3>
         <ul>
-          <?php $shows = $broadcast->children(); foreach($shows as $show): ?>
+          <?php $shows = $upcomingBroadcast->children(); foreach($shows as $show): ?>
           <li class="roundBorder">
             <?= $show->starttime()->toDate('H:i') ?>-<?= $show->endtime()->toDate('H:i') ?> |
             <?= $show->title()->html() ?> |

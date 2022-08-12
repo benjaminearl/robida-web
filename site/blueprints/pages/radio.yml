@@ -21,4 +21,4 @@ columns:
         type: pages
         template: radiobroadcast
         title: Broadcast
-        info: "{{ page.date }} | {{ page.toggle }}"
+        info: "{{ page.date }}"
