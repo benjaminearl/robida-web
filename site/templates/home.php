@@ -25,11 +25,11 @@
             <div class="block-content">
             <h3>Upcoming broadcast: <span style="color:#333;"><?= $upcomingBroadcast->date()->toDate('D d M Y') ?></span></h3>
             <?php if($upcomingShows = $upcomingBroadcast->children()): ?>
-              <ul class="radio-schedule">
+              <ul>
               <?php foreach($upcomingShows as $upcomingShow): ?>
                 <li class="roundBorder">
-                  <p><?= $upcomingShow->starttime()->toDate('H:i') ?>-<?= $upcomingShow->endtime()->toDate('H:i') ?> |
-                  <?= $upcomingShow->title()->html() ?>
+                  <small><?= $upcomingShow->starttime()->toDate('H:i') ?>-<?= $upcomingShow->endtime()->toDate('H:i') ?> |
+                  <?= $upcomingShow->title()->html() ?></small>
                 </li>
               <?php endforeach ?>
             </ul>
@@ -101,7 +101,7 @@
           </div>
         </a>
       <?php endif ?>
-      
+
     <?php endforeach ?>
   </div>
 

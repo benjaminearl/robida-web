@@ -15,12 +15,17 @@ sections:
             label: Start time
             type: time
             display: HH:ss
-            width: 1/4
+            width: 1/6
           endtime:
             label: End time
             type: time
             display: HH:ss
-            width: 1/4
+            width: 1/6
+          toggle:
+            label: Upcoming broadcast
+            type: toggle
+            width: 1/6
+            help: To appear on homepage
 
 
       shows:

@@ -11,8 +11,8 @@
 
     <div class="section">
       <div class="issue-info">
-        <p><?= $page->Theme() ?></p>
-        <p style="text-align:right;"><?= $page->published()->toDate('Y') ?></p>
+        <h3><?= $page->Theme() ?></h3>
+        <h3 style="text-align:right;"><?= $page->published()->toDate('Y') ?></h3>
       </div>
 
 
@@ -22,7 +22,7 @@
     </div>
 
     <div class="section">
-      <h2>COLOFON</h2>
+      <h2>Colofon</h2>
       <ul>
       <?php $items = $page->colophon()->toStructure(); foreach ($items as $item): ?>
         <li>

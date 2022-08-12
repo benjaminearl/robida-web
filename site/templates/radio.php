@@ -4,22 +4,21 @@
 <div id="center">
   <div id="left">
     <h1><?= $page->title() ?></h1>
-    <div class="section">
+    <section>
       <div class="bodytext">
         <p><?= $page->Text()->kt() ?></p>
       </div>
-    </div>
+    </section>
   </div>
 
   <div id="right">
-    <div class="section">
-      <?php
-      $broadcasts = $page->children()->filterBy('toggle', 'true');
-      ?>
+    <section>
+      <h2>Upcoming</h2>
 
-      <?php foreach($broadcasts as $broadcast): ?>
-        <h3>Upcoming broadcast: <span style="color:#333;"><?= $broadcast->title() ?><span></h3>
-        <ul class="radio-schedule">
+      <?php $broadcasts = $page->children()->filterBy('toggle', 'true');
+      foreach($broadcasts as $broadcast): ?>
+        <h3><?= $broadcast->title() ?><span></h3>
+        <ul>
           <?php $shows = $broadcast->children(); foreach($shows as $show): ?>
           <li class="roundBorder">
             <?= $show->starttime()->toDate('H:i') ?>-<?= $show->endtime()->toDate('H:i') ?> |
@@ -30,10 +29,13 @@
           <?php endforeach ?>
         </ul>
       <?php endforeach ?>
-    </div>
-    <div class="section">
-      <h3>Past broadcasts: <span style="color:#333;"><a href="<?= $page->archive() ?>" target="_blank">Go to archive →</a></span><h3>
-    </div>
+    </section>
+
+    <section>
+      <h2>Past</h2>
+      <h3><a href="<?= $page->archive() ?>" target="_blank">Go to archive →</a><h3>
+    </section>
+
   </div>
 </div>
 

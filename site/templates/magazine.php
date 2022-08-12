@@ -33,10 +33,10 @@
         <?php if($image = $issue->cover()->toFile()): ?>
           <img src="<?= $image->url() ?>" alt="">
         <?php endif ?>
-          <p><?= $issue->title()->html() ?></p>
+          <h2><?= $issue->title()->html() ?></h2>
           <div class="issue-info">
-            <p><?= $issue->Theme() ?></p>
-            <p style="text-align:right;"><?= $issue->published()->toDate('Y') ?></p>
+            <h3><?= $issue->Theme() ?></h3>
+            <h3 style="text-align:right;"><?= $issue->published()->toDate('Y') ?></h3>
           </div>
         </a>
       </li>
