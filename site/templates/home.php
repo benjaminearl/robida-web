@@ -9,10 +9,10 @@
 
       <!-- MAGAZINE BLOCK -->
       <?php if ($HomepageBlocks->title() == 'Robida Magazine'): ?>
-        <?php $latestIssue = $HomepageBlocks->children()->last() ?>
+        <?php $latestIssue = $HomepageBlocks->children()->first() ?>
         <a href="<?= $HomepageBlocks->url() ?>" class="block">
             <h1><?= $HomepageBlocks->title() ?></h1>
-            <?php if ($issueCover = $latestIssue->cover()->toFile()): ?>
+            <?php if ($issueCover = $latestIssue->files()->findBy('template', 'cover')): ?>
               <img src="<?= $issueCover->url() ?>" />
             <?php endif ?>
         </a>
