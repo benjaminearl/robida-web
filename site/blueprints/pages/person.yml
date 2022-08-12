@@ -28,10 +28,22 @@ columns:
               type: url
               label: Link 1
               help: (e.g. website)
+              width: 1/2
+            link1label:
+              type: text
+              label: Link 1 Label
+              help: (e.g. website)
+              width: 1/2
             link2:
               type: url
               label: Link 2
               help: (e.g. instagram)
+              width: 1/2
+            link2label:
+              type: text
+              label: Link 2 Label
+              help: (e.g. website)
+              width: 1/2
             category:
               label: Status
               type: select

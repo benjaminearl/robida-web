@@ -434,6 +434,25 @@ ul.mag-overview {
   white-space: normal;
 }
 
+/* ---------- PERSON ----------  */
+
+.person-info {
+  padding: 5px 0 5px 0;
+}
+
+.person-links a {
+  color: blue;
+}
+
+.person-links a:hover {
+  text-decoration: underline;
+}
+
+.person-location {
+  padding-top: 20px
+}
+
+
 
 /* ---------- FOOTER ----------  */
 
@@ -538,10 +557,11 @@ marquee {
   overflow: visible;
   border-radius: 2em;
   min-width: 2em;
-  max-height: 2em;
+  max-height: 3em;
   color: white;
   border: 1px solid lightgrey;
   margin-left: -15px; /* events start at rounded edge so need to be moved forward slightly */
+  margin-top: 10px;
 }
 
 .jqtl-event-label {
