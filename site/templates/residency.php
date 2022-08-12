@@ -7,6 +7,19 @@
     <div class="bodytext">
       <p><?= $page->Text()->kt() ?></p>
     </div>
+
+    <div class="current-residents">
+    <?php if($page->currentResidents()->isNotEmpty()): ?>
+        <?php if($residents = $page->currentResidents()->toPages()): ?>
+            <h3>Current residents:</h3>
+            <ul>
+            <?php foreach($residents as $residents): ?>
+                <li class="profile"><?= $residents->title() ?></li>
+            <?php endforeach ?>
+            </ul>
+            <?php endif ?>
+        <?php endif ?>
+            </div>
   </div>
   <div id="right">
     <?php if($image = $page->cover()->toFile()): ?>
