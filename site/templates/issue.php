@@ -1,7 +1,5 @@
 <?php snippet('header') ?>
 
-<?php snippet('header') ?>
-
 <?php snippet('nav') ?>
 <div id="center">
   <div id="left">
