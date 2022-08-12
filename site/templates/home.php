@@ -47,12 +47,12 @@
         <a href="<?= $HomepageBlocks->url() ?>" class="block">
 
             <h1><?= $HomepageBlocks->title() ?></h1>
-              <?php if($coverPhoto = $HomepageBlocks->cover()->toFile()): ?>
+              <?php if($coverPhoto = $HomepageBlocks->files()->findBy('template', 'cover')): ?>
                 <img src="<?= $coverPhoto->url() ?>"/>
               <?php endif ?>
-
         </a>
       <?php endif ?>
+
 
       <!-- RESIDENCIES BLOCK -->
       <?php if ($HomepageBlocks->title() == 'Residency'): ?>
@@ -79,8 +79,8 @@
       <?php if ($HomepageBlocks->title() == 'Topolò'): ?>
         <a href="<?= $HomepageBlocks->url() ?>" class="block">
             <h1><?= $HomepageBlocks->title() ?></h1>
-            <?php if($coverPhoto = $HomepageBlocks->cover()->toFile()): ?>
-              <img src="<?= $coverPhoto->url() ?>" />
+            <?php if($coverPhoto = $HomepageBlocks->files()->findBy('template', 'cover')): ?>
+              <img src="<?= $coverPhoto->url() ?>"/>
             <?php endif ?>
 
         </a>

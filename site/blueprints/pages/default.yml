@@ -27,7 +27,15 @@ columns:
       cover:
         headline: Cover image
         type: files
-        multiple: false
+        max: 1
+        template: cover
+        label: cover
+
+      gallery:
+        headline: Gallery
+        type: files
+        template: gallery
+        label: gallery
 
       # subpages (optional)
       pages:
