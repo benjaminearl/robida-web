@@ -4,12 +4,12 @@
 <div id="center">
   <div id="left">
     <h1><?= $page->title() ?></h1>
-    <div class="section">
+    <section>
       <div class="bodytext">
         <p><?= $page->Text()->kt() ?></p>
       </div>
-    </div>
-    <div class="section">
+    </section>
+    <section>
       <ul>
       <?php $items = $page->colophon()->toStructure(); foreach ($items as $item): ?>
         <li>
@@ -21,7 +21,7 @@
         </li>
       <?php endforeach ?>
       </ul>
-    </div>
+    </section>
   </div>
 
   <div id="right">

@@ -9,7 +9,7 @@
 
     <h1><?= $page->title() ?></h1>
 
-    <div class="section">
+    <section>
       <div class="issue-info">
         <h3><?= $page->Theme() ?></h3>
         <h3 style="text-align:right;"><?= $page->published()->toDate('Y') ?></h3>
@@ -19,9 +19,9 @@
       <div class="bodytext">
         <p><?= $page->Text()->kt() ?></p>
       </div>
-    </div>
+    </section>
 
-    <div class="section">
+    <section>
       <h2>Colofon</h2>
       <ul>
       <?php $items = $page->colophon()->toStructure(); foreach ($items as $item): ?>
@@ -34,7 +34,7 @@
         </li>
       <?php endforeach ?>
       </ul>
-    </div>
+    </section>
   </div>
 
 

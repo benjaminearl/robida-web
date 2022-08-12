@@ -109,11 +109,6 @@ $(function () {
 
 
   function closeGlossary() {
-    // document.getElementById("rightSidebar").style.width = "4em";
-    // document.getElementById("center").style.marginRight = "4em";
-    // document.getElementById("closeRight").style.display = "none";
-    // document.getElementById("openRight").style.display = "block";
-    // document.getElementById("center").style.width = "calc(100vw - 8em)";
 
     function mobRightSidebar(x) {
       if (x.matches) { // If media query matches
@@ -139,11 +134,6 @@ $(function () {
   }
 
   function openGlossary() {
-    // document.getElementById("rightSidebar").style.width = "20vw";
-    // document.getElementById("center").style.marginRight = "20vw";
-    // document.getElementById("closeRight").style.display = "block";
-    // document.getElementById("openRight").style.display = "none";
-    // document.getElementById("center").style.width = "calc(80vw - 4em)";
 
     function mobRightSidebar(x) {
       if (x.matches) { // If media query matches

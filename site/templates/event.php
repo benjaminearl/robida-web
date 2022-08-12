@@ -9,7 +9,7 @@
     <?php endif ?>
 
     <h1><?= $page->title() ?></h1>
-    <div class="section">
+    <section>
       <div class="issue-info">
         <p><?= $page->fromDate()->toDate('d M') ?> – <?= $page->toDate()->toDate('d M Y') ?></p>
         <p style="text-align:right;"><?= $page->location() ?></p>
@@ -20,11 +20,11 @@
         <p><?= $page->Text()->kt() ?></p>
       </div>
 
-    </div>
+    </section>
   </div>
 
   <div id="right">
-    <div class="section">
+    <section>
       <ul>
       <?php $items = $page->programme()->toStructure(); foreach ($items as $item): ?>
         <li class="section">
@@ -42,7 +42,7 @@
         </li>
       <?php endforeach ?>
       </ul>
-    </div>
+    </section>
     <div class="event-img">
       <?php $images = $page->files()->filterBy('template', 'gallery');
       foreach ($images as $image): ?>
