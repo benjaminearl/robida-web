@@ -4,13 +4,12 @@ Title: Home
 
 Homeblocks:
 
-- community/calendar/summer-academy
+- projects/summer-school
 - projects/robida-magazine
 - projects/radio-robida
 - projects/academy-of-margins
 - projects/residency
 - topolo
-- community/journal
 
 ----
 

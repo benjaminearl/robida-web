@@ -2,27 +2,41 @@ Title: Aljaž Škrlep
 
 ----
 
-Authors: 
+Authors:
+
+- LVoKRdUO
 
 ----
 
-Text: 
+Text:
+
+**Aljaž Škrlep** studied philosophy and likes to write. He is still deciding if his love for life and children is stronger than his inborn pessimism and anti-natalism. He is inspired by obscure and commercial horror films, neglected philosophers, and more or less dogmatic metaphysics.
+
+(image: aljaz_site.png)
 
 ----
 
-Birthyear: 
+Birthyear: 1993
 
 ----
 
-Birthcountry: 
+Birthcountry: Slovenia
 
 ----
 
-Link1: 
+Link1: https://www.instagram.com/aljazskrlep/
+
+----
+
+Link1label: Instagram
 
 ----
 
 Link2: 
+
+----
+
+Link2label: 
 
 ----
 

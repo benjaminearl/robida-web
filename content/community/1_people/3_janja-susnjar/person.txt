@@ -8,4 +8,24 @@ Authors:
 
 ----
 
-Text: 
+Text: Janja Šušnjar is an architect and a dreamer. She likes to connect small dots in bigger meanings, she likes to observe movements of the light, beautiful mountain flowers, patterns and textures in different scales. She is curious about places and stories.
+
+----
+
+Birthyear: 1993
+
+----
+
+Birthcountry: Slovenia
+
+----
+
+Link1: 
+
+----
+
+Link2: 
+
+----
+
+Category: away

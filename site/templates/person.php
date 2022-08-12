@@ -26,7 +26,7 @@
         </div>
     </div>
     <div id="right">
-        <?php $images = $page->files()->filterBy('template', 'gallery');
+        <?php $images = $page->files();
         foreach ($images as $image): ?>
             <img src="<?= $image->url() ?>" alt="">
     <?php endforeach ?>
