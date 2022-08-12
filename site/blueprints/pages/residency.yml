@@ -3,14 +3,21 @@ image:
   icon: 🏡
   back: "#fff9e8"
 
-sections:
-  content:
-    type: fields
-    fields:
-      text:
-        label: Text
-        type: textarea
-        required: true
+columns:
+  # left/up
+  left:
+    width: 1/2
+    sections:
+
+      content:
+        type: fields
+        fields:
+
+          # description (standard)
+          text:
+            label: Text
+            type: textarea
+            required: true
       currentResidents:
         label: Current Residents
         type: pages
@@ -18,3 +25,31 @@ sections:
       news:
         type: pages
         template: news
+
+        # -------------------------
+
+  # right/down
+  right:
+    width: 1/2
+    sections:
+
+      # images (optional)
+      cover:
+        headline: Cover image
+        type: files
+        max: 1
+        template: cover
+        label: cover
+
+      gallery:
+        headline: Gallery
+        type: files
+        template: gallery
+        label: gallery
+
+      # subpages (optional)
+      pages:
+        type: pages
+        help: (optional)
+
+# -------------------------
