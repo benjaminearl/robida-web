@@ -631,5 +631,9 @@ marquee {
     padding: 1em;
   }
 
+  ul.mag-overview {
+    grid-template-columns: 1fr;
+  }
+
 
 }
