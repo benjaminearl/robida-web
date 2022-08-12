@@ -26,12 +26,11 @@
 
   <div id="right">
     <ul class="mag-overview">
-
       <?php foreach($page->children() as $issue): ?>
       <li>
-        <a<?php e($issue->isOpen(), ' class="active"') ?> href="<?= $issue->url() ?>">
-        <?php if($image = $issue->cover()->toFile()): ?>
-          <img src="<?= $image->url() ?>" alt="">
+        <a href="<?= $issue->url() ?>">
+        <?php if($image = $issue->files()->findBy('template', 'cover')): ?>
+          <img src="<?= $image->url() ?>">
         <?php endif ?>
           <h2><?= $issue->title()->html() ?></h2>
           <div class="issue-info">

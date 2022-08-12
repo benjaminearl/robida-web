@@ -50,7 +50,7 @@ columns:
   right:
     width: 1/2
     sections:
-
+    
       cover:
         headline: Cover image
         type: files
