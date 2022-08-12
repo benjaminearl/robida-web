@@ -56,13 +56,15 @@
 
             <h1><?= $HomepageBlocks->title() ?></h1>
             <div class="block-content">
-            <?php if($residents = $HomepageBlocks->currentResidents()->toPages()): ?>
-              <h3>Current residents:</h3>
-              <ul>
-              <?php foreach($residents as $residents): ?>
-                <li class="profile"><?= $residents->title() ?></li>
-              <?php endforeach ?>
-              </ul>
+            <?php if($HomepageBlocks->currentResidents()->isNotEmpty()): ?>
+              <?php if($residents = $HomepageBlocks->currentResidents()->toPages()): ?>
+                <h3>Current residents:</h3>
+                <ul>
+                <?php foreach($residents as $residents): ?>
+                  <li class="profile"><?= $residents->title() ?></li>
+                <?php endforeach ?>
+                </ul>
+              <?php endif ?>
             <?php endif ?>
           </div>
 
