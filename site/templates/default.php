@@ -9,8 +9,8 @@
     </div>
   </div>
   <div id="right">
-    <?php if($image = $page->cover()->toFile()): ?>
-      <img src="<?= $image->url() ?>" alt="">
+    <?php if($coverImage = $page->cover()->toFile()): ?>
+      <img src="<?= $coverImage->url() ?>" alt="">
     <?php endif ?>
 
     <?php $images = $page->files()->filterBy('template', 'gallery');
