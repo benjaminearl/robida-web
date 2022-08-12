@@ -8,8 +8,9 @@ sections:
     type: fields
     fields:
       text:
-        label: Description
-        type: blocks
+        label: Text
+        type: textarea
+        required: true
       currentResidents:
         label: Current Residents
         type: pages
