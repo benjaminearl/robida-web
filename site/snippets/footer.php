@@ -1,6 +1,6 @@
 <footer>
   <div id="currently-in-topolo">
-    <marquee>
+    <marquee scrollamount="2">
       <span style="color:lightgrey;">Currently in Topolò:</span>
     <?php foreach($site->find('community')->find('people')->children()->filterBy('category', 'home') as $item): ?>
       <a class="profile" href="<?= $item->url() ?>"><?= html($item->title()) ?></a>
