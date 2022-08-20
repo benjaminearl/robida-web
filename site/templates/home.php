@@ -19,9 +19,7 @@
 
       <!-- RADIO BLOCK -->
       <?php elseif ($HomepageBlocks->title() == 'Radio Robida'): ?>
-        <?php $today = date('Y-m-d');
-        $futureBroadcasts = $HomepageBlocks->children()->sortBy('date', 'asc')->filter(function ($child) {
-          return $child->date()->toDate('Y-m-d') >= $today;
+        <?php $futureBroadcasts = $HomepageBlocks->children()->sortBy('date', 'asc')->filterBy('date', 'date >=', 'today');
         }); $upcomingBroadcast = $futureBroadcasts->first(); ?>
         <a href="<?= $HomepageBlocks->url() ?>" class="block">
             <h1><?= $HomepageBlocks->title() ?></h1>
