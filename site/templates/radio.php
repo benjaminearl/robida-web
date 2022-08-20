@@ -15,7 +15,8 @@
     <section>
       <h2>Upcoming</h2>
 
-      <?php $upcomingBroadcasts = $page->children()->sortBy('date', 'asc')->filter(function ($child) {
+      <?php $today = date('Y-m-d');
+      $upcomingBroadcasts = $page->children()->sortBy('date', 'asc')->filter(function ($child) {
         return $child->date()->toDate('Y-m-d') >= $today;
       }); ?>
 
