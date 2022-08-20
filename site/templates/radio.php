@@ -16,7 +16,7 @@
       <h2>Upcoming</h2>
 
       <?php $upcomingBroadcasts = $page->children()->sortBy('date', 'asc')->filter(function ($child) {
-        return $child->date()->toDate() > time();
+        return $child->date()->toDate() >= time();
       }); ?>
 
       <?php foreach($upcomingBroadcasts as $upcomingBroadcast): ?>
