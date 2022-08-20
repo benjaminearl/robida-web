@@ -20,7 +20,7 @@
       <!-- RADIO BLOCK -->
       <?php elseif ($HomepageBlocks->title() == 'Radio Robida'): ?>
         <?php $futureBroadcasts = $HomepageBlocks->children()->sortBy('date', 'asc')->filterBy('date', 'date >=', 'today');
-        }); $upcomingBroadcast = $futureBroadcasts->first(); ?>
+          $upcomingBroadcast = $futureBroadcasts->first(); ?>
         <a href="<?= $HomepageBlocks->url() ?>" class="block">
             <h1><?= $HomepageBlocks->title() ?></h1>
             <?php if ($futureBroadcasts->isNotEmpty()): ?>
