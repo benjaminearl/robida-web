@@ -292,6 +292,7 @@ nav {
   padding: 1em;
   color: inherit;
   white-space: normal;
+  vertical-align: top;
 }
 
 .block-content {

@@ -88,7 +88,7 @@
       <?php endif ?>
 
             <!-- SUMMER SCHOOL -->
-            <?php if ($HomepageBlocks->title() == 'Summer School'): ?>
+            <?php if ($HomepageBlocks->title() == 'Summer School of the Academy of Margins'): ?>
         <a href="<?= $HomepageBlocks->url() ?>" class="block">
             <h1><?= $HomepageBlocks->title() ?></h1>
             <?php if($coverPhoto = $HomepageBlocks->cover()->toFile()): ?>
