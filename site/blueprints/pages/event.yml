@@ -43,10 +43,10 @@ columns:
             label: Related Project
             type: pages
             query: site.find('projects')
-          altLink:
-            label: Alternative Link
-            type: pages
-            query: site.find('projects')
+          # altLink:
+          #   label: Alternative Link
+          #   type: pages
+          #   query: site.find('projects')
 
           programme:
             label: Programme
