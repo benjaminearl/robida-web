@@ -169,7 +169,7 @@ header {
 /* ------------------- SIDEBARS ------------------- */
 
 #leftSidebar, #rightSidebar {
-  height: calc(100vh - 8rem - 1px);
+  height: calc(calc(100vh - env(safe-area-inset-bottom)) - 8rem - 1px);
   width: 4rem;
   border-right: 1px solid;
   position: fixed;
@@ -234,7 +234,7 @@ nav {
 
 /* ------------------- MAIN SECTIONS ------------------- */
 #center {
-  height: calc(100vh - 8em - 2px);
+  height: calc(calc(100vh - env(safe-area-inset-bottom)) - 8em - 2px);
   width: calc(100vw - 8em - 2px);
   margin-left: 4em;
   transition: margin-left .5s;
@@ -272,7 +272,7 @@ nav {
 }
 
 /* #bottom {
-  height: calc(calc(100vh - 120px) / 5);
+  height: calc(calc(calc(100vh - env(safe-area-inset-bottom)) - 120px) / 5);
   border-bottom: 1px solid;
   overflow-x: scroll;
   overflow-y: hidden;
@@ -289,7 +289,7 @@ nav {
 /* ------------ HOMEPAGE BLOCKS -----------*/
 .block {
   display: inline-block;
-  width: calc(calc(100vh - 8em) / 2);
+  width: calc(calc(calc(100vh - env(safe-area-inset-bottom)) - 8em) / 2);
   height: calc(100% - 2em);
   border-left: 1px solid #333;
   margin-right: -0.5em; /* because otherwise there is too much space between the blocks for some reason */
@@ -601,7 +601,7 @@ marquee {
 @media only screen and (max-width: 720px) {
 
   #center {
-    height: calc(100vh - 8em - 2px);
+    height: calc(calc(100vh - env(safe-area-inset-bottom)) - 8em - 2px);
     width: calc(100vw - 8em);
     margin-left: 4em;
     transition: margin-left .5s;
