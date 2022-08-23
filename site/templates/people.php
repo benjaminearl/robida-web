@@ -13,9 +13,12 @@
       <ul id="people-overview"><?php foreach ($people as $person): ?>
         <a href="<?= $person->url() ?>">
           <li>
-            <div class="profile" style="background-color: <?php echo $person->color(); ?>">
-              <!-- <img src=""> -->
-            </div>
+              <?php if ($person->hasFiles()): ?>
+                  <img src="<?= $person->files()->sortBy('sort', 'asc')->first()->url() ?>" alt="<?= $person->title() ?>">
+              <?php else: ?>
+                <div class="profile" style="background-color: <?php echo $person->color(); ?>">
+                </div>
+              <?php endif ?>
             <p><?= $person->title() ?></p>
           </li>
         </a>

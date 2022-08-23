@@ -424,7 +424,11 @@ ul#people-overview {
 }
 
 #people-overview img {
-  /* object-fit: cover; */
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  margin-bottom: 0.5em;
+
 }
 
 #people-overview .profile {
@@ -432,6 +436,7 @@ ul#people-overview {
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   padding: 0;
+  margin-bottom: 0.5em;
 }
 
 
