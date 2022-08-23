@@ -1,3 +1,4 @@
+</main>
 <footer>
   <div id="currently-in-topolo">
     <marquee scrollamount="2">
@@ -17,7 +18,6 @@
 
 
 </footer>
-</main>
 
   <?= js([
     'assets/js/jquery.js',

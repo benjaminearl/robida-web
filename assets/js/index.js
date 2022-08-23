@@ -11,7 +11,7 @@ timelineStartDate = year + '-' + month + '-' + day;
 
 // GET CALENDAR HEIGHT
 var midSectionHeight = document.getElementById("middle").clientHeight;
-var rowsHeight = midSectionHeight / 30;
+var rowsHeight = midSectionHeight / 48;
 var rowAmount = Math.round(rowsHeight)
 
 
@@ -23,7 +23,7 @@ $(function () {
     type: "bar",
     scale: "day",
     height: midSectionHeight,
-    rowHeight: 35,
+    rowHeight: 48,
     rows: rowAmount,
     minGridSize: 27,
     startDatetime: timelineStartDate,

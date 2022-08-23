@@ -3,8 +3,7 @@
 <?php snippet('nav') ?>
 <div id="center">
   <div id="top">
-    <?php
-    $HomepageBlocks =  $page->homeBlocks()->toPages();
+    <?php $HomepageBlocks =  $page->homeBlocks()->toPages();
     foreach($HomepageBlocks as $HomepageBlocks): ?>
 
       <!-- MAGAZINE BLOCK -->
@@ -41,22 +40,9 @@
             <?php endif; ?>
 
         </a>
-      <?php endif; ?>
 
-      <!-- ACADEMY OF MARGINS BLOCK -->
-      <?php if ($HomepageBlocks->title() == 'Academy of Margins'): ?>
-        <a href="<?= $HomepageBlocks->url() ?>" class="block">
-
-            <h1><?= $HomepageBlocks->title() ?></h1>
-              <?php if($coverPhoto = $HomepageBlocks->files()->findBy('template', 'cover')): ?>
-                <img src="<?= $coverPhoto->url() ?>"/>
-              <?php endif ?>
-        </a>
-      <?php endif ?>
-
-
-      <!-- RESIDENCIES BLOCK -->
-      <?php if ($HomepageBlocks->title() == 'Residency'): ?>
+            <!-- RESIDENCIES BLOCK -->
+            <?php elseif ($HomepageBlocks->title() == 'Residency'): ?>
         <a href="<?= $HomepageBlocks->url() ?>" class="block">
 
             <h1><?= $HomepageBlocks->title() ?></h1>
@@ -74,36 +60,14 @@
           </div>
 
         </a>
-      <?php endif ?>
 
-      <!-- TOPOLO BLOCK -->
-      <?php if ($HomepageBlocks->title() == 'Topolò'): ?>
+      <!-- EVERYTHING ELSE -->
+      <?php else : ?>
         <a href="<?= $HomepageBlocks->url() ?>" class="block">
             <h1><?= $HomepageBlocks->title() ?></h1>
-            <?php if($coverPhoto = $HomepageBlocks->files()->findBy('template', 'cover')): ?>
-              <img src="<?= $coverPhoto->url() ?>"/>
-            <?php endif ?>
-
-        </a>
-      <?php endif ?>
-
-            <!-- SUMMER SCHOOL -->
-            <?php if ($HomepageBlocks->title() == 'Summer School of the Academy of Margins'): ?>
-        <a href="<?= $HomepageBlocks->url() ?>" class="block">
-            <h1><?= $HomepageBlocks->title() ?></h1>
-            <?php if($coverPhoto = $HomepageBlocks->cover()->toFile()): ?>
-              <img src="<?= $coverPhoto->url() ?>" />
-            <?php endif ?>
-        </a>
-      <?php endif ?>
-
-
-      <!-- JOURNAL BLOCK -->
-       <?php if ($HomepageBlocks->title() == 'Journal'): ?>
-        <a href="<?= $HomepageBlocks->url() ?>" class="block-link">
-          <div class="block">
-            <h1 class="title-text-block"><?= $HomepageBlocks->title() ?></h1>
-          </div>
+              <?php if($coverPhoto = $HomepageBlocks->files()->findBy('template', 'cover')): ?>
+                <img src="<?= $coverPhoto->url() ?>"/>
+              <?php endif ?>
         </a>
       <?php endif ?>
 
@@ -117,16 +81,16 @@
       <ul class="timeline-events">
       <?php $i = 0;
       foreach($items as $items): $i++; ?>
-      <?php if($items->altLink()->isNotEmpty()): ?>
-        <?php $alternateLink = $items->altLink()->toPage() ?>
-        <li data-timeline-node="{ start:'<?= $items->fromDate() ?> <?=$items->fromTime() ?>', end:'<?= $items->toDate() ?> <?= $items->toTime() ?>', row:'<?php echo $i ?>' }">
-          <a href="<?= $alternateLink->url() ?>"><?= $items->title() ?></a>
-        </li>
-      <?php else: ?>
-        <li data-timeline-node="{ start:'<?= $items->fromDate() ?> <?=$items->fromTime() ?>', end:'<?= $items->toDate() ?> <?= $items->toTime() ?>', row:'<?php echo $i ?>' }">
-          <a href="<?= $items->url() ?>"><?= $items->title() ?></a>
-        </li>
-        <?php endif ?>
+        <?php if($items->altLink()->isNotEmpty()): ?>
+          <?php $alternateLink = $items->altLink()->toPage() ?>
+          <li data-timeline-node="{ start:'<?= $items->fromDate() ?> <?=$items->fromTime() ?>', end:'<?= $items->toDate() ?> <?= $items->toTime() ?>', row:'<?php echo $i ?>' }">
+            <a href="<?= $alternateLink->url() ?>"><?= $items->title() ?></a>
+          </li>
+        <?php else: ?>
+          <li data-timeline-node="{ start:'<?= $items->fromDate() ?> <?=$items->fromTime() ?>', end:'<?= $items->toDate() ?> <?= $items->toTime() ?>', row:'<?php echo $i ?>' }">
+            <a href="<?= $items->url() ?>"><?= $items->title() ?></a>
+          </li>
+          <?php endif ?>
         <?php if($i > 5): $i = 0 ?>
         <?php endif ?>
       <?php endforeach ?>

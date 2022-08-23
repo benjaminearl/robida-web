@@ -570,6 +570,10 @@ marquee {
   margin-top: 10px;
 }
 
+.jqtl-ruler-line-item span {
+  font-family: 'IBM Plex Mono', monospace;
+}
+
 .jqtl-event-label {
   overflow: visible;
   font-size: 0.8em;

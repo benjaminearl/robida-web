@@ -13,9 +13,12 @@
 
   <div id="right">
     <section>
-      <h2>Upcoming</h2>
 
       <?php $upcomingBroadcasts = $page->children()->sortBy('date', 'asc')->filterBy('date', 'date >=', 'today'); ?>
+
+      <?php if($upcomingBroadcasts->isNotEmpty()): ?>
+        <h2>Upcoming Broadcasts</h2>
+     
 
       <?php foreach($upcomingBroadcasts as $upcomingBroadcast): ?>
         <h3><?= $upcomingBroadcast->date()->toDate('d M Y') ?><span></h3>
@@ -31,6 +34,7 @@
         </ul>
       <?php endforeach ?>
     </section>
+    <?php endif ?>
 
     <section>
       <h2>Past</h2>
