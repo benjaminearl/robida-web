@@ -2,8 +2,11 @@
 <?php snippet('nav') ?>
 <div id="center">
     <div id="left">
+      <div class="parent">
+        <a href="<?= $page->parent()->url() ?>"><< <?= $page->parent()->title() ?></a>
+      </div>
         <div class="person-bio person-info">
-            <h1><?= $page->title() ?></h1>
+            <h1><?= $page->title() ?><span class="profile" style="height:1em;aspect-ratio:1/1;padding:0;margin: -2px 0 0 1rem;border-radius: 50%; vertical-align:middle;background-color: <?php echo $page->color(); ?>"></span></h1>
             <h3>Bio</h3>
             <p><?= $page->text()->kt() ?></p>
         </div>

@@ -11,6 +11,11 @@ columns:
               help: (select the user that this profile belongs to)
               type: users
               max: 1
+            color:
+              label: Color
+              type:  colors
+              default: D3D3D3
+              
             text:
               type: textarea
               label: Bio

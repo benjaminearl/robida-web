@@ -3,8 +3,8 @@
   <div id="currently-in-topolo">
     <marquee scrollamount="2">
       <span style="color:lightgrey;">Currently in Topolò:</span>
-    <?php foreach($site->find('community')->find('people')->children()->filterBy('category', 'home') as $item): ?>
-      <a class="profile" href="<?= $item->url() ?>"><?= html($item->title()) ?></a>
+    <?php foreach($site->find('community')->find('people')->children()->filterBy('category', 'home') as $person): ?>
+      <a class="profile" style="background-color: <?php echo $person->color(); ?>" href="<?= $person->url() ?>"><?= html($person->title()) ?></a>
       <?php endforeach ?>
     </marquee>
   </div>

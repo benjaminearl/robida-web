@@ -8,6 +8,10 @@ Authors:
 
 ----
 
+Color: #fff8e7
+
+----
+
 Text: 
 
 ----
@@ -24,8 +28,16 @@ Link1:
 
 ----
 
+Link1label: 
+
+----
+
 Link2: 
 
 ----
 
-Category: 
+Link2label: 
+
+----
+
+Category: home
