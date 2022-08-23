@@ -199,7 +199,9 @@ header {
 
 #closeRight {
   position: absolute;
+  top: 0;
   right: 0;
+  text-align:center;
 }
 
 nav {
@@ -218,11 +220,14 @@ nav {
 
 #glossary-content {
   display: none;
-  padding: 1rem;
 }
 
 #glossary-title {
-  padding-bottom: 2rem;
+  position: sticky;
+  top: 0rem;
+  padding: 1rem;
+  background-color: white;
+
 }
 
 
