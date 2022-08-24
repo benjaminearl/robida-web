@@ -4,9 +4,11 @@
 <div id="center">
   <div id="left">
     <h1><?= $page->title() ?></h1>
-    <div class="bodytext">
-      <p><?= $page->Text()->kt() ?></p>
-    </div>
+    <section>
+      <div class="bodytext">
+        <p><?= $page->Text()->kt() ?></p>
+      </div>
+    </section>  
   </div>
   <div id="right">
     <?php if($people = $page->children()->listed()): ?>
@@ -14,7 +16,7 @@
         <a href="<?= $person->url() ?>">
           <li>
               <?php if ($person->hasFiles()): ?>
-                  <img src="<?= $person->files()->sortBy('sort', 'asc')->first()->url() ?>" alt="<?= $person->title() ?>">
+                  <img src="<?= $person->files()->sortBy('sort', 'asc')->first()->url() ?>" alt="<?= $person->title() ?>" style="border-color: <?php echo $person->color(); ?>">
               <?php else: ?>
                 <div class="profile" style="background-color: <?php echo $person->color(); ?>">
                 </div>

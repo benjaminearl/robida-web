@@ -15,7 +15,7 @@ columns:
               label: Color
               type:  colors
               default: D3D3D3
-              
+
             text:
               type: textarea
               label: Bio
@@ -47,7 +47,7 @@ columns:
             link2label:
               type: text
               label: Link 2 Label
-              help: (e.g. website)
+              help: (e.g. instagram)
               width: 1/2
             category:
               label: Status

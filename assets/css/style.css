@@ -388,6 +388,10 @@ section {
   margin-bottom: 2em;
 }
 
+section a {
+  color: blue;
+}
+
 .parent {
   padding-bottom: 1em;
 }
@@ -427,14 +431,15 @@ ul#people-overview {
   object-fit: cover;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
+  border: 1px solid lightgrey;
   margin-bottom: 0.5em;
-
 }
 
 #people-overview .profile {
   width: 100%;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
+  border: 1px solid lightgrey;
   padding: 0;
   margin-bottom: 0.5em;
 }
@@ -467,23 +472,7 @@ ul.mag-overview {
   color: lightgrey;
 }
 
-/* ---------- PERSON ----------  */
 
-.person-info {
-  padding: 5px 0 5px 0;
-}
-
-.person-links a {
-  color: blue;
-}
-
-.person-links a:hover {
-  text-decoration: underline;
-}
-
-.person-location {
-  padding-top: 20px
-}
 
 
 
