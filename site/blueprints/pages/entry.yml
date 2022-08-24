@@ -4,7 +4,7 @@ image:
   back: "#fff9e8"
 
 columns:
-  - width: 1/2
+  - width: 2/3
     sections:
       info:
         type: fields
@@ -17,8 +17,10 @@ columns:
           people:
             label: Author
             type: pages
-            empty: Select profiles
-            query: site.find('people')
+            empty: Select profile
+            query: site.find('community').find('people')
+            max: 1
+            required: true
             width: 1/2
           related:
             label: Relates to
@@ -31,11 +33,5 @@ columns:
             width: 1/2
           text:
             type: blocks
+            label: Text
             required: true
-  - width: 1/2
-    sections:
-      image:
-        type: files
-        layout: cards
-        image:
-          ratio: 1/1

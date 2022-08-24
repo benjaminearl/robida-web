@@ -1,16 +1,79 @@
 <?php snippet('header') ?>
-
-<h2><?= $page->title() ?></h2>
-<small>on: <?= $page->date()->toDate('d/m') ?></small><br>
-<small>by: <?php $people =  $page->people()->toPages();  foreach($people as $person): ?><a href="<?= $person->url() ?>"><?= $person->title() ?></a>
-<?php endforeach ?></small><br>
-<small><?php $relatedpages =  $page->related()->toPages();  foreach($relatedpages as $relatedpage): ?>re: <a href="<?= $relatedpage->url() ?>"><?= $relatedpage->title() ?></a></small><br>
-<?php endforeach ?><br>
-<?= $page->image() ?><br>
-<?= $page->text()->toBlocks() ?>
-<small><?php foreach ($page->tags()->split() as $tag): ?>
-  <a href="<?= url('journal', ['params' => ['tag' => $tag]]) ?>">#<?= html($tag) ?></a>
-<?php endforeach ?></small>
-
 <?php snippet('nav') ?>
+
+<div id="center">
+  <div id="journal-left">
+    <div class="parent">
+      <a href="<?= $page->parent()->url() ?>"><< <?= $page->parent()->title() ?></a>
+    </div>
+    <h1><?= $page->title() ?></h1>
+    <section>
+      <p>
+        on: <?= $page->date()->toDate('d/m') ?><br>
+        by: <a href="<?= $page->people()->toPage()->url() ?>" class="profile" style="background-color: <?php echo $page->people()->toPage()->color(); ?>;margin-top:0.5em;"><?= $page->people()->toPage()->title() ?></a>
+      </p>
+    </section>
+    <?php foreach ($page->tags()->split() as $tag): ?>
+      <a href="<?= url('community/journal', ['params' => ['tag' => $tag]]) ?>">#<?= html($tag) ?></a><br>
+    <?php endforeach ?>
+
+  </div>
+  <div id="journal-center" style="background-color: <?php echo $page->people()->toPage()->color(); ?>">
+      <div class="entry" style="border-color: <?php echo $page->people()->toPage()->color(); ?>">
+          <section>
+            <div class="bodytext">
+              <?= $page->text()->toBlocks() ?>
+            </div>
+          </section>
+
+
+
+      </div>
+
+  </div>
+  <div id="journal-right">
+    <div>
+      <?php $related = $page->related()->toPages();
+      if ($related->count() > 0):?>
+          <h3>Related</h3>
+          <ul>
+            <?php foreach($related as $entry): ?>
+              <a href="<?= $entry->url() ?>">
+              <li class="entry" style="border-color: <?php echo $entry->people()->toPage()->color(); ?>">
+                  <h4><?= $entry->title() ?></h4>
+                  <small>
+                    on: <?= $entry->date()->toDate('d/m') ?><br>
+                    by: <mark class="profile" style="background-color: <?php echo $entry->people()->toPage()->color(); ?>;margin-top:0.5em;"><?= $entry->people()->toPage()->title() ?></mark>
+
+                  </small>
+              </li>
+              </a>
+            <?php endforeach ?>
+          </ul>
+<?php endif ?>
+    </div>
+    <div id="journal-pagination">
+      <?php if ($page->hasNextListed()): ?>
+        <a href="<?= $page->nextListed()->url() ?>">
+          <h3>↑ Newer</h3>
+          <div class="entry" style="border-color: <?php echo $page->nextListed()->people()->toPage()->color(); ?>">
+              <h4><?= $page->nextListed()->title() ?></h4>
+
+          </div>
+        </a>
+      <?php endif ?>
+      <?php if ($page->hasPrevListed()): ?>
+        <a href="<?= $page->prevListed()->url() ?>">
+          <h3>↓ Older</h3>
+          <div class="entry" style="border-color: <?php echo $page->prevListed()->people()->toPage()->color(); ?>">
+              <h4><?= $page->prevListed()->title() ?></h4>
+          </div>
+        </a>
+      <?php endif ?>
+    </div>
+  </div>
+</div>
+
+
+<?php snippet('rightbar') ?>
 <?php snippet('footer') ?>

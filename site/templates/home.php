@@ -98,20 +98,19 @@
     </div>
   </div>
 
-  <!-- <div id="bottom">
-    <div class="block">
-      Journal
-    </div>
-    <div class="block">
-      Journal
-    </div>
-    <div class="block">
-      Journal
-    </div>
-    <div class="block">
-      Journal
-    </div>
-  </div> -->
+  <div id="bottom">
+    <?php $journalEntries =  $site->find('community')->find('journal')->children()->listed();
+    foreach($journalEntries as $journalEntry): ?>
+      <a href="<?= $journalEntry->url() ?>" class="block" style="border-color: <?php echo $journalEntry->people()->toPage()->color(); ?>">
+          <h4><?= $journalEntry->title() ?></h4>
+          <small>
+            on: <?= $journalEntry->date()->toDate('d/m') ?><br>
+            <span style="position:absolute;bottom:1em;">by: <mark class="profile" style="background-color: <?php echo $journalEntry->people()->toPage()->color(); ?>"><?= $journalEntry->people()->toPage()->title() ?></mark></span>
+          </small>
+
+      </a>
+    <?php endforeach ?>
+  </div>
 </div>
 
 
