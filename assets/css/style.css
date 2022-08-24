@@ -169,7 +169,7 @@ header {
 /* ------------------- SIDEBARS ------------------- */
 
 #leftSidebar, #rightSidebar {
-  height: calc(calc(100vh - env(safe-area-inset-bottom)) - 8rem - 1px);
+  height: calc(100vh - 8rem - 1px);
   width: 4rem;
   border-right: 1px solid;
   position: fixed;
@@ -234,7 +234,7 @@ nav {
 
 /* ------------------- MAIN SECTIONS ------------------- */
 #center {
-  height: calc(calc(100vh - env(safe-area-inset-bottom)) - 8em - 2px);
+  height: calc(100vh - 8em - 2px);
   width: calc(100vw - 8em - 2px);
   margin-left: 4em;
   transition: margin-left .5s;
@@ -623,7 +623,7 @@ marquee {
 @media only screen and (max-width: 720px) {
 
   #center {
-    height: calc(calc(100vh - env(safe-area-inset-bottom)) - 8em - 2px);
+    height: calc(100vh - 8em - 2px);
     width: calc(100vw - 8em);
     margin-left: 4em;
     transition: margin-left .5s;
