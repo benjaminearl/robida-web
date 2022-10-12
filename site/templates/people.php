@@ -8,19 +8,15 @@
       <div class="bodytext">
         <p><?= $page->Text()->kt() ?></p>
       </div>
-    </section>  
+    </section>
   </div>
   <div id="right">
     <?php if($people = $page->children()->listed()): ?>
       <ul id="people-overview"><?php foreach ($people as $person): ?>
         <a href="<?= $person->url() ?>">
           <li>
-              <?php if ($person->hasFiles()): ?>
-                  <img src="<?= $person->files()->sortBy('sort', 'asc')->first()->url() ?>" alt="<?= $person->title() ?>" style="border-color: <?php echo $person->color(); ?>">
-              <?php else: ?>
-                <div class="profile" style="background-color: <?php echo $person->color(); ?>">
-                </div>
-              <?php endif ?>
+            <div class="profile" style="background-color: <?php echo $person->color(); ?>">
+            </div>
             <p><?= $person->title() ?></p>
           </li>
         </a>

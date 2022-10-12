@@ -5,7 +5,21 @@
     <div id="glossary-title"><h1><?= page('glossary')->title() ?></h1><span id="closeRight" onclick="closeGlossary()">>></span>
     </div>
     <div class="bodytext" style="padding: 1rem;">
-      <p><?= page('glossary')->text()->kt() ?></p>
+      <ul>
+      <?php
+        $items = $site->find('glossary')->children()->listed()->sortBy('title', 'asc');
+      ?>
+        <?php foreach ($items as $item): ?>
+          <h2 class="collapsible"><?= $item->title() ?></h2>
+          <div class="content">
+            <p><?= $item->text()->kt() ?></p>
+            <small><a href="<?= $item->people()->toPage()->url() ?>" class="profile" style="background-color: <?php echo $item->people()->toPage()->color(); ?>"><?= $item->people()->toPage()->title() ?></a></small>
+          </div>
+          <hr>
+        <?php endforeach ?>
+        <ul>
     </div>
+
+
   </div>
 </div>

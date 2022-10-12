@@ -1,0 +1,23 @@
+Title: Glossary entry
+image:
+  icon: 📖
+  back: "#000000"
+
+columns:
+  - width: 2/3
+    sections:
+      info:
+        type: fields
+        fields:
+          people:
+            label: Author
+            type: pages
+            empty: Select profile
+            query: site.find('community').find('people')
+            max: 1
+            required: true
+            width: 1/2
+          text:
+            type: textarea
+            label: Text
+            required: true

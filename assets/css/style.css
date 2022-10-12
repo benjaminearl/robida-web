@@ -423,7 +423,15 @@ a {
 }
 
 a.active {
-  color: green;
+  color: blue;
+}
+
+a.profile {
+  color: inherit;
+}
+
+nav a:hover {
+  color: blue;
 }
 
 img {
@@ -478,7 +486,6 @@ ul#people-overview {
   object-fit: cover;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
-  border: 1px solid lightgrey;
   margin-bottom: 0.5em;
 }
 
@@ -486,7 +493,6 @@ ul#people-overview {
   width: 100%;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
-  border: 1px solid lightgrey;
   padding: 0;
   margin-bottom: 0.5em;
 }
@@ -519,6 +525,25 @@ ul.mag-overview {
   color: lightgrey;
 }
 
+
+/* Collapsible */
+.collapsible {
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  background-color: inherit;
+}
+
+.collapsible:hover {
+  color: blue;
+}
+
+.content {
+  display: none;
+  overflow: hidden;
+}
 
 
 
@@ -656,10 +681,11 @@ marquee {
   }
 }
 
+
 @media only screen and (max-width: 720px) {
 
   #center {
-    height: calc(100vh - 8em - 2px);
+    /* height: calc(100vh - 8em - 2px); */
     width: calc(100vw - 8em);
     margin-left: 4em;
     transition: margin-left .5s;
