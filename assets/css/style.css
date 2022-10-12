@@ -10,6 +10,7 @@ html {
   width: 0px; /* hide scrollbar in edge and opera */
 }
 
+
 body {
   font-family: 'IBM Plex Mono', monospace;
   background-color: white;
@@ -279,6 +280,7 @@ nav {
 #top::-webkit-scrollbar, #middle::-webkit-scrollbar, #bottom::-webkit-scrollbar {
     display: none;
 }
+
 
 #journal-left, #journal-right {
   width: calc(20% - 2em);

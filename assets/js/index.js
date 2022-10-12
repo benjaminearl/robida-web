@@ -1,12 +1,12 @@
-// GET START DATE
-var days = 30; // days before current date
+// GET END DATE
+var days = -30; // days after current date
 var date = new Date();
 var first = new Date(date.getTime() - (days * 24 * 60 * 60 * 1000));
 var day=first.getDate();
 var month=first.getMonth()+1;
 var year=first.getFullYear();
 
-timelineStartDate = year + '-' + month + '-' + day;
+timelineEndDate = year + '-' + month + '-' + day;
 
 
 // GET CALENDAR HEIGHT
@@ -16,39 +16,42 @@ var rowAmount = Math.round(rowsHeight)
 
 
 
-
-// TIMELINE OPTIONS
-$(function () {
-  $("#myTimeline").Timeline({
-    type: "bar",
-    scale: "day",
-    height: midSectionHeight,
-    rowHeight: 48,
-    rows: rowAmount,
-    minGridSize: 27,
-    startDatetime: timelineStartDate,
-    weekday: "short",
-    minuteInterval: 30,
-    minGridPer: 2,
-    bgColor: '#ffffff',
-    headline: { display: false },
-    effects: {
-      presentTime: true,
-      hoverEvent:  true,
-      stripedGridRow: false,
-      horizontalGridStyle: "none",
-      verticalGridStyle: "dotted",
-    },
-    ruler: {
-      top: {
-          lines: [ 'month', 'day' ],
-          format: {
-              month: 'long',
-              day:   'numeric',
-          }
+$(window).resize(function() {
+  // TIMELINE OPTIONS
+  $(function () {
+    $("#myTimeline").Timeline({
+      type: "bar",
+      scale: "day",
+      height: midSectionHeight,
+      rowHeight: 48,
+      rows: rowAmount,
+      minGridSize: 27,
+      rangeAlign: "current",
+      startDatetime: "2022-07-20 00:00",
+      endDatetime: timelineEndDate,
+      weekday: "short",
+      minuteInterval: 60,
+      minGridPer: 2,
+      bgColor: '#ffffff',
+      headline: { display: false },
+      effects: {
+        presentTime: true,
+        hoverEvent:  true,
+        stripedGridRow: false,
+        horizontalGridStyle: "none",
+        verticalGridStyle: "dotted",
       },
-    },
-  });
+      ruler: {
+        top: {
+            lines: [ 'month', 'day' ],
+            format: {
+                month: 'long',
+                day:   'numeric',
+            }
+        },
+      },
+    });
+  })
 })
 
 // SIDE BARS
@@ -156,20 +159,4 @@ $(function () {
     var x = window.matchMedia("(max-width: 720px)")
     mobRightSidebar(x) // Call listener function at run time
     x.addListener(mobRightSidebar) // Attach listener function on state changes
-  }
-
-
-  // Collapsible for Glossary
-  var coll = document.getElementsByClassName("collapsible");
-  var i;
-
-  for (i = 0; i < coll.length; i++) {
-    coll[i].addEventListener("click", function() {
-      var content = this.nextElementSibling;
-      if (content.style.display === "block") {
-        content.style.display = "none";
-      } else {
-        content.style.display = "block";
-      }
-    });
   }

@@ -3,11 +3,12 @@
 <?php snippet('nav') ?>
 <div id="center">
   <div id="top">
-    <?php $HomepageBlocks =  $page->homeBlocks()->toPages();
-    foreach($HomepageBlocks as $HomepageBlocks): ?>
+    <?php $HomepageBlock =  $page->homeBlocks()->toPages();
+    foreach($HomepageBlock as $HomepageBlocks): ?>
 
-      <!-- MAGAZINE BLOCK -->
+      
       <?php if ($HomepageBlocks->title() == 'Robida Magazine'): ?>
+        <!-- MAGAZINE BLOCK -->
         <?php $latestIssue = $HomepageBlocks->children()->first() ?>
         <a href="<?= $HomepageBlocks->url() ?>" class="block">
             <h1><?= $HomepageBlocks->title() ?></h1>
@@ -16,8 +17,8 @@
             <?php endif ?>
         </a>
 
-      <!-- RADIO BLOCK -->
       <?php elseif ($HomepageBlocks->title() == 'Radio Robida'): ?>
+        <!-- RADIO BLOCK -->
         <?php $futureBroadcasts = $HomepageBlocks->children()->sortBy('date', 'asc')->filterBy('date', 'date >=', 'today');
           $upcomingBroadcast = $futureBroadcasts->first(); ?>
         <a href="<?= $HomepageBlocks->url() ?>" class="block">
@@ -41,8 +42,9 @@
 
         </a>
 
-            <!-- RESIDENCIES BLOCK -->
+          
             <?php elseif ($HomepageBlocks->title() == 'Residency'): ?>
+              <!-- RESIDENCIES BLOCK -->
         <a href="<?= $HomepageBlocks->url() ?>" class="block">
 
             <h1><?= $HomepageBlocks->title() ?></h1>
@@ -61,8 +63,9 @@
 
         </a>
 
-      <!-- EVERYTHING ELSE -->
+      
       <?php else : ?>
+        <!-- OTHER BLOCKS -->
         <a href="<?= $HomepageBlocks->url() ?>" class="block">
             <h1><?= $HomepageBlocks->title() ?></h1>
               <?php if($coverPhoto = $HomepageBlocks->files()->findBy('template', 'cover')): ?>
