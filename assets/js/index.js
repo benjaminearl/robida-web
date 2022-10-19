@@ -11,8 +11,9 @@ timelineEndDate = year + '-' + month + '-' + day;
 
 // GET CALENDAR HEIGHT
 var midSectionHeight = document.getElementById("middle").clientHeight;
+console.log(midSectionHeight)
 var rowsHeight = midSectionHeight / 48;
-var rowAmount = Math.round(rowsHeight)
+var rowAmount = Math.round(rowsHeight);
 
 
 
@@ -21,9 +22,9 @@ var rowAmount = Math.round(rowsHeight)
     $("#myTimeline").Timeline({
       type: "bar",
       scale: "day",
-      height: midSectionHeight,
+      height: midSectionHeight + "px",
       rowHeight: 48,
-      rows: rowAmount,
+      rows: 4,
       minGridSize: 27,
       rangeAlign: "current",
       startDatetime: "2022-07-20 00:00",

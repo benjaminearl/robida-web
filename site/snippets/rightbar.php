@@ -13,7 +13,7 @@
           <h2 class="collapsible"><?= $item->title() ?></h2>
           <div class="content">
             <p><?= $item->text()->kt() ?></p>
-            <small><a href="<?= $item->people()->toPage()->url() ?>" class="profile" style="background-color: <?php echo $item->people()->toPage()->color(); ?>"><?= $item->people()->toPage()->title() ?></a></small>
+
           </div>
           <hr>
         <?php endforeach ?>
