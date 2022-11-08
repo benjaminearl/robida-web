@@ -60,7 +60,11 @@
         </div>
       </div>
       <audio crossorigin>
+      <?php if ($page->radioStream()->isNotEmpty()) : ?>
         <source src="<?= $page->radioStream()->url() ?>" type="audio/mpeg">
+      <?php else: ?>
+        <source src="https://radio.goodtimesbadtimes.club/radio/8060/radio.mp3" type="audio/mpeg">
+      <?php endif ?>
       </audio>
     </div>
 
