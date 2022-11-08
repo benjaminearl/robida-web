@@ -1,3 +1,5 @@
+// Collapsible for Glossary
+
 // GET END DATE
 var days = -30; // days after current date
 var date = new Date();
@@ -11,8 +13,7 @@ timelineEndDate = year + '-' + month + '-' + day;
 
 // GET CALENDAR HEIGHT
 var midSectionHeight = document.getElementById("middle").clientHeight;
-console.log(midSectionHeight)
-var rowsHeight = midSectionHeight / 48;
+var rowsHeight = midSectionHeight / 30;
 var rowAmount = Math.round(rowsHeight);
 
 
@@ -23,8 +24,8 @@ var rowAmount = Math.round(rowsHeight);
       type: "bar",
       scale: "day",
       height: midSectionHeight + "px",
-      rowHeight: 48,
-      rows: 4,
+      rowHeight: 30,
+      rows: rowAmount,
       minGridSize: 27,
       rangeAlign: "current",
       startDatetime: "2022-07-20 00:00",
@@ -159,18 +160,3 @@ var rowAmount = Math.round(rowsHeight);
     mobRightSidebar(x) // Call listener function at run time
     x.addListener(mobRightSidebar) // Attach listener function on state changes
   }
-
-    // Collapsible for Glossary
-    var coll = document.getElementsByClassName("collapsible");
-    var i;
-  
-    for (i = 0; i < coll.length; i++) {
-      coll[i].addEventListener("click", function() {
-        var content = this.nextElementSibling;
-        if (content.style.display === "block") {
-          content.style.display = "none";
-        } else {
-          content.style.display = "block";
-        }
-      });
-    }

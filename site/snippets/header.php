@@ -60,11 +60,9 @@
         </div>
       </div>
       <audio crossorigin>
-        <source src="https://radio.goodtimesbadtimes.club/radio/8060/radio.mp3" type="audio/mpeg">
+        <source src="<?= $page->radioStream()->url() ?>" type="audio/mpeg">
       </audio>
     </div>
-
-
 
      </div>
   </header>

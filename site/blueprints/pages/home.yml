@@ -5,4 +5,8 @@ fields:
     type: pages
     label: Home Page Blocks
     multiple: true
+  radioStream:
+    label: Radio Stream Link 
+    type: url
+    placeholder: can be used to change link in audio stream incase you want to restream other radios
     

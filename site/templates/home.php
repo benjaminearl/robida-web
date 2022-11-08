@@ -94,7 +94,7 @@
             <a href="<?= $items->url() ?>"><?= $items->title() ?></a>
           </li>
           <?php endif ?>
-        <?php if($i > 5): $i = 0 ?>
+        <?php if($i > 4): $i = 0 ?>
         <?php endif ?>
       <?php endforeach ?>
       </ul>
