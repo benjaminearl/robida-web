@@ -102,7 +102,7 @@
   </div>
 
   <div id="bottom">
-    <?php $journalEntries =  $site->find('community')->find('journal')->children()->listed();
+    <?php $journalEntries =  $site->find('community')->find('journal')->children()->listed()->flip();
     foreach($journalEntries as $journalEntry): ?>
       <a href="<?= $journalEntry->url() ?>" class="block" style="border-color: <?php echo $journalEntry->people()->toPage()->color(); ?>">
           <h4><?= $journalEntry->title() ?></h4>
