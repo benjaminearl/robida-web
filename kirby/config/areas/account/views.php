@@ -2,7 +2,7 @@
 
 use Kirby\Cms\App;
 use Kirby\Cms\Find;
-use Kirby\Panel\Panel;
+use Kirby\Toolkit\I18n;
 
 return [
 	'account' => [
@@ -18,18 +18,15 @@ return [
 			return Find::file('account', $filename)->panel()->view();
 		}
 	],
-	'account.logout' => [
-		'pattern' => 'logout',
-		'auth'    => false,
-		'action'  => function () {
-			if ($user = App::instance()->user()) {
-				$user->logout();
-			}
-			Panel::go('login');
-		},
-	],
 	'account.password' => [
 		'pattern' => 'reset-password',
-		'action'  => fn () => ['component' => 'k-reset-password-view']
+		'action'  => fn () => [
+			'component' => 'k-reset-password-view',
+			'breadcrumb' => [
+				[
+					'label' => I18n::translate('view.resetPassword')
+				]
+			]
+		]
 	]
 ];

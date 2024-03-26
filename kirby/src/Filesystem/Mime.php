@@ -30,7 +30,7 @@ class Mime
 		'aifc'  => 'audio/x-aiff',
 		'aiff'  => 'audio/x-aiff',
 		'avi'   => 'video/x-msvideo',
-		'avif'   => 'image/avif',
+		'avif'  => 'image/avif',
 		'bmp'   => 'image/bmp',
 		'css'   => 'text/css',
 		'csv'   => ['text/csv', 'text/x-comma-separated-values', 'text/comma-separated-values', 'application/octet-stream'],
@@ -61,6 +61,7 @@ class Mime
 		'mid'   => 'audio/midi',
 		'midi'  => 'audio/midi',
 		'mif'   => 'application/vnd.mif',
+		'mjs'   => 'text/javascript',
 		'mov'   => 'video/quicktime',
 		'movie' => 'video/x-sgi-movie',
 		'mp2'   => 'audio/mpeg',
@@ -77,6 +78,7 @@ class Mime
 		'php'   => ['text/php', 'text/x-php', 'application/x-httpd-php', 'application/php', 'application/x-php', 'application/x-httpd-php-source'],
 		'php3'  => ['text/php', 'text/x-php', 'application/x-httpd-php', 'application/php', 'application/x-php', 'application/x-httpd-php-source'],
 		'phps'  => ['text/php', 'text/x-php', 'application/x-httpd-php', 'application/php', 'application/x-php', 'application/x-httpd-php-source'],
+		'pht'   => ['text/php', 'text/x-php', 'application/x-httpd-php', 'application/php', 'application/x-php', 'application/x-httpd-php-source'],
 		'phtml' => ['text/php', 'text/x-php', 'application/x-httpd-php', 'application/php', 'application/x-php', 'application/x-httpd-php-source'],
 		'png'   => 'image/png',
 		'ppt'   => ['application/powerpoint', 'application/vnd.ms-powerpoint'],
@@ -117,29 +119,34 @@ class Mime
 
 	/**
 	 * Fixes an invalid MIME type guess for the given file
-	 *
-	 * @param string $file
-	 * @param string $mime
-	 * @param string $extension
-	 * @return string|null
 	 */
-	public static function fix(string $file, string $mime = null, string $extension = null)
-	{
+	public static function fix(
+		string $file,
+		string|null $mime = null,
+		string|null $extension = null
+	): string|null {
 		// fixing map
 		$map = [
 			'text/html' => [
-				'svg' => ['Kirby\Filesystem\Mime', 'fromSvg'],
+				'svg' => [Mime::class, 'fromSvg'],
 			],
 			'text/plain' => [
 				'css'  => 'text/css',
 				'json' => 'application/json',
-				'svg'  => ['Kirby\Filesystem\Mime', 'fromSvg'],
+				'mjs' => 'text/javascript',
+				'svg'  => [Mime::class, 'fromSvg'],
 			],
 			'text/x-asm' => [
 				'css' => 'text/css'
 			],
+			'text/x-java' => [
+				'mjs' => 'text/javascript',
+			],
 			'image/svg' => [
 				'svg' => 'image/svg+xml'
+			],
+			'application/octet-stream' => [
+				'mjs' => 'text/javascript'
 			]
 		];
 
@@ -158,11 +165,8 @@ class Mime
 
 	/**
 	 * Guesses a MIME type by extension
-	 *
-	 * @param string $extension
-	 * @return string|null
 	 */
-	public static function fromExtension(string $extension): ?string
+	public static function fromExtension(string $extension): string|null
 	{
 		$mime = static::$types[$extension] ?? null;
 		return is_array($mime) === true ? array_shift($mime) : $mime;
@@ -170,11 +174,8 @@ class Mime
 
 	/**
 	 * Returns the MIME type of a file
-	 *
-	 * @param string $file
-	 * @return string|false
 	 */
-	public static function fromFileInfo(string $file)
+	public static function fromFileInfo(string $file): string|false
 	{
 		if (function_exists('finfo_file') === true && file_exists($file) === true) {
 			$finfo = finfo_open(FILEINFO_MIME_TYPE);
@@ -188,13 +189,13 @@ class Mime
 
 	/**
 	 * Returns the MIME type of a file
-	 *
-	 * @param string $file
-	 * @return string|false
 	 */
-	public static function fromMimeContentType(string $file)
+	public static function fromMimeContentType(string $file): string|false
 	{
-		if (function_exists('mime_content_type') === true && file_exists($file) === true) {
+		if (
+			function_exists('mime_content_type') === true &&
+			file_exists($file) === true
+		) {
 			return mime_content_type($file);
 		}
 
@@ -203,11 +204,8 @@ class Mime
 
 	/**
 	 * Tries to detect a valid SVG and returns the MIME type accordingly
-	 *
-	 * @param string $file
-	 * @return string|false
 	 */
-	public static function fromSvg(string $file)
+	public static function fromSvg(string $file): string|false
 	{
 		if (file_exists($file) === true) {
 			libxml_use_internal_errors(true);
@@ -225,10 +223,6 @@ class Mime
 	/**
 	 * Tests if a given MIME type is matched by an `Accept` header
 	 * pattern; returns true if the MIME type is contained at all
-	 *
-	 * @param string $mime
-	 * @param string $pattern
-	 * @return bool
 	 */
 	public static function isAccepted(string $mime, string $pattern): bool
 	{
@@ -247,10 +241,6 @@ class Mime
 	 * Tests if a MIME wildcard pattern from an `Accept` header
 	 * matches a given type
 	 * @since 3.3.0
-	 *
-	 * @param string $test
-	 * @param string $wildcard
-	 * @return bool
 	 */
 	public static function matches(string $test, string $wildcard): bool
 	{
@@ -259,11 +249,8 @@ class Mime
 
 	/**
 	 * Returns the extension for a given MIME type
-	 *
-	 * @param string|null $mime
-	 * @return string|false
 	 */
-	public static function toExtension(string $mime = null)
+	public static function toExtension(string $mime = null): string|false
 	{
 		foreach (static::$types as $key => $value) {
 			if (is_array($value) === true && in_array($mime, $value) === true) {
@@ -280,9 +267,6 @@ class Mime
 
 	/**
 	 * Returns all available extensions for a given MIME type
-	 *
-	 * @param string|null $mime
-	 * @return array
 	 */
 	public static function toExtensions(string $mime = null): array
 	{
@@ -304,13 +288,11 @@ class Mime
 
 	/**
 	 * Returns the MIME type of a file
-	 *
-	 * @param string $file
-	 * @param string $extension
-	 * @return string|false
 	 */
-	public static function type(string $file, string $extension = null)
-	{
+	public static function type(
+		string $file,
+		string|null $extension = null
+	): string|null {
 		// use the standard finfo extension
 		$mime = static::fromFileInfo($file);
 
@@ -333,8 +315,6 @@ class Mime
 
 	/**
 	 * Returns all detectable MIME types
-	 *
-	 * @return array
 	 */
 	public static function types(): array
 	{

@@ -28,7 +28,7 @@ var rowAmount = Math.round(rowsHeight);
       rows: rowAmount,
       minGridSize: 27,
       rangeAlign: "current",
-      startDatetime: "2022-07-20 00:00",
+      startDatetime: "2024-01-01 00:00",
       endDatetime: timelineEndDate,
       weekday: "short",
       minuteInterval: 60,

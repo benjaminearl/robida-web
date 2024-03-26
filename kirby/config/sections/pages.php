@@ -1,6 +1,9 @@
 <?php
 
 use Kirby\Cms\Blueprint;
+use Kirby\Cms\Page;
+use Kirby\Cms\Pages;
+use Kirby\Cms\Site;
 use Kirby\Exception\InvalidArgumentException;
 use Kirby\Toolkit\A;
 use Kirby\Toolkit\I18n;
@@ -28,6 +31,12 @@ return [
 			return $create;
 		},
 		/**
+		 * Filters pages by a query. Sorting will be disabled
+		 */
+		'query' => function (string|null $query = null) {
+			return $query;
+		},
+		/**
 		 * Filters pages by their status. Available status settings: `draft`, `unlisted`, `listed`, `published`, `all`.
 		 */
 		'status' => function (string $status = '') {
@@ -42,10 +51,22 @@ return [
 			return $status;
 		},
 		/**
+		 * Filters the list by single template.
+		 */
+		'template' => function (string|array $template = null) {
+			return $template;
+		},
+		/**
 		 * Filters the list by templates and sets template options when adding new pages to the section.
 		 */
 		'templates' => function ($templates = null) {
 			return A::wrap($templates ?? $this->template);
+		},
+		/**
+		 * Excludes the selected templates.
+		 */
+		'templatesIgnore' => function ($templates = null) {
+			return A::wrap($templates);
 		}
 	],
 	'computed' => [
@@ -53,30 +74,25 @@ return [
 			$parent = $this->parentModel();
 
 			if (
-				is_a($parent, 'Kirby\Cms\Site') === false &&
-				is_a($parent, 'Kirby\Cms\Page') === false
+				$parent instanceof Site === false &&
+				$parent instanceof Page === false
 			) {
 				throw new InvalidArgumentException('The parent is invalid. You must choose the site or a page as parent.');
 			}
 
 			return $parent;
 		},
-		'pages' => function () {
-			switch ($this->status) {
-				case 'draft':
-					$pages = $this->parent->drafts();
-					break;
-				case 'listed':
-					$pages = $this->parent->children()->listed();
-					break;
-				case 'published':
-					$pages = $this->parent->children();
-					break;
-				case 'unlisted':
-					$pages = $this->parent->children()->unlisted();
-					break;
-				default:
-					$pages = $this->parent->childrenAndDrafts();
+		'models' => function () {
+			if ($this->query !== null) {
+				$pages = $this->parent->query($this->query, Pages::class) ?? new Pages([]);
+			} else {
+				$pages = match ($this->status) {
+					'draft'     => $this->parent->drafts(),
+					'listed'    => $this->parent->children()->listed(),
+					'published' => $this->parent->children(),
+					'unlisted'  => $this->parent->children()->unlisted(),
+					default     => $this->parent->childrenAndDrafts()
+				};
 			}
 
 			// filters pages that are protected and not in the templates list
@@ -85,13 +101,26 @@ return [
 			// also it has been tested that there is no performance difference
 			// even in 0.1 seconds on 100k virtual pages
 			$pages = $pages->filter(function ($page) {
-				// remove all protected pages
-				if ($page->isReadable() === false) {
+				// remove all protected and hidden pages
+				if ($page->isListable() === false) {
 					return false;
 				}
 
+				$intendedTemplate = $page->intendedTemplate()->name();
+
 				// filter by all set templates
-				if ($this->templates && in_array($page->intendedTemplate()->name(), $this->templates) === false) {
+				if (
+					$this->templates &&
+					in_array($intendedTemplate, $this->templates) === false
+				) {
+					return false;
+				}
+
+				// exclude by all ignored templates
+				if (
+					$this->templatesIgnore &&
+					in_array($intendedTemplate, $this->templatesIgnore) === true
+				) {
 					return false;
 				}
 
@@ -99,8 +128,13 @@ return [
 			});
 
 			// search
-			if ($this->search === true && empty($this->searchterm) === false) {
-				$pages = $pages->search($this->searchterm);
+			if ($this->search === true && empty($this->searchterm()) === false) {
+				$pages = $pages->search($this->searchterm());
+
+				// disable flip and sortBy while searching
+				// to show most relevant results
+				$this->flip = false;
+				$this->sortBy = null;
 			}
 
 			// sort
@@ -122,13 +156,16 @@ return [
 
 			return $pages;
 		},
+		'pages' => function () {
+			return $this->models;
+		},
 		'total' => function () {
-			return $this->pages->pagination()->total();
+			return $this->models->pagination()->total();
 		},
 		'data' => function () {
 			$data = [];
 
-			foreach ($this->pages as $page) {
+			foreach ($this->models as $page) {
 				$panel       = $page->panel();
 				$permissions = $page->permissions();
 
@@ -218,6 +255,11 @@ return [
 				$templates = $this->kirby()->blueprints();
 			}
 
+			// excludes ignored templates
+			if ($templatesIgnore = $this->templatesIgnore) {
+				$templates = array_diff($templates, $templatesIgnore);
+			}
+
 			// convert every template to a usable option array
 			// for the template select box
 			foreach ($templates as $template) {
@@ -228,7 +270,7 @@ return [
 						'name'  => basename($props['name']),
 						'title' => $props['title'],
 					];
-				} catch (Throwable $e) {
+				} catch (Throwable) {
 					$blueprints[] = [
 						'name'  => basename($template),
 						'title' => ucfirst($template),
@@ -245,7 +287,7 @@ return [
 			'errors'  => $this->errors,
 			'options' => [
 				'add'      => $this->add,
-				'columns'  => $this->columns,
+				'columns'  => $this->columnsWithTypes(),
 				'empty'    => $this->empty,
 				'headline' => $this->headline,
 				'help'     => $this->help,

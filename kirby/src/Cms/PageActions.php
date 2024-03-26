@@ -8,11 +8,12 @@ use Kirby\Exception\InvalidArgumentException;
 use Kirby\Exception\LogicException;
 use Kirby\Exception\NotFoundException;
 use Kirby\Filesystem\Dir;
-use Kirby\Filesystem\F;
 use Kirby\Form\Form;
 use Kirby\Toolkit\A;
 use Kirby\Toolkit\I18n;
 use Kirby\Toolkit\Str;
+use Kirby\Uuid\Uuid;
+use Kirby\Uuid\Uuids;
 
 /**
  * PageActions
@@ -26,17 +27,86 @@ use Kirby\Toolkit\Str;
 trait PageActions
 {
 	/**
+	 * Adapts necessary modifications which page uuid, page slug and files uuid
+	 * of copy objects for single or multilang environments
+	 * @internal
+	 */
+	protected function adaptCopy(Page $copy, bool $files = false, bool $children = false): Page
+	{
+		if ($this->kirby()->multilang() === true) {
+			foreach ($this->kirby()->languages() as $language) {
+				// overwrite with new UUID for the page and files
+				// for default language (remove old, add new)
+				if (
+					Uuids::enabled() === true &&
+					$language->isDefault() === true
+				) {
+					$copy = $copy->save(['uuid' => Uuid::generate()], $language->code());
+
+					// regenerate UUIDs of page files
+					if ($files !== false) {
+						foreach ($copy->files() as $file) {
+							$file->save(['uuid' => Uuid::generate()], $language->code());
+						}
+					}
+
+					// regenerate UUIDs of all page children
+					if ($children !== false) {
+						foreach ($copy->index(true) as $child) {
+							// always adapt files of subpages as they are currently always copied;
+							// but don't adapt children because we already operate on the index
+							$this->adaptCopy($child, true);
+						}
+					}
+				}
+
+				// remove all translated slugs
+				if (
+					$language->isDefault() === false &&
+					$copy->translation($language)->exists() === true
+				) {
+					$copy = $copy->save(['slug' => null], $language->code());
+				}
+			}
+
+			return $copy;
+		}
+
+		// overwrite with new UUID for the page and files (remove old, add new)
+		if (Uuids::enabled() === true) {
+			$copy = $copy->save(['uuid' => Uuid::generate()]);
+
+			// regenerate UUIDs of page files
+			if ($files !== false) {
+				foreach ($copy->files() as $file) {
+					$file->save(['uuid' => Uuid::generate()]);
+				}
+			}
+
+			// regenerate UUIDs of all page children
+			if ($children !== false) {
+				foreach ($copy->index(true) as $child) {
+					// always adapt files of subpages as they are currently always copied;
+					// but don't adapt children because we already operate on the index
+					$this->adaptCopy($child, true);
+				}
+			}
+		}
+
+		return $copy;
+	}
+
+	/**
 	 * Changes the sorting number.
 	 * The sorting number must already be correct
 	 * when the method is called.
 	 * This only affects this page,
 	 * siblings will not be resorted.
 	 *
-	 * @param int|null $num
 	 * @return $this|static
 	 * @throws \Kirby\Exception\LogicException If a draft is being sorted or the directory cannot be moved
 	 */
-	public function changeNum(int $num = null)
+	public function changeNum(int|null $num = null): static
 	{
 		if ($this->isDraft() === true) {
 			throw new LogicException('Drafts cannot change their sorting number');
@@ -59,17 +129,14 @@ trait PageActions
 				if (Dir::move($oldPage->root(), $newPage->root()) === true) {
 					// Updates the root path of the old page with the root path
 					// of the moved new page to use fly actions on old page in loop
-					$oldPage->setRoot($newPage->root());
+					$oldPage->root = $newPage->root();
 				} else {
 					throw new LogicException('The page directory cannot be moved');
 				}
 			}
 
 			// overwrite the child in the parent page
-			$newPage
-				->parentModel()
-				->children()
-				->set($newPage->id(), $newPage);
+			static::updateParentCollections($newPage, 'set');
 
 			return $newPage;
 		});
@@ -78,23 +145,21 @@ trait PageActions
 	/**
 	 * Changes the slug/uid of the page
 	 *
-	 * @param string $slug
-	 * @param string|null $languageCode
 	 * @return $this|static
 	 * @throws \Kirby\Exception\LogicException If the directory cannot be moved
 	 */
-	public function changeSlug(string $slug, string $languageCode = null)
-	{
+	public function changeSlug(
+		string $slug,
+		string|null $languageCode = null
+	): static {
 		// always sanitize the slug
 		$slug = Str::slug($slug);
 
 		// in multi-language installations the slug for the non-default
 		// languages is stored in the text file. The changeSlugForLanguage
 		// method takes care of that.
-		if ($language = $this->kirby()->language($languageCode)) {
-			if ($language->isDefault() === false) {
-				return $this->changeSlugForLanguage($slug, $languageCode);
-			}
+		if ($this->kirby()->language($languageCode)?->isDefault() === false) {
+			return $this->changeSlugForLanguage($slug, $languageCode);
 		}
 
 		// if the slug stays exactly the same,
@@ -111,11 +176,12 @@ trait PageActions
 				'root'    => null
 			]);
 
+			// clear UUID cache recursively (for children and files as well)
+			$oldPage->uuid()?->clear(true);
+
 			if ($oldPage->exists() === true) {
 				// remove the lock of the old page
-				if ($lock = $oldPage->lock()) {
-					$lock->remove();
-				}
+				$oldPage->lock()?->remove();
 
 				// actually move stuff on disk
 				if (Dir::move($oldPage->root(), $newPage->root()) !== true) {
@@ -123,17 +189,13 @@ trait PageActions
 				}
 
 				// remove from the siblings
-				$oldPage->parentModel()->children()->remove($oldPage);
+				static::updateParentCollections($oldPage, 'remove');
 
 				Dir::remove($oldPage->mediaRoot());
 			}
 
 			// overwrite the new page in the parent collection
-			if ($newPage->isDraft() === true) {
-				$newPage->parentModel()->drafts()->set($newPage->id(), $newPage);
-			} else {
-				$newPage->parentModel()->children()->set($newPage->id(), $newPage);
-			}
+			static::updateParentCollections($newPage, 'set');
 
 			return $newPage;
 		});
@@ -142,14 +204,13 @@ trait PageActions
 	/**
 	 * Change the slug for a specific language
 	 *
-	 * @param string $slug
-	 * @param string|null $languageCode
-	 * @return static
 	 * @throws \Kirby\Exception\NotFoundException If the language for the given language code cannot be found
 	 * @throws \Kirby\Exception\InvalidArgumentException If the slug for the default language is being changed
 	 */
-	protected function changeSlugForLanguage(string $slug, string $languageCode = null)
-	{
+	protected function changeSlugForLanguage(
+		string $slug,
+		string|null $languageCode = null
+	): static {
 		$language = $this->kirby()->language($languageCode);
 
 		if (!$language) {
@@ -160,14 +221,19 @@ trait PageActions
 			throw new InvalidArgumentException('Use the changeSlug method to change the slug for the default language');
 		}
 
-		$arguments = ['page' => $this, 'slug' => $slug, 'languageCode' => $languageCode];
+		$arguments = ['page' => $this, 'slug' => $slug, 'languageCode' => $language->code()];
 		return $this->commit('changeSlug', $arguments, function ($page, $slug, $languageCode) {
 			// remove the slug if it's the same as the folder name
 			if ($slug === $page->uid()) {
 				$slug = null;
 			}
 
-			return $page->save(['slug' => $slug], $languageCode);
+			$newPage = $page->save(['slug' => $slug], $languageCode);
+
+			// overwrite the updated page in the parent collection
+			static::updateParentCollections($newPage, 'set');
+
+			return $newPage;
 		});
 	}
 
@@ -179,27 +245,19 @@ trait PageActions
 	 *
 	 * @param string $status "draft", "listed" or "unlisted"
 	 * @param int|null $position Optional sorting number
-	 * @return static
 	 * @throws \Kirby\Exception\InvalidArgumentException If an invalid status is being passed
 	 */
-	public function changeStatus(string $status, int $position = null)
+	public function changeStatus(string $status, int|null $position = null): static
 	{
-		switch ($status) {
-			case 'draft':
-				return $this->changeStatusToDraft();
-			case 'listed':
-				return $this->changeStatusToListed($position);
-			case 'unlisted':
-				return $this->changeStatusToUnlisted();
-			default:
-				throw new InvalidArgumentException('Invalid status: ' . $status);
-		}
+		return match ($status) {
+			'draft'    => $this->changeStatusToDraft(),
+			'listed'   => $this->changeStatusToListed($position),
+			'unlisted' => $this->changeStatusToUnlisted(),
+			default    => throw new InvalidArgumentException('Invalid status: ' . $status)
+		};
 	}
 
-	/**
-	 * @return static
-	 */
-	protected function changeStatusToDraft()
+	protected function changeStatusToDraft(): static
 	{
 		$arguments = ['page' => $this, 'status' => 'draft', 'position' => null];
 		$page = $this->commit(
@@ -212,10 +270,9 @@ trait PageActions
 	}
 
 	/**
-	 * @param int|null $position
 	 * @return $this|static
 	 */
-	protected function changeStatusToListed(int $position = null)
+	protected function changeStatusToListed(int|null $position = null): static
 	{
 		// create a sorting number for the page
 		$num = $this->createNum($position);
@@ -225,10 +282,16 @@ trait PageActions
 			return $this;
 		}
 
-		$arguments = ['page' => $this, 'status' => 'listed', 'position' => $num];
-		$page = $this->commit('changeStatus', $arguments, function ($page, $status, $position) {
-			return $page->publish()->changeNum($position);
-		});
+		$page = $this->commit(
+			'changeStatus',
+			[
+				'page'     => $this,
+				'status'   => 'listed',
+				'position' => $num
+			],
+			fn ($page, $status, $position) =>
+				$page->publish()->changeNum($position)
+		);
 
 		if ($this->blueprint()->num() === 'default') {
 			$page->resortSiblingsAfterListing($num);
@@ -240,16 +303,21 @@ trait PageActions
 	/**
 	 * @return $this|static
 	 */
-	protected function changeStatusToUnlisted()
+	protected function changeStatusToUnlisted(): static
 	{
 		if ($this->status() === 'unlisted') {
 			return $this;
 		}
 
-		$arguments = ['page' => $this, 'status' => 'unlisted', 'position' => null];
-		$page = $this->commit('changeStatus', $arguments, function ($page) {
-			return $page->publish()->changeNum(null);
-		});
+		$page = $this->commit(
+			'changeStatus',
+			[
+				'page'     => $this,
+				'status'   => 'unlisted',
+				'position' => null
+			],
+			fn ($page) => $page->publish()->changeNum(null)
+		);
 
 		$this->resortSiblingsAfterUnlisting();
 
@@ -261,10 +329,9 @@ trait PageActions
 	 * collection. Siblings will be resorted. If the page
 	 * status isn't yet `listed`, it will be changed to it.
 	 *
-	 * @param int|null $position
 	 * @return $this|static
 	 */
-	public function changeSort(int $position = null)
+	public function changeSort(int|null $position = null): static
 	{
 		return $this->changeStatus('listed', $position);
 	}
@@ -272,58 +339,21 @@ trait PageActions
 	/**
 	 * Changes the page template
 	 *
-	 * @param string $template
 	 * @return $this|static
 	 * @throws \Kirby\Exception\LogicException If the textfile cannot be renamed/moved
 	 */
-	public function changeTemplate(string $template)
+	public function changeTemplate(string $template): static
 	{
 		if ($template === $this->intendedTemplate()->name()) {
 			return $this;
 		}
 
 		return $this->commit('changeTemplate', ['page' => $this, 'template' => $template], function ($oldPage, $template) {
-			if ($this->kirby()->multilang() === true) {
-				$newPage = $this->clone([
-					'template' => $template
-				]);
-
-				foreach ($this->kirby()->languages()->codes() as $code) {
-					if ($oldPage->translation($code)->exists() !== true) {
-						continue;
-					}
-
-					$content = $oldPage->content($code)->convertTo($template);
-
-					if (F::remove($oldPage->contentFile($code)) !== true) {
-						throw new LogicException('The old text file could not be removed');
-					}
-
-					// save the language file
-					$newPage->save($content, $code);
-				}
-
-				// return a fresh copy of the object
-				$page = $newPage->clone();
-			} else {
-				$newPage = $this->clone([
-					'content'  => $this->content()->convertTo($template),
-					'template' => $template
-				]);
-
-				if (F::remove($oldPage->contentFile()) !== true) {
-					throw new LogicException('The old text file could not be removed');
-				}
-
-				$page = $newPage->save();
-			}
+			// convert for new template/blueprint
+			$page = $oldPage->convertTo($template);
 
 			// update the parent collection
-			if ($page->isDraft() === true) {
-				$page->parentModel()->drafts()->set($page->id(), $page);
-			} else {
-				$page->parentModel()->children()->set($page->id(), $page);
-			}
+			static::updateParentCollections($page, 'set');
 
 			return $page;
 		});
@@ -331,23 +361,29 @@ trait PageActions
 
 	/**
 	 * Change the page title
-	 *
-	 * @param string $title
-	 * @param string|null $languageCode
-	 * @return static
 	 */
-	public function changeTitle(string $title, string $languageCode = null)
-	{
+	public function changeTitle(
+		string $title,
+		string|null $languageCode = null
+	): static {
+		// if the `$languageCode` argument is not set and is not the default language
+		// the `$languageCode` argument is sent as the current language
+		if (
+			$languageCode === null &&
+			$language = $this->kirby()->language()
+		) {
+			if ($language->isDefault() === false) {
+				$languageCode = $language->code();
+			}
+		}
+
 		$arguments = ['page' => $this, 'title' => $title, 'languageCode' => $languageCode];
+
 		return $this->commit('changeTitle', $arguments, function ($page, $title, $languageCode) {
 			$page = $page->save(['title' => $title], $languageCode);
 
 			// flush the parent cache to get children and drafts right
-			if ($page->isDraft() === true) {
-				$page->parentModel()->drafts()->set($page->id(), $page);
-			} else {
-				$page->parentModel()->children()->set($page->id(), $page);
-			}
+			static::updateParentCollections($page, 'set');
 
 			return $page;
 		});
@@ -361,14 +397,12 @@ trait PageActions
 	 * 3. commits the store action
 	 * 4. sends the after hook
 	 * 5. returns the result
-	 *
-	 * @param string $action
-	 * @param array $arguments
-	 * @param \Closure $callback
-	 * @return mixed
 	 */
-	protected function commit(string $action, array $arguments, Closure $callback)
-	{
+	protected function commit(
+		string $action,
+		array $arguments,
+		Closure $callback
+	): mixed {
 		$old            = $this->hardcopy();
 		$kirby          = $this->kirby();
 		$argumentValues = array_values($arguments);
@@ -396,11 +430,9 @@ trait PageActions
 	/**
 	 * Copies the page to a new parent
 	 *
-	 * @param array $options
-	 * @return \Kirby\Cms\Page
 	 * @throws \Kirby\Exception\DuplicateException If the page already exists
 	 */
-	public function copy(array $options = [])
+	public function copy(array $options = []): static
 	{
 		$slug        = $options['slug']      ?? $this->slug();
 		$isDraft     = $options['isDraft']   ?? $this->isDraft();
@@ -439,7 +471,8 @@ trait PageActions
 				$ignore[] = $file->root();
 
 				// append all content files
-				array_push($ignore, ...$file->contentFiles());
+				array_push($ignore, ...$file->storage()->contentFiles('published'));
+				array_push($ignore, ...$file->storage()->contentFiles('changes'));
 			}
 		}
 
@@ -447,71 +480,73 @@ trait PageActions
 
 		$copy = $parentModel->clone()->findPageOrDraft($slug);
 
-		// remove all translated slugs
-		if ($this->kirby()->multilang() === true) {
-			foreach ($this->kirby()->languages() as $language) {
-				if ($language->isDefault() === false && $copy->translation($language)->exists() === true) {
-					$copy = $copy->save(['slug' => null], $language->code());
-				}
-			}
-		}
+		// normalize copy object
+		$copy = $this->adaptCopy($copy, $files, $children);
 
 		// add copy to siblings
-		if ($isDraft === true) {
-			$parentModel->drafts()->append($copy->id(), $copy);
-		} else {
-			$parentModel->children()->append($copy->id(), $copy);
-		}
+		static::updateParentCollections($copy, 'append', $parentModel);
 
 		return $copy;
 	}
 
 	/**
 	 * Creates and stores a new page
-	 *
-	 * @param array $props
-	 * @return static
 	 */
-	public static function create(array $props)
+	public static function create(array $props): Page
 	{
 		// clean up the slug
-		$props['slug']     = Str::slug($props['slug'] ?? $props['content']['title'] ?? null);
-		$props['template'] = $props['model'] = strtolower($props['template'] ?? 'default');
-		$props['isDraft']  = ($props['draft'] ?? true);
+		$props['slug']      = Str::slug($props['slug'] ?? $props['content']['title'] ?? null);
+		$props['template']  = $props['model'] = strtolower($props['template'] ?? 'default');
+		$props['isDraft'] ??= $props['draft'] ?? true;
+
+		// make sure that a UUID gets generated and
+		// added to content right away
+		$props['content'] ??= [];
+
+		if (Uuids::enabled() === true) {
+			$props['content']['uuid'] ??= Uuid::generate();
+		}
 
 		// create a temporary page object
 		$page = Page::factory($props);
 
+		// always create pages in the default language
+		if ($page->kirby()->multilang() === true) {
+			$languageCode = $page->kirby()->defaultLanguage()->code();
+		} else {
+			$languageCode = null;
+		}
+
 		// create a form for the page
-		$form = Form::for($page, [
-			'values' => $props['content'] ?? []
-		]);
+		// use always default language to fill form with default values
+		$form = Form::for(
+			$page,
+			[
+				'language' => $languageCode,
+				'values'   => $props['content']
+			]
+		);
 
 		// inject the content
 		$page = $page->clone(['content' => $form->strings(true)]);
 
 		// run the hooks and creation action
-		$page = $page->commit('create', ['page' => $page, 'input' => $props], function ($page, $props) {
+		$page = $page->commit(
+			'create',
+			[
+				'page'  => $page,
+				'input' => $props
+			],
+			function ($page, $props) use ($languageCode) {
+				// write the content file
+				$page = $page->save($page->content()->toArray(), $languageCode);
 
-			// always create pages in the default language
-			if ($page->kirby()->multilang() === true) {
-				$languageCode = $page->kirby()->defaultLanguage()->code();
-			} else {
-				$languageCode = null;
+				// flush the parent cache to get children and drafts right
+				static::updateParentCollections($page, 'append');
+
+				return $page;
 			}
-
-			// write the content file
-			$page = $page->save($page->content()->toArray(), $languageCode);
-
-			// flush the parent cache to get children and drafts right
-			if ($page->isDraft() === true) {
-				$page->parentModel()->drafts()->append($page->id(), $page);
-			} else {
-				$page->parentModel()->children()->append($page->id(), $page);
-			}
-
-			return $page;
-		});
+		);
 
 		// publish the new page if a number is given
 		if (isset($props['num']) === true) {
@@ -523,11 +558,8 @@ trait PageActions
 
 	/**
 	 * Creates a child of the current page
-	 *
-	 * @param array $props
-	 * @return static
 	 */
-	public function createChild(array $props)
+	public function createChild(array $props): Page
 	{
 		$props = array_merge($props, [
 			'url'    => null,
@@ -536,16 +568,13 @@ trait PageActions
 			'site'   => $this->site(),
 		]);
 
-		$modelClass = Page::$models[$props['template']] ?? Page::class;
+		$modelClass = Page::$models[$props['template'] ?? null] ?? Page::class;
 		return $modelClass::create($props);
 	}
 
 	/**
 	 * Create the sorting number for the page
 	 * depending on the blueprint settings
-	 *
-	 * @param int|null $num
-	 * @return int
 	 */
 	public function createNum(int $num = null): int
 	{
@@ -573,9 +602,7 @@ trait PageActions
 					->count();
 
 				// default positioning at the end
-				if ($num === null) {
-					$num = $max;
-				}
+				$num ??= $max;
 
 				// avoid zeros or negative numbers
 				if ($num < 1) {
@@ -605,13 +632,12 @@ trait PageActions
 
 	/**
 	 * Deletes the page
-	 *
-	 * @param bool $force
-	 * @return bool
 	 */
 	public function delete(bool $force = false): bool
 	{
 		return $this->commit('delete', ['page' => $this, 'force' => $force], function ($page, $force) {
+			// clear UUID cache
+			$page->uuid()?->clear();
 
 			// delete all files individually
 			foreach ($page->files() as $file) {
@@ -625,7 +651,6 @@ trait PageActions
 
 			// actually remove the page from disc
 			if ($page->exists() === true) {
-
 				// delete all public media files
 				Dir::remove($page->mediaRoot());
 
@@ -643,10 +668,9 @@ trait PageActions
 				}
 			}
 
-			if ($page->isDraft() === true) {
-				$page->parentModel()->drafts()->remove($page);
-			} else {
-				$page->parentModel()->children()->remove($page);
+			static::updateParentCollections($page, 'remove');
+
+			if ($page->isDraft() === false) {
 				$page->resortSiblingsAfterUnlisting();
 			}
 
@@ -657,14 +681,9 @@ trait PageActions
 	/**
 	 * Duplicates the page with the given
 	 * slug and optionally copies all files
-	 *
-	 * @param string|null $slug
-	 * @param array $options
-	 * @return \Kirby\Cms\Page
 	 */
-	public function duplicate(string $slug = null, array $options = [])
+	public function duplicate(string|null $slug = null, array $options = []): static
 	{
-
 		// create the slug for the duplicate
 		$slug = Str::slug($slug ?? $this->slug() . '-' . Str::slug(I18n::translate('page.duplicate.appendix')));
 
@@ -692,10 +711,59 @@ trait PageActions
 	}
 
 	/**
+	 * Moves the page to a new parent if the
+	 * new parent accepts the page type
+	 */
+	public function move(Site|Page $parent): Page
+	{
+		// nothing to move
+		if ($this->parentModel()->is($parent) === true) {
+			return $this;
+		}
+
+		$arguments = [
+			'page'   => $this,
+			'parent' => $parent
+		];
+
+		return $this->commit('move', $arguments, function ($page, $parent) {
+			// remove the uuid cache for this page
+			$page->uuid()?->clear(true);
+
+			// move drafts into the drafts folder of the parent
+			if ($page->isDraft() === true) {
+				$newRoot = $parent->root() . '/_drafts/' . $page->dirname();
+			} else {
+				$newRoot = $parent->root() . '/' . $page->dirname();
+			}
+
+			// try to move the page directory on disk
+			if (Dir::move($page->root(), $newRoot) !== true) {
+				throw new LogicException([
+					'key' => 'page.move.directory'
+				]);
+			}
+
+			// flush all collection caches to be sure that
+			// the new child is included afterwards
+			$parent->purge();
+
+			// double-check if the new child can actually be found
+			if (!$newPage = $parent->childrenAndDrafts()->find($page->slug())) {
+				throw new LogicException([
+					'key' => 'page.move.notFound'
+				]);
+			}
+
+			return $newPage;
+		});
+	}
+
+	/**
 	 * @return $this|static
 	 * @throws \Kirby\Exception\LogicException If the folder cannot be moved
 	 */
-	public function publish()
+	public function publish(): static
 	{
 		if ($this->isDraft() === false) {
 			return $this;
@@ -722,32 +790,38 @@ trait PageActions
 		}
 
 		// remove the page from the parent drafts and add it to children
-		$page->parentModel()->drafts()->remove($page);
-		$page->parentModel()->children()->append($page->id(), $page);
+		$parentModel = $page->parentModel();
+		$parentModel->drafts()->remove($page);
+		$parentModel->children()->append($page->id(), $page);
+
+		// update the childrenAndDrafts() cache if it is initialized
+		if ($parentModel->childrenAndDrafts !== null) {
+			$parentModel->childrenAndDrafts()->set($page->id(), $page);
+		}
 
 		return $page;
 	}
 
 	/**
 	 * Clean internal caches
+	 *
 	 * @return $this
 	 */
-	public function purge()
+	public function purge(): static
 	{
-		$this->blueprint    = null;
-		$this->children     = null;
-		$this->content      = null;
-		$this->drafts       = null;
-		$this->files        = null;
-		$this->inventory    = null;
-		$this->translations = null;
+		parent::purge();
+
+		$this->blueprint         = null;
+		$this->children          = null;
+		$this->childrenAndDrafts = null;
+		$this->drafts            = null;
+		$this->files             = null;
+		$this->inventory         = null;
 
 		return $this;
 	}
 
 	/**
-	 * @param int|null $position
-	 * @return bool
 	 * @throws \Kirby\Exception\LogicException If the page is not included in the siblings collection
 	 */
 	protected function resortSiblingsAfterListing(int $position = null): bool
@@ -781,19 +855,20 @@ trait PageActions
 		foreach ($sorted as $key => $id) {
 			if ($id === $this->id()) {
 				continue;
-			} elseif ($sibling = $siblings->get($id)) {
-				$sibling->changeNum($key + 1);
 			}
+
+			$siblings->get($id)?->changeNum($key + 1);
 		}
 
 		$parent = $this->parentModel();
 		$parent->children = $parent->children()->sort('num', 'asc');
+		$parent->childrenAndDrafts = null;
 
 		return true;
 	}
 
 	/**
-	 * @return bool
+	 * @internal
 	 */
 	public function resortSiblingsAfterUnlisting(): bool
 	{
@@ -812,9 +887,27 @@ trait PageActions
 			}
 
 			$parent->children = $siblings->sort('num', 'asc');
+			$parent->childrenAndDrafts = null;
 		}
 
 		return true;
+	}
+
+	/**
+	 * Stores the content on disk
+	 * @internal
+	 */
+	public function save(
+		array|null $data = null,
+		string|null $languageCode = null,
+		bool $overwrite = false
+	): static {
+		$page = parent::save($data, $languageCode, $overwrite);
+
+		// overwrite the updated page in the parent collection
+		static::updateParentCollections($page, 'set');
+
+		return $page;
 	}
 
 	/**
@@ -824,7 +917,7 @@ trait PageActions
 	 * @return $this|static
 	 * @throws \Kirby\Exception\LogicException If the folder cannot be moved
 	 */
-	public function unpublish()
+	public function unpublish(): static
 	{
 		if ($this->isDraft() === true) {
 			return $this;
@@ -845,8 +938,14 @@ trait PageActions
 		}
 
 		// remove the page from the parent children and add it to drafts
-		$page->parentModel()->children()->remove($page);
-		$page->parentModel()->drafts()->append($page->id(), $page);
+		$parentModel = $page->parentModel();
+		$parentModel->children()->remove($page);
+		$parentModel->drafts()->append($page->id(), $page);
+
+		// update the childrenAndDrafts() cache if it is initialized
+		if ($parentModel->childrenAndDrafts !== null) {
+			$parentModel->childrenAndDrafts()->set($page->id(), $page);
+		}
 
 		$page->resortSiblingsAfterUnlisting();
 
@@ -855,14 +954,12 @@ trait PageActions
 
 	/**
 	 * Updates the page data
-	 *
-	 * @param array|null $input
-	 * @param string|null $languageCode
-	 * @param bool $validate
-	 * @return static
 	 */
-	public function update(array $input = null, string $languageCode = null, bool $validate = false)
-	{
+	public function update(
+		array|null $input = null,
+		string|null $languageCode = null,
+		bool $validate = false
+	): static {
 		if ($this->isDraft() === true) {
 			$validate = false;
 		}
@@ -870,10 +967,46 @@ trait PageActions
 		$page = parent::update($input, $languageCode, $validate);
 
 		// if num is created from page content, update num on content update
-		if ($page->isListed() === true && in_array($page->blueprint()->num(), ['zero', 'default']) === false) {
+		if (
+			$page->isListed() === true &&
+			in_array($page->blueprint()->num(), ['zero', 'default']) === false
+		) {
 			$page = $page->changeNum($page->createNum());
 		}
 
+		// overwrite the updated page in the parent collection
+		static::updateParentCollections($page, 'set');
+
 		return $page;
+	}
+
+	/**
+	 * Updates parent collections with the new page object
+	 * after a page action
+	 *
+	 * @param \Kirby\Cms\Page $page
+	 * @param string $method Method to call on the parent collections
+	 * @param \Kirby\Cms\Page|null $parentMdel
+	 */
+	protected static function updateParentCollections(
+		$page,
+		string $method,
+		$parentModel = null
+	): void {
+		$parentModel ??= $page->parentModel();
+
+		// method arguments depending on the called method
+		$args = $method === 'remove' ? [$page] : [$page->id(), $page];
+
+		if ($page->isDraft() === true) {
+			$parentModel->drafts()->$method(...$args);
+		} else {
+			$parentModel->children()->$method(...$args);
+		}
+
+		// update the childrenAndDrafts() cache if it is initialized
+		if ($parentModel->childrenAndDrafts !== null) {
+			$parentModel->childrenAndDrafts()->$method(...$args);
+		}
 	}
 }
