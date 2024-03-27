@@ -8,9 +8,6 @@
       <div class="bodytext">
         <p><?= $page->Text()->kt() ?></p>
       </div>
-      <div class="chat" style="margin-top:50px; ">
-      <script id="cid0020000246831166936" data-cfasync="false" async src="https://st.chatango.com/js/gz/emb.js" style="width: 100%;height: 580px;">{"handle":"radiorobida","arch":"js","styles":{"a":"E6E6E6","b":100,"c":"000000","d":"000000","k":"E6E6E6","l":"E6E6E6","m":"E6E6E6","p":"10","q":"E6E6E6","r":100,"allowpm":0,"cnrs":"0.35","fwtickm":1}}</script>
-      </div>
     </section>
   </div>
 
@@ -43,25 +40,8 @@
     <?php endif ?>
 
     <section>
-    <?php $pastBroadcasts = $page->children()->sortBy('date', 'asc')->filterBy('date', 'date <=', 'today'); ?>
-    <?php if($pastBroadcasts->isNotEmpty()): ?>
       <h2>Past</h2>
-      <ul>
-      <?php foreach($pastBroadcasts as $pastBroadcast): ?>
-            <li>
-              <a href="<?= $pastBroadcast->url() ?>">
-              <?php $images = $pastBroadcast->files();
-                foreach ($images as $image): ?>
-                <img src="<?= $image->url() ?>" alt="">
-                <?php endforeach ?>
-              </a>
-            </li>
-            <?php endforeach ?>
-          </ul>
-        <?php endif ?>
-
-
-
+        
 
 
       <h3><a href="<?= $page->archive() ?>" target="_blank">Go to archive →</a><h3>

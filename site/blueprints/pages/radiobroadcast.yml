@@ -25,9 +25,14 @@ sections:
         type: fields
         fields:
           description:
-              cast
             type: text
-            placeholder: Optional information to add about this specific broadcast
+            placeholder: Optional information to add about this specific broadcast.
+          cover:
+            headline: Cover image
+            type: files
+            max: 1
+            template: cover
+            label: cover
 
       shows:
         type: pages
