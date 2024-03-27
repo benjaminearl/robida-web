@@ -27,7 +27,7 @@ fields:
     label: Host(s)
     type: pages
     empty: Select profiles
-    query: site.find('people')
+    query: site.find('Community').find('People')
     width: 2/6
   link:
     label: Link to episode on mixcloud
