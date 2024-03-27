@@ -1,0 +1,28 @@
+Title: Show 2
+
+----
+
+Broadcastdate: 2024-03-30
+
+----
+
+Starttime: 09:45:00
+
+----
+
+Endtime: 10:30:00
+
+----
+
+People:
+
+- page://BOd1CPIwfRUWFFyS
+- page://0dzfy5FEpEJW1GAR
+
+----
+
+Link: 
+
+----
+
+Uuid: Cpl4avMoJcqfmRQ4

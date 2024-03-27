@@ -214,7 +214,7 @@ nav {
 #rightSidebar {
   left: auto;
   right: 0;
-  position: absolute;
+  position: fixed;
   border-left: 1px solid;
   border-right: 0px;
 }
@@ -234,7 +234,7 @@ nav {
 
 
 /* ------------------- MAIN SECTIONS ------------------- */
-#center {
+/* #center {
   height: calc(100vh - 8em - 2px);
   width: calc(100vw - 8em - 2px);
   margin-left: 4em;
@@ -242,9 +242,9 @@ nav {
   position: absolute;
   z-index: -1;
   top: calc(4em + 1px);
-}
+} */
 
-#left, #right {
+/* #left, #right {
   width: calc(50% - 2em);
   height: calc(100% - 2em);
   padding: 1em;
@@ -259,9 +259,9 @@ nav {
   float: right;
   width: calc(50% - 2em - 1px);
   border-left: 1px dotted lightgrey;
-}
+} */
 
-#top, #middle, #bottom {
+/* #top, #middle, #bottom {
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
@@ -274,15 +274,15 @@ nav {
   border-bottom: none;
   padding: 1rem;
   background-color: whitesmoke;
-}
+} */
 
 /* Hide scrollbar for Chrome, Safari and Opera */
-#top::-webkit-scrollbar, #middle::-webkit-scrollbar, #bottom::-webkit-scrollbar {
+/* #top::-webkit-scrollbar, #middle::-webkit-scrollbar, #bottom::-webkit-scrollbar {
     display: none;
-}
+} */
 
 
-#journal-left, #journal-right {
+/* #journal-left, #journal-right {
   width: calc(20% - 2em);
   height: calc(100% - 2em);
   padding: 1em;
@@ -301,7 +301,7 @@ nav {
   float: left;
   overflow: scroll;
   background-color: whitesmoke;
-}
+} */
 
 /* ------------ HOMEPAGE BLOCKS -----------*/
 .block {
@@ -339,13 +339,13 @@ nav {
   min-width:calc(20% - 2px - 2em);
 }
 
-.block-content {
+/* .block-content {
   bottom: 1em;
   position: absolute;
   width: calc(100% - 2em);
-}
+} */
 
-.block img {
+/* .block img {
     width: calc(100% - 2em);
     height: calc(100% - 5em);
     object-fit: cover;
@@ -354,7 +354,7 @@ nav {
     bottom: 1em;
     position: absolute;
     margin: 0;
-}
+} */
 
 /* ---------- General elements ---------- */
 

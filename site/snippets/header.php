@@ -24,6 +24,7 @@
   <?php ?>
   <?= css([
     'assets/css/style.css',
+    'assets/css/style-cleanup.css',
     '@auto'
   ]) ?>
 
@@ -71,4 +72,4 @@
      </div>
   </header>
   <script src="https://cdn.jsdelivr.net/npm/@barba/core"></script>
-  <main data-barba="container" data-barba-namespace="home">
+  

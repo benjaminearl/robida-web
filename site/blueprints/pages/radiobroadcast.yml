@@ -14,12 +14,16 @@ sections:
           starttime:
             label: Start time
             type: time
-            display: HH:ss
+            display: HH:mm
+            step:
+              unit: minute
             width: 1/4
           endtime:
             label: End time
             type: time
-            display: HH:ss
+            display: HH:mm
+            step:
+              unit: minute
             width: 1/4
       content:
         type: fields
@@ -39,5 +43,9 @@ sections:
         label: Shows
         empty: Add show to schedule
         template: radioshow
+<<<<<<< Updated upstream
         info: "{{ page.starttime }}-{{ page.endtime }} | {{ page.people }} | {{ page.link }}"
         sortBy: starttime Asc
+=======
+        info: "{{ page.starttime.toDate('H:i') }}-{{ page.endtime.toDate('H:i') }} | {{ page.people.toPage.title }}"
+>>>>>>> Stashed changes

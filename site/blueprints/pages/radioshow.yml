@@ -12,16 +12,21 @@ fields:
   broadcastdate:
     label: Broadcast Date
     type: date
+    default: "{{ page.parent.date.toDate("Ymd")}}"
     display: DD-MM-YYYY
   starttime:
     label: Start time
     type: time
-    display: HH:ss
+    display: HH:mm
+    step:
+      unit: minute
     width: 1/6
   endtime:
     label: End time
     type: time
-    display: HH:ss
+    display: HH:mm
+    step:
+      unit: minute
     width: 1/6
   people:
     label: Host(s)
