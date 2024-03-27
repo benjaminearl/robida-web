@@ -21,7 +21,7 @@ var formattedDate = elevenMonthsAgo.toISOString().slice(0,10);
 
 
 // GET CALENDAR HEIGHT
-var midSectionHeight = document.getElementById("middle").clientHeight;
+var midSectionHeight = document.getElementById("calendar").clientHeight;
 var rowsHeight = midSectionHeight / 30;
 var rowAmount = Math.round(rowsHeight);
 
@@ -36,7 +36,7 @@ var rowAmount = Math.round(rowsHeight);
       minGridSize: 27,
       rangeAlign: "current",
       startDatetime: elevenMonthsAgo,
-      endDatetime: timelineEndDate,
+      endDatetime: thirtyDaysAhead,
       weekday: "short",
       minuteInterval: 60,
       minGridPer: 2,
