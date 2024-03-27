@@ -1,0 +1,45 @@
+Title: Elena Rucli
+
+----
+
+Authors: 
+
+----
+
+Color: #008a1c
+
+----
+
+Text: Elena Rucli is...
+
+----
+
+Birthyear: 
+
+----
+
+Birthcountry: 
+
+----
+
+Link1: 
+
+----
+
+Link1label: 
+
+----
+
+Link2: 
+
+----
+
+Link2label: 
+
+----
+
+Category: home
+
+----
+
+Uuid: sfa54DEHrqEZ49VW

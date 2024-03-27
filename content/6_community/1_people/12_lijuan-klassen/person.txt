@@ -1,0 +1,45 @@
+Title: Lijuan Klassen
+
+----
+
+Authors: 
+
+----
+
+Color: #c2c2c2
+
+----
+
+Text: 
+
+----
+
+Birthyear: 
+
+----
+
+Birthcountry: 
+
+----
+
+Link1: 
+
+----
+
+Link1label: 
+
+----
+
+Link2: 
+
+----
+
+Link2label: 
+
+----
+
+Category: 
+
+----
+
+Uuid: Cg8aakJE8gp7x4gU

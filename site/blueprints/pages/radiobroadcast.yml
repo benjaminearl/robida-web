@@ -21,8 +21,13 @@ sections:
             type: time
             display: HH:ss
             width: 1/4
-
-
+      content:
+        type: fields
+        fields:
+          description:
+              cast
+            type: text
+            placeholder: Optional information to add about this specific broadcast
 
       shows:
         type: pages
@@ -30,3 +35,4 @@ sections:
         empty: Add show to schedule
         template: radioshow
         info: "{{ page.starttime }}-{{ page.endtime }} | {{ page.people }} | {{ page.link }}"
+        sortBy: starttime Asc

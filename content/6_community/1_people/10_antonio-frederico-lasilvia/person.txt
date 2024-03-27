@@ -1,0 +1,45 @@
+Title: Antônio Frederico Lasilvia
+
+----
+
+Authors: 
+
+----
+
+Color: #b08282
+
+----
+
+Text: 
+
+----
+
+Birthyear: 
+
+----
+
+Birthcountry: 
+
+----
+
+Link1: 
+
+----
+
+Link1label: 
+
+----
+
+Link2: 
+
+----
+
+Link2label: 
+
+----
+
+Category: 
+
+----
+
+Uuid: xj3TE89wSvGVmS8t

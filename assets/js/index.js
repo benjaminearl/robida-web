@@ -8,16 +8,14 @@ var day=first.getDate();
 var month=first.getMonth()+1;
 var year=first.getFullYear();
 
-timelineEndDate = year + '-' + month + '-' + day;
+thirtyDaysAhead = year + '-' + month + '-' + day;
 
 // GENERATE START DATE - 11 months ago
 // Get the current date
 var currentDate = new Date();
-
 // Calculate the date 11 months ago
 var elevenMonthsAgo = new Date(currentDate);
 elevenMonthsAgo.setMonth(currentDate.getMonth() - 11);
-
 // Format the date to YYYY-MM-DD
 var formattedDate = elevenMonthsAgo.toISOString().slice(0,10);
 

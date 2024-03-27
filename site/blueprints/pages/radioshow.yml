@@ -5,7 +5,7 @@ navigation:
 image:
   icon: 📡
   back: "#fff9e8"
-num: '{{ page.broadcastdate.toDate("Ymd") }}'
+num: '{{ page.created.toDate("YmdHi") }}'
 
 
 fields:
@@ -33,3 +33,12 @@ fields:
     label: Link to episode on mixcloud
     type: url
     width: 2/6
+  description:
+    label: About the show
+    type: text
+    placeholder: Optional information to add about this show
+  series:
+    label: Show series
+    type: tags
+    max: 1
+    help: If this show is part of a series, add its name as a tag here to add it to the archive of the other shows.
