@@ -40,10 +40,5 @@ sections:
         label: Shows
         empty: Add show to schedule
         template: radioshow
-<<<<<<< Updated upstream:site/blueprints/pages/radio-broadcast.yml
         sortBy: starttime Asc
         info: "{{ page.starttime.toDate('H:i') }}-{{ page.endtime.toDate('H:i') }} | {{ page.people.toPage.title }}"
-=======
-        info: "{{ page.starttime.toDate('H:i') }}-{{ page.endtime.toDate('H:i') }} | {{ page.people.toPage.title }}"
-        
->>>>>>> Stashed changes:site/blueprints/pages/radiobroadcast.yml
