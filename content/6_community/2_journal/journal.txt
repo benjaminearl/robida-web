@@ -2,4 +2,13 @@ Title: Journal
 
 ----
 
-Uuid: kdo8Rs7HYC5TsgEr
+Updated-upstream-uuid:
+
+kdo8Rs7HYC5TsgEr
+=======
+Uuid: nLPnDiacgT9BQ0S6
+>>>>>>> Stashed changes
+
+----
+
+Uuid: uAqsLF6dEoAVBuR2

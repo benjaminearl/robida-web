@@ -2,7 +2,11 @@ Title: Kirsten Spruit
 
 ----
 
+<<<<<<< Updated upstream
 Authors: - kZOy6JZz
+=======
+Authors: 
+>>>>>>> Stashed changes
 
 ----
 
@@ -38,8 +42,16 @@ Link2label: instagram
 
 ----
 
+<<<<<<< Updated upstream
 Category: away
 
 ----
 
 Uuid: fsnDJLei9KRgqHlQ
+=======
+Category: home
+
+----
+
+Uuid: BOd1CPIwfRUWFFyS
+>>>>>>> Stashed changes

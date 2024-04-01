@@ -104,15 +104,15 @@ var rowAmount = Math.round(rowsHeight);
     function mobLeftSidebar(x) {
       if (x.matches) { // If media query matches
         document.getElementById("leftSidebar").style.width = "100vw";
-        document.getElementById("center").style.marginLeft = "4em";
+        // document.getElementById("center").style.marginLeft = "4em";
         document.getElementById("closeLeft").style.display = "block";
         document.getElementById("openLeft").style.display = "none";
       } else {
         document.getElementById("leftSidebar").style.width = "20vw";
-        document.getElementById("center").style.marginLeft = "20vw";
+        // document.getElementById("center").style.marginLeft = "20vw";
         document.getElementById("closeLeft").style.display = "block";
         document.getElementById("openLeft").style.display = "none";
-        document.getElementById("center").style.width = "calc(80vw - 4em)";
+        // document.getElementById("center").style.width = "calc(80vw - 4em)";
       }
     }
 
