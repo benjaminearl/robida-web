@@ -1,0 +1,29 @@
+Title: Academy of Margins - Mystical Ecologies with Michael Marder and Aljaž Škrlep
+
+----
+
+Broadcastdate: 2022-08-17
+
+----
+
+Starttime: 20:00:00
+
+----
+
+Endtime: 22:00:00
+
+----
+
+People: 
+
+----
+
+Link: 
+
+----
+
+<<<<<<< Updated upstream
+Uuid: OdHkMh5JCYQ87Yz5
+=======
+Uuid: CbqCxlAjRAHgUfMM
+>>>>>>> Stashed changes

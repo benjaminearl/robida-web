@@ -21,4 +21,13 @@ Text:
 
 ----
 
-Uuid: ZmPVpMy2f28TRtKy
+Updated-upstream-uuid:
+
+ZmPVpMy2f28TRtKy
+=======
+Uuid: U001C5h4KlX1ITZ1
+>>>>>>> Stashed changes
+
+----
+
+Uuid: 7cuXxsQCrCRh75Wj

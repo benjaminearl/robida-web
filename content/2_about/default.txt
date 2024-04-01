@@ -29,4 +29,13 @@ Robida is a cure.
 
 ----
 
-Uuid: UNtDTzBtTNQE2NZW
+Updated-upstream-uuid:
+
+UNtDTzBtTNQE2NZW
+=======
+Uuid: LQNFttVXLl6hiF19
+>>>>>>> Stashed changes
+
+----
+
+Uuid: Esv6xaROH7NJmwco

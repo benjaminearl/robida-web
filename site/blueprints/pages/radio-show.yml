@@ -2,10 +2,6 @@ Title: Radio show
 navigation:
   status: all
   template: all
-image:
-  icon: 📡
-  back: "#fff9e8"
-num: '{{ page.created.toDate("YmdHi") }}'
 
 
 fields:
@@ -17,14 +13,14 @@ fields:
   starttime:
     label: Start time
     type: time
-    display: HH:mm
+    display: HH:ii
     step:
       unit: minute
     width: 1/6
   endtime:
     label: End time
     type: time
-    display: HH:mm
+    display: HH:ii
     step:
       unit: minute
     width: 1/6
