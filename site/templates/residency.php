@@ -1,28 +1,29 @@
-<?php snippet('header') ?>
-<?php snippet('nav') ?>
+<?php snippet('base-layout', slots: true) ?>
 
-<div id="center">
-  <div id="left">
-    <h1><?= $page->title() ?></h1>
-    <div class="bodytext">
-      <p><?= $page->Text()->kt() ?></p>
-    </div>
+  <?php slot() ?>
+    <main id="center">
+        <div class="main__left">
+        <h1><?= $page->title() ?></h1>
+        <div class="bodytext">
+          <p><?= $page->Text()->kt() ?></p>
+        </div>
 
-    <div class="current-residents">
-    <?php if($page->currentResidents()->isNotEmpty()): ?>
-        <?php if($residents = $page->currentResidents()->toPages()): ?>
-            <h3>Current residents:</h3>
-            <ul>
-            <?php foreach($residents as $residents): ?>
-                <li class="profile"><?= $residents->title() ?></li>
-            <?php endforeach ?>
-            </ul>
+        <div class="current-residents">
+        <?php if($page->currentResidents()->isNotEmpty()): ?>
+            <?php if($residents = $page->currentResidents()->toPages()): ?>
+                <h3>Current residents:</h3>
+                <ul>
+                <?php foreach($residents as $residents): ?>
+                    <li class="profile"><?= $residents->title() ?></li>
+                <?php endforeach ?>
+                </ul>
+                <?php endif ?>
             <?php endif ?>
-        <?php endif ?>
-            </div>
-  </div>
-  <div id="right">
-    <?php if($image = $page->cover()->toFile()): ?>
+                </div>
+          
+        </div>
+        <div class="main__right">
+        <?php if($image = $page->cover()->toFile()): ?>
       <img src="<?= $image->url() ?>" alt="">
     <?php endif ?>
 
@@ -37,10 +38,8 @@
         <?php endforeach ?>
       </ul>
     <?php endif ?>
+        </div>
+    </main>
+  <?php endslot() ?>
 
-  </div>
-</div>
-
-
-<?php snippet('rightbar') ?>
-<?php snippet('footer') ?>
+<?php endsnippet() ?>

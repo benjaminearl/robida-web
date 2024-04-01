@@ -1,7 +1,7 @@
 <?php snippet('base-layout', slots: true) ?>
 
   <?php slot() ?>
-    <main id="center" data-barba="container" data-barba-namespace="home">
+    <main id="center">
         <div class="main__left">
           <h1><?= $page->title() ?></h1>
           <section>

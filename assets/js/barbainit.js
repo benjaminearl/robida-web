@@ -5,7 +5,7 @@
 
           // load your script
           let script = document.createElement('script');
-          script.src = 'https://robidacollective.com/assets/js/index.js';
+          // script.src = 'https://robidacollective.com/assets/js/index.js';
           next.container.appendChild(script);
 
           var coll = document.getElementsByClassName("collapsible");

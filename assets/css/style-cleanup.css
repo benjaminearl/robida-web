@@ -1,3 +1,7 @@
+:root {
+    --border-solid: 1px solid #333;
+}
+
 #center {
     height: calc(100vh - 8rem - 2px);
     width: calc(100vw - 8rem);
@@ -7,6 +11,30 @@
     position: absolute;
     z-index: -1;
     top: calc(4em + 1px);
+}
+
+#left-sidebar, #right-sidebar {
+    width: 4rem;
+}
+
+#right-sidebar {
+    left: auto;
+    right: 0;
+    position: fixed;
+    border-left: 1px solid;
+    border-right: 0px;
+}
+
+.sidebar {
+    height: calc(100vh - 8rem - 1px);
+    border-right: 1px solid;
+    position: fixed;
+    left: 0;
+    top: calc(4rem + 1px);
+    background-color: white;
+    z-index: 1;
+    overflow-x: hidden;
+    transition: 0.5s;
 }
 
 
@@ -111,4 +139,118 @@ background-color: whitesmoke;
     width: calc(100%);
     height: calc(100% - 2em);
     overflow: scroll;
+}
+
+
+/* ------------- MOBILE --------------- */
+
+@media only screen and (max-width: 1375px) {
+    html {
+      font-size: 11px;
+    }
+}
+  
+  
+@media only screen and (max-width: 720px) {
+
+    #center {
+        height: calc(100vh - 11em - 2px);
+        width: calc(100vw);
+        margin-left: 0;
+        transition: margin-left .5s;
+        position: absolute;
+        top: calc(7em + 1px);
+        overflow-y: scroll;
+    }
+
+    .main__top {
+        display: grid;
+        grid-template-columns: 1fr;
+        height: auto;
+        width: 100%;
+    }
+    .main__bottom {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 1rem;
+        height: auto;
+        width: calc(100% - 2rem);
+    }
+    .home__block {
+        border: none;
+        border-bottom: 1px solid #333;
+        width: calc(100% - 2rem);
+    }
+    .home__block--journal {
+        border: 1px solid lightgrey;
+        margin-right: 0;
+        padding: 1rem;
+        height: auto;
+        width: calc(100% - 2rem);
+    }
+
+    .main__left, .main__right {
+        width: calc(100% - 2em);
+        height: auto;
+    }
+
+    .main__left {
+        float: none;
+    }
+
+    .main__right {
+        float: none;
+        width: calc(100% - 2em);
+        border-left: 0px solid;
+        border-top: 1px solid;
+    }
+
+    .main__left--journal, .main__right--journal, .main__center--journal {
+        width: calc(100% - 2em);
+        height: auto;
+        border: none;
+    }
+
+    .main__center--journal {
+        border-top: 1px dashed lightgrey;
+        border-bottom: 1px dashed lightgrey;
+    }
+
+    #left-sidebar, #right-sidebar {
+        height: 3rem;
+    }
+    #left-sidebar {
+        width: 100vw;
+    }
+    .sidebar {
+        border-bottom: var(--border-solid);
+    }
+    #menu {
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.3s, visibility 0.3s;
+    }
+
+
+    nav p {
+        font-size: 1.2em;
+    }
+
+    ul.mag-overview {
+        grid-template-columns: 1fr;
+    }
+    ul#people-overview {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    #journal-pagination {
+        position: static;
+    }
+
+}
+
+@media only screen and (max-width: 400px) {
+    .main__bottom {
+        font-size: 0.5em;
+    }
 }

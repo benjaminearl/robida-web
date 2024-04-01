@@ -1,7 +1,7 @@
 <?php snippet('base-layout', slots: true) ?>
 
   <?php slot() ?>
-    <main id="center" data-barba="container" data-barba-namespace="home">
+    <main id="center">
         <div class="main__left">
           <?php if ($page->parent()->isListed()): ?>
             <div class="parent">

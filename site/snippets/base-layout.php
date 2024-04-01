@@ -26,6 +26,7 @@
 </head>
 
 <body data-barba="wrapper">
+    
     <header>
         <div class="logo">
         <a href="<?= $site->url() ?>"><img id="logo" src="https://robidacollective.com/assets/images/robida_logo_vector.png" alt="Robida"></a>
@@ -65,57 +66,57 @@
     </header>
     <script src="https://cdn.jsdelivr.net/npm/@barba/core"></script>
 
+    <div data-barba="container" data-barba-namespace="home">
+        <div id="left-sidebar" class="sidebar">
+            <div id="closeLeft" onclick="closeNav()">
+            <<
+        </div>
+            <div id="openLeft" onclick="openNav()">
+            Menu
+        </div>
+            <nav id="menu">
+                <ul>
+                    <?php $items = $pages->listed(); ?>
+                    <?php foreach($items as $item): ?>
+                    <?php if ($item->hasChildren()): ?>
+                        <li class="container"><p><a<?php e($item->isOpen(), ' class="active"') ?> href="<?= $item->url() ?>" style="pointer-events: none;"><?= $item->title()->html() ?></a></p>
+                        <ul>
+                            <?php $children =  $item->children();  foreach($children as $child): ?>
+                            <li><p><a<?php e($child->isOpen(), ' class="active"') ?> href="<?= $child->url() ?>"><?= $child->title()->html() ?></a></p></li>
+                            <?php endforeach ?>
+                        </ul>
+                        </li>
+                    <?php else: ?>
+                        <li><p><a<?php e($item->isOpen(), ' class="active"') ?> href="<?= $item->url() ?>"><?= $item->title()->html() ?></a></p></li>
+                    <?php endif; ?>
+                    <?php endforeach ?>
+                </ul>
+            </nav>
+        </div>
+            
+        <?= $slot ?>
 
-    <div id="leftSidebar">
-        <span id="closeLeft" onclick="closeNav()">
-        <<
-        </span>
-        <span id="openLeft" onclick="openNav()">
-        Menu
-        </span>
-        <nav>
-            <ul>
-                <?php $items = $pages->listed(); ?>
-                <?php foreach($items as $item): ?>
-                <?php if ($item->hasChildren()): ?>
-                    <li class="container"><p><a<?php e($item->isOpen(), ' class="active"') ?> href="<?= $item->url() ?>" style="pointer-events: none;"><?= $item->title()->html() ?></a></p>
+        <div id="right-sidebar" class="sidebar">
+            <span id="openRight" onclick="openGlossary()">ABC</span>
+            <div id="glossary-content">
+                <div id="glossary-title"><h1><?= page('glossary')->title() ?></h1><span id="closeRight" onclick="closeGlossary()">>></span>
+                </div>
+                <div class="bodytext" style="padding: 1rem;">
                     <ul>
-                        <?php $children =  $item->children();  foreach($children as $child): ?>
-                        <li><p><a<?php e($child->isOpen(), ' class="active"') ?> href="<?= $child->url() ?>"><?= $child->title()->html() ?></a></p></li>
-                        <?php endforeach ?>
-                    </ul>
-                    </li>
-                <?php else: ?>
-                    <li><p><a<?php e($item->isOpen(), ' class="active"') ?> href="<?= $item->url() ?>"><?= $item->title()->html() ?></a></p></li>
-                <?php endif; ?>
-                <?php endforeach ?>
-            </ul>
-        </nav>
-    </div>
-    
-    <?= $slot ?>
+                    <?php $items = $site->find('glossary')->children()->listed()->sortBy('title', 'asc'); ?>
+                    <?php foreach ($items as $item): ?>
+                        <h2 class="collapsible"><?= $item->title() ?></h2>
+                        <div class="content">
+                            <p><?= $item->text()->kt() ?></p>
 
-    <div id="rightSidebar">
-        <span id="openRight" onclick="openGlossary()">ABC</span>
-        <div id="glossary-content">
-            <div id="glossary-title"><h1><?= page('glossary')->title() ?></h1><span id="closeRight" onclick="closeGlossary()">>></span>
-            </div>
-            <div class="bodytext" style="padding: 1rem;">
-                <ul>
-                <?php $items = $site->find('glossary')->children()->listed()->sortBy('title', 'asc'); ?>
-                <?php foreach ($items as $item): ?>
-                    <h2 class="collapsible"><?= $item->title() ?></h2>
-                    <div class="content">
-                        <p><?= $item->text()->kt() ?></p>
-
-                    </div>
-                    <hr>
-                <?php endforeach ?>
-                <ul>
+                        </div>
+                        <hr>
+                    <?php endforeach ?>
+                    <ul>
+                </div>
             </div>
         </div>
     </div>
-
     <footer>
     <div id="currently-in-topolo">
         <marquee scrollamount="5">
@@ -126,13 +127,13 @@
         </marquee>
     </div>
     <div id="contact">
-        <a href="https://www.instagram.com/r_o_b_i_d_a/" target="_blank">Instagram</a>
+        <a href="https://www.instagram.com/r_o_b_i_d_a/" target="_blank">ig</a>
     </div>
 
 
 
     </footer>
-
+    
 
 
   <?= js([

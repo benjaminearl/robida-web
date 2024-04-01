@@ -1,7 +1,7 @@
 <?php snippet('base-layout', slots: true) ?>
 
   <?php slot() ?>
-    <main id="center" data-barba="container" data-barba-namespace="home">
+    <main id="center">
       <div class="main__left main__left--journal">
         <div class="parent">
           <a href="<?= $page->parent()->url() ?>"><< <?= $page->parent()->title() ?></a>

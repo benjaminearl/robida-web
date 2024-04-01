@@ -1,7 +1,7 @@
 <?php snippet('base-layout', slots: true) ?>
 
   <?php slot() ?>
-    <main id="center" data-barba="container" data-barba-namespace="home">
+    <main id="center">
         <div class="main__top">
           <?php $HomepageBlocks =  $page->homeBlocks()->toPages();
           foreach($HomepageBlocks as $HomepageBlock): ?>

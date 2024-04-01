@@ -169,7 +169,7 @@ header {
 
 /* ------------------- SIDEBARS ------------------- */
 
-#leftSidebar, #rightSidebar {
+/* #leftSidebar, #rightSidebar {
   height: calc(100vh - 8rem - 1px);
   width: 4rem;
   border-right: 1px solid;
@@ -180,18 +180,19 @@ header {
   z-index: 1;
   overflow-x: hidden;
   transition: 0.5s;
-}
+} */
 
 #closeLeft, #openLeft, #closeRight, #openRight {
   font-size: 0.8em;
   text-align:center;
-  padding-top: 1rem;
+  padding: 1rem;
+  padding-bottom: 0;
   cursor: pointer;
+  width: 2rem;
 }
 
 #closeLeft, #closeRight {
   display: none;
-  width: 4rem;
 }
 
 #openLeft, #openRight {
@@ -202,7 +203,6 @@ header {
   position: absolute;
   top: 0;
   right: 0;
-  text-align:center;
 }
 
 nav {
@@ -211,13 +211,13 @@ nav {
   margin-top: calc(-2rem - 3px);
 }
 
-#rightSidebar {
+/* #rightSidebar {
   left: auto;
   right: 0;
   position: fixed;
   border-left: 1px solid;
   border-right: 0px;
-}
+} */
 
 #glossary-content {
   display: none;
@@ -577,15 +577,17 @@ footer {
 
 
 #contact {
-  width: auto;
+  width: 2rem;
   height: 100%;
   display: inline-block;
   position: absolute;
-  right: 1rem;
+  right: 0;
   padding: 1rem;
-  padding-top: 1.2rem;
+  padding-top: 1.5rem;
   background-color: inherit;
   z-index: 1;
+  text-align: center;
+  border-left: var(--border-solid);
 
 }
 
@@ -675,80 +677,3 @@ marquee {
   color: black;
 }
 
-/* ------------- MOBILE --------------- */
-
-@media only screen and (max-width: 1375px) {
-  html {
-    font-size: 11px;
-  }
-}
-
-
-@media only screen and (max-width: 720px) {
-
-  #center {
-    /* height: calc(100vh - 8em - 2px); */
-    width: calc(100vw - 8em);
-    margin-left: 4em;
-    transition: margin-left .5s;
-    position: absolute;
-    top: calc(4em + 1px);
-    overflow-y: scroll;
-  }
-
-  #left, #right {
-    width: calc(100% - 2em);
-    height: auto;
-  }
-
-  #left {
-    float: none;
-  }
-
-  #right {
-    float: none;
-    width: calc(100% - 2em);
-    border-left: 0px solid;
-    border-top: 1px solid;
-  }
-
-  #journal-left, #journal-right, #journal-center {
-    width: calc(100% - 2em);
-    height: auto;
-    border: none;
-  }
-
-  #journal-center {
-    border-top: 1px dashed lightgrey;
-    border-bottom: 1px dashed lightgrey;
-  }
-
-
-  nav p {
-    font-size: 1.2em;
-  }
-
-  .block {
-    display: inline-block;
-    aspect-ratio: 1 / 1;
-  }
-
-  ul.mag-overview {
-    grid-template-columns: 1fr;
-  }
-  ul#people-overview {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-
-  #journal-pagination {
-    position: static;
-  }
-
-
-}
-
-@media only screen and (max-width: 400px) {
-  #bottom {
-    font-size: 0.5em;
-  }
-}
