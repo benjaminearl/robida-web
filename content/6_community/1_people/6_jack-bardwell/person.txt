@@ -6,6 +6,10 @@ Authors:
 
 ----
 
+Color: #a02222
+
+----
+
 Text: 
 
 ----
@@ -22,7 +26,15 @@ Link1:
 
 ----
 
+Link1label: 
+
+----
+
 Link2: 
+
+----
+
+Link2label: 
 
 ----
 
@@ -30,8 +42,13 @@ Category: away
 
 ----
 
-<<<<<<< Updated upstream
-Uuid: JEihGAqZuVhniz60
+Updated-upstream-uuid:
+
+JEihGAqZuVhniz60
 =======
 Uuid: 3tBc7dhsTdEs30Oo
 >>>>>>> Stashed changes
+
+----
+
+Uuid: Yh4Ex3DVMz2npegl

@@ -22,7 +22,7 @@
             <!-- RADIO BLOCK -->
             <?php elseif ($HomepageBlocks->title() == 'Radio Robida'): ?>
               <?php $futureBroadcasts = $HomepageBlocks->children()->sortBy('num', 'desc')->filterBy('fromDate', 'date >=', 'today');
-                $lastBroadcast = $HomepageBlocks->children()->sortBy('num', 'desc')->filterBy('fromDate', 'date <', 'today')->first();
+                $lastBroadcast = $HomepageBlocks->children()->sortBy('num', 'asc')->filterBy('fromDate', 'date <=', 'today')->first();
                 $upcomingBroadcast = $futureBroadcasts->first(); ?>
               <div class="home__block">
                 <a class="home__block__title" href="<?= $HomepageBlocks->url() ?>">
@@ -45,7 +45,7 @@
                     <?php else: ?>
                       <h3>Last broadcast: <span style="color:#333"><?= $lastBroadcast->fromDate()->toDate('d M Y') ?></span></h3>
                           <ul>
-                            <?php $shows = $lastBroadcast->children(); foreach($shows as $show): ?>
+                            <?php $shows = $lastBroadcast->children()->sortBy('startTime', 'Asc'); foreach($shows as $show): ?>
                             <li class="roundBorder">
                               <?= $show->starttime()->toDate('H:i') ?>-<?= $show->endtime()->toDate('H:i') ?> |
                               <?= $show->title()->html() ?>

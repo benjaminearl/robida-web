@@ -10,21 +10,21 @@ columns:
       info:
         type: fields
         fields:
-          fromDate:
+          startDate:
             label: Start
             type: date
             width: 1/2
             default: today
-          fromTime:
+          startTime:
             label: Start Time
             type: time
             width: 1/2
-          toDate:
+          endDate:
             label: End Date
             type: date
             width: 1/2
             default: today + 1day
-          toTime:
+          endTime:
             label: End Time
             type: time
             width: 1/2
@@ -43,7 +43,7 @@ columns:
         type: pages
         label: Programme
         empty: Add programme to schedule
-        sortBy: starttime Asc
+        sortBy: startTime Asc
         template: 
           - radio-show
           - event-item

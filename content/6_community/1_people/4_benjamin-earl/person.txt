@@ -6,6 +6,10 @@ Authors:
 
 ----
 
+Color: #9d2020
+
+----
+
 Text: 
 
 ----
@@ -22,7 +26,15 @@ Link1:
 
 ----
 
+Link1label: 
+
+----
+
 Link2: 
+
+----
+
+Link2label: 
 
 ----
 
@@ -30,8 +42,13 @@ Category:
 
 ----
 
-<<<<<<< Updated upstream
-Uuid: CkGxNPdetacojgnP
+Updated-upstream-uuid:
+
+CkGxNPdetacojgnP
 =======
 Uuid: 0dzfy5FEpEJW1GAR
 >>>>>>> Stashed changes
+
+----
+
+Uuid: prf3b0Xr3JFM6jgP

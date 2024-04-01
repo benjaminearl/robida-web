@@ -34,8 +34,13 @@ Nationality:
 
 ----
 
-<<<<<<< Updated upstream
-Uuid: WWdyWooo7Bdg4GH4
+Updated-upstream-uuid:
+
+WWdyWooo7Bdg4GH4
 =======
 Uuid: mJpvmeBnjtmq2GFs
 >>>>>>> Stashed changes
+
+----
+
+Uuid: UmKtc3d7DeZ5MdQ2
