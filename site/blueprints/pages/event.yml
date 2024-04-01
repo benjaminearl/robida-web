@@ -43,36 +43,50 @@ columns:
             label: Related Project
             type: pages
             query: site.find('projects')
-          # altLink:
-          #   label: Alternative Link
-          #   type: pages
-          #   query: site.find('projects')
+          category:
+            label: Event Type
+            type: radio
+            options:
+              radio-broadcast: Radio Broadcast
+              normal-event: Normal Event
 
-          programme:
-            label: Programme
-            type: structure
-            fields:
-              day:
-                label: Day
-                type: date
-              timetable:
-                type: structure
-                label: Timetable
-                fields:
-                  start:
-                    label: Start Time
-                    type: time
-                    width: 1/2
-                  end:
-                    label: End Time
-                    type: time
-                    width: 1/2
-                  title:
-                    label: Title
-                    type: text
-                  text:
-                    label: Description
-                    type: textarea
+
+      programme:
+        type: pages
+        label: Programme
+        empty: Add programme to schedule
+        sortBy: starttime Asc
+        template: 
+          - radio-show
+          - event-item
+        info: "{{ page.date }}"
+
+
+          # programme:
+          #   label: Programme
+          #   type: structure
+          #   fields:
+          #     day:
+          #       label: Day
+          #       type: date
+          #     timetable:
+          #       type: structure
+          #       label: Timetable
+          #       fields:
+          #         start:
+          #           label: Start Time
+          #           type: time
+          #           width: 1/2
+          #         end:
+          #           label: End Time
+          #           type: time
+          #           width: 1/2
+          #         title:
+          #           label: Title
+          #           type: text
+          #         text:
+          #           label: Description
+          #           type: textarea
 # -------------------------
 
   # right/down

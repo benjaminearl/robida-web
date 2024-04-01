@@ -10,14 +10,18 @@ var year=first.getFullYear();
 
 thirtyDaysAhead = year + '-' + month + '-' + day;
 
-// GENERATE START DATE - 11 months ago
+// GENERATE START DATE - 10 months and 28 days
 // Get the current date
 var currentDate = new Date();
-// Calculate the date 11 months ago
-var elevenMonthsAgo = new Date(currentDate);
-elevenMonthsAgo.setMonth(currentDate.getMonth() - 11);
+
+// Calculate the date 10 months and 28 days ago
+var tenMonthsAndTwentyEightDaysAgo = new Date(currentDate);
+tenMonthsAndTwentyEightDaysAgo.setMonth(currentDate.getMonth() - 10);
+tenMonthsAndTwentyEightDaysAgo.setDate(currentDate.getDate() - 28);
+
 // Format the date to YYYY-MM-DD
-var formattedDate = elevenMonthsAgo.toISOString().slice(0,10);
+var startDateCalculation = tenMonthsAndTwentyEightDaysAgo.toISOString().slice(0, 10);
+
 
 
 // GET CALENDAR HEIGHT
@@ -35,7 +39,7 @@ var rowAmount = Math.round(rowsHeight);
       rows: rowAmount,
       minGridSize: 27,
       rangeAlign: "current",
-      startDatetime: elevenMonthsAgo,
+      startDatetime: startDateCalculation,
       endDatetime: thirtyDaysAhead,
       weekday: "short",
       minuteInterval: 60,

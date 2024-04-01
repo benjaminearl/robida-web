@@ -2,7 +2,7 @@
 <?php snippet('nav') ?>
 
 <div id="center">
-  <div id="left">
+  <div class="main__left">
     <h1><?= $page->title() ?></h1>
     <section>
       <div class="bodytext">
@@ -14,7 +14,7 @@
     </section>
   </div>
 
-  <div id="right">
+  <div class="main__right">
     <section>
 
       <?php $upcomingBroadcasts = $page->children()->sortBy('date', 'asc')->filterBy('date', 'date >=', 'today'); ?>
@@ -43,29 +43,26 @@
     <?php endif ?>
 
     <section>
-    <?php $pastBroadcasts = $page->children()->sortBy('date', 'asc')->filterBy('date', 'date <=', 'today'); ?>
+    <?php $pastBroadcasts = $page->children()->sortBy('date', 'asc')->filterBy('date', 'date <=', 'today')->limit(6); ?>
     <?php if($pastBroadcasts->isNotEmpty()): ?>
       <h2>Past</h2>
-      <ul>
+      <ul class="mag-overview">
       <?php foreach($pastBroadcasts as $pastBroadcast): ?>
-            <li>
+        <li>
+          <?php $images = $pastBroadcast->files();
+            foreach ($images as $image): ?>
               <a href="<?= $pastBroadcast->url() ?>">
-              <?php $images = $pastBroadcast->files();
-                foreach ($images as $image): ?>
                 <img src="<?= $image->url() ?>" alt="">
-                <?php endforeach ?>
               </a>
-            </li>
+              <h2><?= $pastBroadcast->title() ?></h2>
+              <h3><?= $pastBroadcast->date() ?></h3>
             <?php endforeach ?>
-          </ul>
-        <?php endif ?>
-
-
-
-
-
-      <h3><a href="<?= $page->archive() ?>" target="_blank">Go to archive →</a><h3>
+          </li>
+        <?php endforeach ?>
+      </ul>
+    <?php endif ?>
     </section>
+    <h3><a href="<?= $page->archive() ?>" target="_blank">Visit our full archive →</a><h3>
 
   </div>
 </div>

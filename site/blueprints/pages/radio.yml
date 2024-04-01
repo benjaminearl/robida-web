@@ -19,6 +19,6 @@ columns:
     sections:
       broadcasts:
         type: pages
-        template: radiobroadcast
+        # template: radiobroadcast
         title: Broadcast
         info: "{{ page.date }}"

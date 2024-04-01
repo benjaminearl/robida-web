@@ -83,24 +83,22 @@
         </div>
 
         <!-- CALENDAR -->
-        <div class="main__middle">
-          <?php $items = $site->index()->filterBy('template', 'event'); ?>
+        <div class="main__middle" id="calendar">
+          <?php $items = $site->index()->filterBy('template', 'in', ['event', 'radio-broadcast']); ?>
           <div id="myTimeline">
             <ul class="timeline-events">
             <?php $i = 0;
-            foreach($items as $items): $i++; ?>
-              <?php if($items->altLink()->isNotEmpty()): ?>
-                <?php $alternateLink = $items->altLink()->toPage() ?>
-                <li data-timeline-node="{ start:'<?= $items->fromDate() ?> <?=$items->fromTime() ?>', end:'<?= $items->toDate() ?> <?= $items->toTime() ?>', row:'<?php echo $i ?>' }">
-                  <a href="<?= $alternateLink->url() ?>"><?= $items->title() ?></a>
+            foreach($items as $item): $i++; ?>
+                <?php if($item->template() == 'radio-broadcast'): ?>
+                  <li data-timeline-node="{ start:'<?= $item->date() ?> <?=$item->starttime() ?>', end:'<?= $item->date() ?> <?= $item->endtime() ?>', row:'<?php echo $i ?>' }">
+                  <a href="<?= $item->url() ?>"><?= $item->title() ?></a>
                 </li>
-              <?php else: ?>
-                <li data-timeline-node="{ start:'<?= $items->fromDate() ?> <?=$items->fromTime() ?>', end:'<?= $items->toDate() ?> <?= $items->toTime() ?>', row:'<?php echo $i ?>' }">
-                  <a href="<?= $items->url() ?>"><?= $items->title() ?></a>
+                <?php else: ?>
+                  
+                <li data-timeline-node="{ start:'<?= $item->fromDate() ?> <?=$item->fromTime() ?>', end:'<?= $item->toDate() ?> <?= $item->toTime() ?>', row:'<?php echo $i ?>' }">
+                  <a href="<?= $item->url() ?>"><?= $item->title() ?></a>
                 </li>
                 <?php endif ?>
-              <?php if($i > 4): $i = 0 ?>
-              <?php endif ?>
             <?php endforeach ?>
             </ul>
           </div>
