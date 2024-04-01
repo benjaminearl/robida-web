@@ -22,6 +22,16 @@ tenMonthsAndTwentyEightDaysAgo.setDate(currentDate.getDate() - 28);
 // Format the date to YYYY-MM-DD
 var startDateCalculation = tenMonthsAndTwentyEightDaysAgo.toISOString().slice(0, 10);
 
+// MOBILE VH
+
+function mobileWindow() {
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+  console.log("VH on mobiles", vh);
+}
+
+window.addEventListener("resize", mobileWindow, false);
+window.addEventListener("orientationchange", mobileWindow, false);
 
 
 // GET CALENDAR HEIGHT

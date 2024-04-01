@@ -2,6 +2,7 @@
     --border-solid: 1px solid #333;
 }
 
+
 #center {
     height: calc(100vh - 8rem - 2px);
     width: calc(100vw - 8rem);
@@ -154,7 +155,7 @@ background-color: whitesmoke;
 @media only screen and (max-width: 720px) {
 
     #center {
-        height: calc(100vh - 11em - 2px);
+        height: calc(100vh - 11rem - 2px);
         width: calc(100vw);
         margin-left: 0;
         transition: margin-left .5s;
@@ -169,12 +170,17 @@ background-color: whitesmoke;
         height: auto;
         width: 100%;
     }
+    .main__middle {
+        height: 30rem;
+        min-height: auto;
+    }
     .main__bottom {
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-gap: 1rem;
         height: auto;
         width: calc(100% - 2rem);
+        padding-bottom: 8rem;
     }
     .home__block {
         border: none;
