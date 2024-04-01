@@ -5,22 +5,21 @@ navigation:
 
 
 fields:
-  broadcastdate:
+  broadcastDate:
     label: Broadcast Date
     type: date
-    default: "{{ page.parent.date.toDate("Ymd")}}"
     display: DD-MM-YYYY
-  starttime:
+  startTime:
     label: Start time
     type: time
-    display: HH:ii
+    display: HH:mm
     step:
       unit: minute
     width: 1/6
-  endtime:
+  endTime:
     label: End time
     type: time
-    display: HH:ii
+    display: HH:mm
     step:
       unit: minute
     width: 1/6

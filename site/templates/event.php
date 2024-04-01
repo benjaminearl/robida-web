@@ -8,10 +8,11 @@
               <a href="<?= $page->parent()->url() ?>"><< <?= $page->parent()->title() ?></a>
             </div>
           <?php endif ?>
-          <h1><?= $page->title() ?></h1>
           <section>
+            <?php $coverImage = $page->cover(); ?>
+            <h1><?= $page->title() ?></h1>
             <div class="issue-info">
-              <p><?= $page->fromDate()->toDate('d M') ?> – <?= $page->toDate()->toDate('d M Y') ?></p>
+              <p><?= $page->startDate()->toDate('d M') ?> – <?= $page->endDate()->toDate('d M Y') ?></p>
               <p style="text-align:right;"><?= $page->location() ?></p>
             </div>
             <div class="bodytext">
@@ -21,23 +22,26 @@
         </div>
         <div class="main__right">
           <section>
-            <ul>
-            <?php $items = $page->programme()->toStructure(); foreach ($items as $item): ?>
-              <li class="section">
-                <h3><?= $item->day()->toDate('D d M Y') ?></h3>
-                <ul>
-                  <?php $subitems = $item->timetable()->toStructure(); foreach ($subitems as $subitem): ?>
-                    <li class="roundBorder">
-                      <p><?= $subitem->start()->toDate('H:i') ?>-<?= $subitem->end()->toDate('H:i') ?> | <?= $subitem->title() ?>
-                      <?php if($subitem->text()->isNotEmpty()): ?>
-                      <br><br><?= $subitem->text()->kt() ?></p>
-                    <?php endif ?>
-                    </li>
+            <h2>Programme:</h2>
+            <ul class="radioSchedule">
+              <?php $shows = $page->children()->sortBy('starttime', 'Asc'); foreach($shows as $show): ?>
+                <li class="roundBorder">
+                  <a href="<?= $show->url() ?>">
+                    <?= $show->startTime()->toDate('H:i') ?>-<?= $show->endTime()->toDate('H:i') ?> |
+                    <?= $show->title()->html() ?>
+                  </a> |
+                  <?php $hosts =  $show->people()->toPages();  foreach($hosts as $host): ?>
+                    <a class="profile" style="background-color: <?php echo $host->color(); ?>" href="<?= $host->url() ?>"><?= $host->title() ?></a>
                   <?php endforeach ?>
-                </ul>
-              </li>
-            <?php endforeach ?>
+                </li>
+              <?php endforeach ?>
             </ul>
+            <div class="event-img">
+              <?php $images = $page->files()->filterBy('template', 'gallery');
+              foreach ($images as $image): ?>
+                <img src="<?= $image->url() ?>" alt="">
+              <?php endforeach ?>
+            </div>
           </section>
           <div class="event-img">
             <?php $images = $page->files()->filterBy('template', 'gallery');

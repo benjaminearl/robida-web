@@ -2,19 +2,19 @@ Title: Radio Robida S03E01
 
 ----
 
-Fromdate: 2024-02-03
+Startdate: 2024-02-03
 
 ----
 
-Fromtime: 09:00:00
+Starttime: 09:00:00
 
 ----
 
-Todate: 2024-02-03
+Enddate: 2024-02-03
 
 ----
 
-Totime: 23:00:00
+Endtime: 23:00:00
 
 ----
 
@@ -32,6 +32,22 @@ Radio Robida Season 03 Episode 01
 First RR day of the new year with many many new things 🌱📡 from 9 to 23 a super full day of programs!
 
 Join us on Saturday 03.0
+
+----
+
+Fromdate: 2024-02-03
+
+----
+
+Fromtime: 09:00:00
+
+----
+
+Todate: 2024-02-03
+
+----
+
+Totime: 23:00:00
 
 ----
 

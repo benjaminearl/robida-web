@@ -1,0 +1,88 @@
+Title: Site-Specific: An Introduction to websites
+
+----
+
+Startdate: 2024-03-29
+
+----
+
+Starttime: 09:00:00
+
+----
+
+Enddate: 2024-03-30
+
+----
+
+Endtime: 17:00:00
+
+----
+
+Location: Topolò and online
+
+----
+
+Link: 
+
+----
+
+Text:
+
+Site-specific: an introduction to making placeful websites
+
+A WORKSHOP GUIDED BY BENJAMIN EARL AND KIRSTEN SPRUIT
+
+
+Friday 29.03 morning + Saturday 30th afternoon
+Find the program of the workshop here and below
+{language: English}
+
+
+
+A POSSIBLE IMMATERIALITY OF SITE-SPECIFICY
+The Academy of Margins’ program for 2023/2024 has the aim to explore the intricacies, fertilities, intuitions and fermentations that can appear around the concept and dwelling practice, very dear to us, of the Village as House.
+
+We built the summer school around it, inviting people who have never been here to share with us possible new directions that the topic could take. We expanded the Village as House to include animals and plants, imagining the village as an ecological entity: a workshop of beekeeping motivated to share the place with bees and consider them to be our co-dwellers. We took care of dry stone walls, learned how they shape the land and the paths we cross, trying to imagine how to restore and maintain a relationship with them and with the soil they hold.
+
+Is it possible to question and reflect on the concepts of site-specificity, rootedness, situatedness and place by engaging with the apparent immateriality of internet, therefore by stepping out of the landscape which surrounds us? Inspired by the concept of Coding in situ developed by Benjamin Earl when he and Kirsten Spruit imagined and designed our website in Topolò two years ago, we decided to invite them back and ask them to explore and share with us how to make our online support structures (read: websites) placeful and soaked with the site where they appear from.
+
+
+
+MAKING PLACEFUL WEBSITES
+This workshop offers an entry into coding and hosting a website, in particular one that is placeful and situated. While the internet allows us to connect to other locations, it can sometimes feel like a placeless network saturated by sites and platforms that foster self-promotion through homogeneous templates. Through coding websites “by hand” and considering the conditions and environments they are made in or originating from, we try to infuse the web with a sense of place.
+
+Taking the idea of creating a website for a specific place as a starting point, these two half-days will revolve around learning how to use basic HTML and CSS, and how to host your website online in connection to the place it refers to. We will end the workshop with a LAN party, where we form the network ourselves, for those physically present in Topolò, to tour our situated and placeful websites.
+
+
+Program of the workshop approx.
+
+Day 1 (Friday) website → place
+09:00–09:30 | Introduction
+
+09:30–10:00 | HTML
+10:00–10:15 | Exercise 1(Pseudocode)
+10:15–10:45 | Exercise 2 (HTML)
+10:45–10:55 |
+
+10:55–11:30 | CSS
+11:30–12:00 | Exercise 3 (CSS)
+12:00–13:00 | Working on website (+ optional: JS)
+13:00–13:30 | display: table
+
+Day 2 (Saturday) place ← website
+13:00–13:30 | Introduction to hosting
+13:30–16:30 | Working on website
+16:30–17:00 | Setting up LAN Party tour
+17:00–??:?? | LAN Party 🙂
+
+
+
+How to join?
+You can join both irl in Topolove and online on zoom (or a similar platform, we'll let you know which)!
+The amount of people (especially online!) is limited!
+Write to us on robidamagazine@gmail.com if you are interested (writing "Site-specific workshop" in the object of the email and explaining in two lines why you would be interested!)
+Important: to get something from the workshop it's important to join both days!
+
+----
+
+Uuid: LD1zBUtrFPfJvXwX

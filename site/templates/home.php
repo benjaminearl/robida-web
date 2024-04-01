@@ -98,21 +98,14 @@
 
         <!-- CALENDAR -->
         <div class="main__middle" id="calendar">
-          <?php $items = $site->index()->filterBy('template', 'in', ['event', 'radio-broadcast']); ?>
+          <?php $items = $site->index()->filterBy('template', 'in', ['event']); ?>
           <div id="myTimeline">
             <ul class="timeline-events">
             <?php $i = 0;
-            foreach($items as $item): $i++; ?>
-                <?php if($item->template() == 'radio-broadcast'): ?>
-                  <li data-timeline-node="{ start:'<?= $item->date() ?> <?=$item->starttime() ?>', end:'<?= $item->date() ?> <?= $item->endtime() ?>', row:'<?php echo $i ?>' }">
+            foreach($items as $item): $i++; ?>                  
+                <li data-timeline-node="{ start:'<?= $item->startDate() ?> <?=$item->startTime() ?>', end:'<?= $item->endDate() ?> <?= $item->endTime() ?>', row:'<?php echo $i ?>' }">
                   <a href="<?= $item->url() ?>"><?= $item->title() ?></a>
                 </li>
-                <?php else: ?>
-                  
-                <li data-timeline-node="{ start:'<?= $item->fromDate() ?> <?=$item->fromTime() ?>', end:'<?= $item->toDate() ?> <?= $item->toTime() ?>', row:'<?php echo $i ?>' }">
-                  <a href="<?= $item->url() ?>"><?= $item->title() ?></a>
-                </li>
-                <?php endif ?>
             <?php endforeach ?>
             </ul>
           </div>
