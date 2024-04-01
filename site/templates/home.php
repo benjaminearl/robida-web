@@ -21,8 +21,8 @@
 
             <!-- RADIO BLOCK -->
             <?php elseif ($HomepageBlocks->title() == 'Radio Robida'): ?>
-              <?php $futureBroadcasts = $HomepageBlocks->children()->sortBy('num', 'desc')->filterBy('date', 'date >=', 'today');
-                $lastBroadcast = $HomepageBlocks->children()->sortBy('num', 'desc')->filterBy('date', 'date <', 'today')->first();
+              <?php $futureBroadcasts = $HomepageBlocks->children()->sortBy('num', 'desc')->filterBy('fromDate', 'date >=', 'today');
+                $lastBroadcast = $HomepageBlocks->children()->sortBy('num', 'desc')->filterBy('fromDate', 'date <', 'today')->first();
                 $upcomingBroadcast = $futureBroadcasts->first(); ?>
               <div class="home__block">
                 <a class="home__block__title" href="<?= $HomepageBlocks->url() ?>">
@@ -30,7 +30,7 @@
                 </a>
                 <div class="home__block__content">
                     <?php if ($futureBroadcasts->isNotEmpty()): ?>
-                          <h3>Upcoming broadcast: <span style="color:#333"><?= $upcomingBroadcast->date()->toDate('d M Y') ?></span></h3>
+                          <h3>Upcoming broadcast: <span style="color:#333"><?= $upcomingBroadcast->fromDate()->toDate('d M Y') ?></span></h3>
                           <ul>
                             <?php $shows = $upcomingBroadcast->children(); foreach($shows as $show): ?>
                             <li class="roundBorder">
@@ -43,7 +43,7 @@
                             <?php endforeach ?>
                           </ul>
                     <?php else: ?>
-                      <h3>Last broadcast: <span style="color:#333"><?= $lastBroadcast->date()->toDate('d M Y') ?></span></h3>
+                      <h3>Last broadcast: <span style="color:#333"><?= $lastBroadcast->fromDate()->toDate('d M Y') ?></span></h3>
                           <ul>
                             <?php $shows = $lastBroadcast->children(); foreach($shows as $show): ?>
                             <li class="roundBorder">
