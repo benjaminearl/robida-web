@@ -3,16 +3,16 @@
   <?php slot() ?>
     <main id="center" data-barba="container" data-barba-namespace="home">
         <div class="main__top">
-          <?php $HomepageBlock =  $page->homeBlocks()->toPages();
-          foreach($HomepageBlock as $HomepageBlocks): ?>
+          <?php $HomepageBlocks =  $page->homeBlocks()->toPages();
+          foreach($HomepageBlocks as $HomepageBlock): ?>
 
             
-            <?php if ($HomepageBlocks->title() == 'Robida Magazine'): ?>
+            <?php if ($HomepageBlock->title() == 'Robida Magazine'): ?>
               <!-- MAGAZINE BLOCK -->
-              <?php $latestIssue = $HomepageBlocks->children()->first() ?>
+              <?php $latestIssue = $HomepageBlock->children()->first() ?>
               <div class="home__block">
-                <a href="<?= $HomepageBlocks->url() ?>">
-                  <h2><?= $HomepageBlocks->title() ?></h2>
+                <a href="<?= $HomepageBlock->url() ?>">
+                  <h2><?= $HomepageBlock->title() ?></h2>
                 </a>
                   <?php if ($issueCover = $latestIssue->files()->findBy('template', 'cover')): ?>
                     <img src="<?= $issueCover->url() ?>" />
@@ -20,13 +20,13 @@
               </div>
 
             <!-- RADIO BLOCK -->
-            <?php elseif ($HomepageBlocks->title() == 'Radio Robida'): ?>
-              <?php $futureBroadcasts = $HomepageBlocks->children()->sortBy('num', 'desc')->filterBy('fromDate', 'date >=', 'today');
-                $lastBroadcast = $HomepageBlocks->children()->sortBy('num', 'asc')->filterBy('fromDate', 'date <=', 'today')->first();
+            <?php elseif ($HomepageBlock->title() == 'Radio Robida'): ?>
+              <?php $futureBroadcasts = $HomepageBlock->children()->sortBy('num', 'desc')->filterBy('fromDate', 'date >=', 'today');
+                $lastBroadcast = $HomepageBlock->children()->sortBy('num', 'asc')->filterBy('fromDate', 'date <=', 'today')->first();
                 $upcomingBroadcast = $futureBroadcasts->first(); ?>
               <div class="home__block">
-                <a class="home__block__title" href="<?= $HomepageBlocks->url() ?>">
-                  <h2><?= $HomepageBlocks->title() ?></h2>
+                <a href="<?= $HomepageBlock->url() ?>">
+                  <h2><?= $HomepageBlock->title() ?></h2>
                 </a>
                 <div class="home__block__content">
                     <?php if ($futureBroadcasts->isNotEmpty()): ?>
@@ -60,15 +60,15 @@
               </div>
 
                 
-                  <?php elseif ($HomepageBlocks->title() == 'Residency'): ?>
+                  <?php elseif ($HomepageBlock->title() == 'Residency'): ?>
                     <!-- RESIDENCIES BLOCK -->
               <div class="home__block">
-                <a class="home__block__title" href="<?= $HomepageBlocks->url() ?>">
-                  <h2><?= $HomepageBlocks->title() ?></h2>
+                <a class="home__block__title" href="<?= $HomepageBlock->url() ?>">
+                  <h2><?= $HomepageBlock->title() ?></h2>
                 </a>
                 <div class="home__block__content">
-                <?php if($HomepageBlocks->currentResidents()->isNotEmpty()): ?>
-                  <?php if($residents = $HomepageBlocks->currentResidents()->toPages()): ?>
+                <?php if($HomepageBlock->currentResidents()->isNotEmpty()): ?>
+                  <?php if($residents = $HomepageBlock->currentResidents()->toPages()): ?>
                     <h3>Current residents:</h3>
                     <ul>
                     <?php foreach($residents as $residents): ?>
@@ -84,10 +84,10 @@
             <?php else : ?>
               <!-- OTHER BLOCKS -->
               <div class="home__block">
-                <a class="home__block__title" href="<?= $HomepageBlocks->url() ?>">
-                  <h2><?= $HomepageBlocks->title() ?></h2>
+                <a class="home__block__title" href="<?= $HomepageBlock->url() ?>">
+                  <h2><?= $HomepageBlock->title() ?></h2>
                 </a>
-                    <?php if($coverPhoto = $HomepageBlocks->files()->findBy('template', 'cover')): ?>
+                    <?php if($coverPhoto = $HomepageBlock->files()->findBy('template', 'cover')): ?>
                       <img src="<?= $coverPhoto->url() ?>"/>
                     <?php endif ?>
               </div>
