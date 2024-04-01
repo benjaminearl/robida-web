@@ -9,7 +9,7 @@ sections:
   entries:
     type: pages
     label: Entries
-    template: entry
+    template: journal-entry
     info: "{{ page.date.toDate('d.m.Y') }}"
     empty: No entries yet
     sortBy: date desc
