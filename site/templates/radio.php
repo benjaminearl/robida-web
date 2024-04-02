@@ -16,6 +16,17 @@
         <div class="main__right">
           <section>
 
+          <?php 
+            $futureBroadcasts = $page->children()->sortBy('date', 'asc')->filterBy('date', 'date >=', 'today');
+
+
+            $nextBroadcast = $futureBroadcasts->first(); 
+          ?>
+
+            <?php if($futureBroadcasts->isNotEmpty()): ?>
+              <section>
+              <h2>Next Broadcast: <span style="color:#333"><?= $nextBroadcast->date()->toDate('d M Y') ?></span></h2>
+
               
                 <h3><?= $nextBroadcast->date()->toDate('d M Y') ?> – <a href="<?= $nextBroadcast->url() ?>"> <?= $nextBroadcast->title() ?></a></h3>
                 <ul class="radioSchedule">
@@ -29,13 +40,23 @@
                     </li>
                   <?php endforeach ?>
                 </ul>
+                <?php endif ?>
           
 
           <section>
             <h3>Archive</h3>
+            <?php 
+            $pastBroadcasts = $page->children()->sortBy('date', 'desc')->filterBy('startDate', 'date <=', 'today')->limit(6); 
+          ?>
           <ul class="mag-overview">
           <?php foreach($pastBroadcasts as $pastBroadcast): ?>
             <li>
+              <?php $image = $pastBroadcast->files()->first();?>
+                <?php if ($pastBroadcast->hasFiles()): ?>
+                  <img src="<?= $pastBroadcast->files()->sortBy('sort', 'asc')->first()->url() ?>" alt="">
+                <?php endif ?>
+                <a href="<?= $pastBroadcast->url() ?>"><h2><?= $pastBroadcast->title() ?></h2></a>
+                  <h3><?= $pastBroadcast->Date()->toDate('d M Y') ?></h3>
               </li>
             <?php endforeach ?>
           </ul>
