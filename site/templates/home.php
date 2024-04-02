@@ -22,7 +22,7 @@
             <!-- RADIO BLOCK -->
             <?php elseif ($HomepageBlock->title() == 'Radio Robida'): ?>
               <?php $futureBroadcasts = $HomepageBlock->children()->sortBy('date', 'asc')->filterBy('date', 'date >=', 'today');
-                $lastBroadcast = $HomepageBlock->children()->sortBy('date', 'desc')->filterBy('date', 'date <=', 'today')->first();
+                $lastBroadcast = $HomepageBlock->children()->sortBy('date', 'desc')->filterBy('Startdate', 'date <=', 'today')->first();
                 $nextBroadcast = $futureBroadcasts->first(); ?>
               <div class="home__block">
                 <a href="<?= $HomepageBlock->url() ?>">
@@ -43,7 +43,7 @@
                             <?php endforeach ?>
                           </ul>
                     <?php else: ?>
-                      <h3>Last broadcast: <span style="color:#333"><?= $lastBroadcast->date()->toDate('d M Y') ?></span></h3>
+                      <h3>Last broadcast: <span style="color:#333"><?= $lastBroadcast->Startdate()->toDate('d M Y') ?></span></h3>
                           <ul>
                             <?php $shows = $lastBroadcast->children()->sortBy('startTime', 'Asc'); foreach($shows as $show): ?>
                             <li class="roundBorder">
@@ -98,12 +98,11 @@
 
         <!-- CALENDAR -->
         <div class="main__middle" id="calendar">
-          <?php $items = $site->index()->filterBy('template', 'in', ['event']); ?>
+        <?php $items = $site->index()->filterBy('template', 'in', ['event']); ?>
           <div id="myTimeline">
             <ul class="timeline-events">
-            <?php $i = 0;
-            foreach($items as $item): $i++; ?>                  
-                <li data-timeline-node="{ start:'<?= $item->date() ?> <?=$item->startTime() ?>', end:'<?= $item->endDate() ?> <?= $item->endTime() ?>', row:'<?php echo $i ?>' }">
+            <?php $i = 0; foreach($items as $item): $i++; ?>                  
+                <li data-timeline-node="{ start:'<?= $item->Startdate() ?> <?=$item->startTime() ?>', end:'<?= $item->endDate() ?> <?= $item->endTime() ?>', row:'<?php echo $i ?>' }">
                   <a href="<?= $item->url() ?>"><?= $item->title() ?></a>
                 </li>
             <?php endforeach ?>
