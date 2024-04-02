@@ -36,14 +36,14 @@ fields:
     label: About the show
     type: text
     placeholder: Optional information to add about this show
-  series:
+  tags:
     label: Show series
     type: tags
     max: 1
     help: If this show is part of a series, add its name as a tag here to add it to the archive of the other shows.
     options:
       type: query
-      query: site.children.published
+      query: page.siblings.pluck("tags", ",", true)
   cover:
     headline: Cover image
     type: files

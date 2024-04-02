@@ -18,15 +18,27 @@ People: - page://Cg8aakJE8gp7x4gU
 
 ----
 
-Link: 
-
-----
-
 Description: 17.00 — Disclosing Enclosures ep. 2, “Body as Territory” by @lijuanlu {eng}
 
 ----
 
+Tags: Disclosing Enclosures
+
+----
+
+Cover: - file://uPhleR1IgFzuK7Lm
+
+----
+
+Showtag: Disclosing Enclosures
+
+----
+
 Series: Disclosing Enclosures
+
+----
+
+Link: 
 
 ----
 

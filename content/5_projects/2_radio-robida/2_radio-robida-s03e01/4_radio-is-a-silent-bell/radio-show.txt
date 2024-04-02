@@ -14,11 +14,7 @@ Endtime: 20:00:00
 
 ----
 
-People: - page://JEihGAqZuVhniz60
-
-----
-
-Link: 
+People: - page://Yh4Ex3DVMz2npegl
 
 ----
 
@@ -26,7 +22,19 @@ Description:
 
 ----
 
+Tags: Radio is a silent bell
+
+----
+
+Cover: - file://NQ7hGfEOFDcojMUM
+
+----
+
 Series: Radio is a Silent Bell
+
+----
+
+Link: 
 
 ----
 

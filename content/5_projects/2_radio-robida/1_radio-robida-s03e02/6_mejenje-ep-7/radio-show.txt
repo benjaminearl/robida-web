@@ -14,11 +14,7 @@ Endtime: 12:00:00
 
 ----
 
-People: - page://U51rdW3RV8fQoFGY
-
-----
-
-Link: 
+People: - page://jC2wJqFKwzUwS0w9
 
 ----
 
@@ -26,7 +22,23 @@ Description: Mejenje ep. 7, “Transkulturnost in nacionalizem: pogovor z Majo Z
 
 ----
 
+Tags: Mejenje
+
+----
+
+Cover: - file://2j1a8NRSJVwNO83e
+
+----
+
+Showtag: Mejenje
+
+----
+
 Series: Mejenje
+
+----
+
+Link: 
 
 ----
 

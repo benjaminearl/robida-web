@@ -294,6 +294,83 @@ background-color: whitesmoke;
     color: black;
 }
 
+.archive {
+    padding: 1em;
+    overflow: scroll;
+    height: calc(100% - 2rem);
+}
+
+.show-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 1em;
+    grid-row-gap: 0em;
+    color: lightgrey;
+}
+
+.show-info .broadcast-text {
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+
+.show-info .host-name {
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+
+.archive-overview {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-column-gap: 1em;
+    grid-row-gap: 2em;
+}
+
+.archive-overview h2 {
+    margin-block-end: 0em;
+    text-transform: none;
+}
+
+.archive-pagination {
+    width: 30vw;
+    margin: 0 auto;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 1em;
+}
+
+.next {
+    display: inline-block;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    text-align: center;
+}
+
+.prev {
+    display: inline-block;
+    vertical-align: bottom;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    text-align: center;
+}
+
+nav.archive-pagination {
+    padding-left: 0;
+}
+
+nav.archive-pagination p {
+    padding: 0;
+    top: 0;
+}
+
 
 /* ------------- MOBILE --------------- */
 
@@ -403,6 +480,11 @@ background-color: whitesmoke;
 
     #journal-pagination {
         position: static;
+    }
+
+    .archive-overview {
+        display: grid;
+        grid-template-columns: 1fr;
     }
 
 }

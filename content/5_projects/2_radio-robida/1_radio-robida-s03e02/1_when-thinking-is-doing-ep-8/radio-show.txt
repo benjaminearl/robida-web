@@ -58,11 +58,19 @@ Description: When Thinking is Doing ep. 8, “The Border Between Thinking and Do
 
 ----
 
-Series: When Thinking is Doing
+Tags: When Thinking is Doing
 
 ----
 
 Cover: - file://uZb5lUwU9VIaHube
+
+----
+
+Showtag: When Thinking is Doing
+
+----
+
+Series: When Thinking is Doing
 
 ----
 

@@ -18,15 +18,23 @@ People: - page://Cg8aakJE8gp7x4gU
 
 ----
 
-Link: 
-
-----
-
 Description: 
 
 ----
 
+Tags: Disclosing Enclosures
+
+----
+
+Cover: - file://UHndDbjkrlnQp75e
+
+----
+
 Series: Disclosing Enclosures
+
+----
+
+Link: 
 
 ----
 

@@ -18,11 +18,23 @@ People: - page://dz1chwoFO5hUQnf2
 
 ----
 
-Link: 
+Description: 18.00 — Adagio Hotel ep. 2, “Lago di Como” by @y.e.kate
 
 ----
 
-Description: 18.00 — Adagio Hotel ep. 2, “Lago di Como” by @y.e.kate
+Tags: Adagio hotel
+
+----
+
+Cover: - file://D3XWaN0p5v0FxBJ3
+
+----
+
+Showtag: Adagio hotel
+
+----
+
+Link: 
 
 ----
 

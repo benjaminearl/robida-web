@@ -18,15 +18,27 @@ People: - page://xj3TE89wSvGVmS8t
 
 ----
 
-Link: 
-
-----
-
 Description: Quebrando tudo ep. 2, “474 Jacaré-Copacabana, a journey of among Rios” by @fredericolasalvia with @gabr_weber
 
 ----
 
+Tags: Quebrando tudo
+
+----
+
+Cover: - file://2xyk0vijCX2S2InK
+
+----
+
+Showtag: Quebrando tudo
+
+----
+
 Series: Quebrando tudo
+
+----
+
+Link: 
 
 ----
 

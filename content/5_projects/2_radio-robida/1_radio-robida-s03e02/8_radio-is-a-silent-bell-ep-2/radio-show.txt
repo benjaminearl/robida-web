@@ -14,11 +14,7 @@ Endtime: 17:00:00
 
 ----
 
-People: - page://JEihGAqZuVhniz60
-
-----
-
-Link: 
+People: - page://Yh4Ex3DVMz2npegl
 
 ----
 
@@ -26,7 +22,23 @@ Description: Radio is a Silent Bell ep. 2, “A Space to Conspire” by @jackbar
 
 ----
 
+Tags: Radio is a silent bell
+
+----
+
+Cover: - file://li6snCXC5Z3YdE70
+
+----
+
+Showtag: Radio is a silent bell
+
+----
+
 Series: Radio is a Silent Bell
+
+----
+
+Link: 
 
 ----
 

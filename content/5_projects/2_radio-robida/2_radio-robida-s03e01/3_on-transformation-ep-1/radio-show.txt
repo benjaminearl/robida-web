@@ -14,11 +14,7 @@ Endtime: 19:00:00
 
 ----
 
-People: - page://7EsLbnDE4piun7iD
-
-----
-
-Link: 
+People: - page://bQ2rkjoDwoOyZF3t
 
 ----
 
@@ -26,7 +22,19 @@ Description:
 
 ----
 
+Tags: On Transformation
+
+----
+
+Cover: - file://9bTRUkIiNZlMM0Q3
+
+----
+
 Series: 
+
+----
+
+Link: 
 
 ----
 

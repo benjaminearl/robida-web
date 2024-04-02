@@ -14,11 +14,7 @@ Endtime: 20:00:00
 
 ----
 
-People: - page://WWdyWooo7Bdg4GH4
-
-----
-
-Link: 
+People: - page://UmKtc3d7DeZ5MdQ2
 
 ----
 
@@ -26,7 +22,23 @@ Description: Branching in, branching out ep. 7, “Site specific (web)sites” w
 
 ----
 
+Tags: Branching in branching out
+
+----
+
+Cover: - file://Hqxnqwz8SUKtmi3B
+
+----
+
+Showtag: Branching in branching out
+
+----
+
 Series: branching in branching out
+
+----
+
+Link: 
 
 ----
 

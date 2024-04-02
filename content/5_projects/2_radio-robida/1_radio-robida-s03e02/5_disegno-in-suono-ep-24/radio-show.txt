@@ -18,15 +18,27 @@ People: - page://sfa54DEHrqEZ49VW
 
 ----
 
-Link: 
-
-----
-
 Description: 22.00 — Disegno in suono ep. 24 by @elenarucli 🌑
 
 ----
 
+Tags: Disegno in suono
+
+----
+
+Cover: - file://VF6ATGhjeOWfcYta
+
+----
+
+Showtag: Disegno in suono
+
+----
+
 Series: Disegno in suono
+
+----
+
+Link: 
 
 ----
 
