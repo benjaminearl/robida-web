@@ -200,6 +200,18 @@ background-color: whitesmoke;
     margin: 0;
     margin-block-start: 0;
     margin-block-end: 0;
+/* -------------------- RADIO -------------------- */
+
+.radioSchedule li {
+    color: black;
+}
+
+.radioSchedule li:hover {
+    border: 1px dashed lightgray;
+}
+
+#radio-host {
+    color: black;
 }
 
 

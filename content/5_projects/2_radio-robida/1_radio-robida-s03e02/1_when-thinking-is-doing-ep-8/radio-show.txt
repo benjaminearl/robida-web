@@ -18,7 +18,39 @@ People: - page://xj3TE89wSvGVmS8t
 
 ----
 
-Link: 
+Recording:
+
+input: >
+  https://soundcloud.com/radio-robida/ep-6-wtid-industry-and-artifice-with-fahr-0213-antonio-frederico-lasalvia-02122023
+media:
+  title: 'Ep. 6 WTID - Industry and Art(ifice), with FAHR 021.3 / Antônio Frederico Lasalvia / 02.12.2023 by Radio Robida'
+  description: 'In the sixth episode of When Thinking is Doing, the Porto based studio FAHR 021.3 is interviewed by Antônio Frederico Lasalvia, motivated by a recent work realized on the verge between art and industry: the piece called Matriz 45. The conversation touches on contemporary approaches to the relation between the creative act and the assembly line, as FAHR elaborates on what is there to be gained from a transdisciplinary overview. Hugo Reis and Filipa Frois Almeida talk about their creative process, the role of the author in contemporary and 20th century art, the importance of mistakes and how to frame them, and the constant quest for reinvention in their work.'
+  url: >
+    https://soundcloud.com/radio-robida/ep-6-wtid-industry-and-artifice-with-fahr-0213-antonio-frederico-lasalvia-02122023
+  tags:
+    - record
+    - sounds
+    - share
+    - sound
+    - audio
+    - tracks
+    - music
+    - soundcloud
+  image: >
+    https://i1.sndcdn.com/artworks-jtfJxSvN3c5QZ3pa-I3RnzA-t500x500.jpg
+  feeds: [ ]
+  code: '<iframe width="100%" height="400" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?visual=true&url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F1679974431&show_artwork=true"></iframe>'
+  width: null
+  height: 400
+  aspectRatio: null
+  authorName: Radio Robida
+  authorUrl: https://soundcloud.com/radio-robida
+  providerIcon: >
+    https://a-v2.sndcdn.com/assets/images/sc-icons/ios-a62dfc8fe7.png
+  providerName: SoundCloud
+  providerUrl: https://soundcloud.com/
+  publishedTime: null
+  license: null
 
 ----
 
@@ -27,6 +59,50 @@ Description: When Thinking is Doing ep. 8, “The Border Between Thinking and Do
 ----
 
 Series: When Thinking is Doing
+
+----
+
+Cover: - file://uZb5lUwU9VIaHube
+
+----
+
+Embed:
+
+input: >
+  https://soundcloud.com/radio-robida/ep-6-wtid-industry-and-artifice-with-fahr-0213-antonio-frederico-lasalvia-02122023
+media:
+  title: 'Ep. 6 WTID - Industry and Art(ifice), with FAHR 021.3 / Antônio Frederico Lasalvia / 02.12.2023 by Radio Robida'
+  description: 'In the sixth episode of When Thinking is Doing, the Porto based studio FAHR 021.3 is interviewed by Antônio Frederico Lasalvia, motivated by a recent work realized on the verge between art and industry: the piece called Matriz 45. The conversation touches on contemporary approaches to the relation between the creative act and the assembly line, as FAHR elaborates on what is there to be gained from a transdisciplinary overview. Hugo Reis and Filipa Frois Almeida talk about their creative process, the role of the author in contemporary and 20th century art, the importance of mistakes and how to frame them, and the constant quest for reinvention in their work.'
+  url: >
+    https://soundcloud.com/radio-robida/ep-6-wtid-industry-and-artifice-with-fahr-0213-antonio-frederico-lasalvia-02122023
+  tags:
+    - record
+    - sounds
+    - share
+    - sound
+    - audio
+    - tracks
+    - music
+    - soundcloud
+  image: >
+    https://i1.sndcdn.com/artworks-jtfJxSvN3c5QZ3pa-I3RnzA-t500x500.jpg
+  feeds: [ ]
+  code: '<iframe width="100%" height="400" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?visual=true&url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F1679974431&show_artwork=true"></iframe>'
+  width: null
+  height: 400
+  aspectRatio: null
+  authorName: Radio Robida
+  authorUrl: https://soundcloud.com/radio-robida
+  providerIcon: >
+    https://a-v2.sndcdn.com/assets/images/sc-icons/ios-a62dfc8fe7.png
+  providerName: SoundCloud
+  providerUrl: https://soundcloud.com/
+  publishedTime: null
+  license: null
+
+----
+
+Link: 
 
 ----
 

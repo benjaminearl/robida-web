@@ -29,10 +29,9 @@ fields:
     empty: Select profiles
     query: site.find('Community').find('People')
     width: 2/6
-  link:
-    label: Link to episode on mixcloud
-    type: url
-    width: 2/6
+  recording:
+    type: embed
+    provider: soundcloud
   description:
     label: About the show
     type: text
@@ -42,3 +41,12 @@ fields:
     type: tags
     max: 1
     help: If this show is part of a series, add its name as a tag here to add it to the archive of the other shows.
+    options:
+      type: query
+      query: site.children.published
+  cover:
+    headline: Cover image
+    type: files
+    max: 1
+    template: cover
+    label: cover

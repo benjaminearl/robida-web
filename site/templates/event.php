@@ -43,13 +43,6 @@
               <?php endforeach ?>
             </div>
           </section>
-          <div class="event-img">
-            <?php $images = $page->files()->filterBy('template', 'gallery');
-            foreach ($images as $image): ?>
-              <img src="<?= $image->url() ?>" alt="">
-            <?php endforeach ?>
-          </div>
-        </div>
     </main>
   <?php endslot() ?>
 
