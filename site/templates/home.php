@@ -113,14 +113,21 @@
 
         <div class="main__bottom">
           <?php $journalEntries =  $site->find('community')->find('journal')->children()->listed()->flip();
-          foreach($journalEntries as $journalEntry): ?>
-            <a href="<?= $journalEntry->url() ?>" class="home__block home__block--journal" style="border-color: <?php echo $journalEntry->people()->toPage()->color(); ?>">
-                <h4><?= $journalEntry->title() ?></h4>
+          foreach($journalEntries as $item): ?>
+            <a href="<?= $item->url() ?>" class="home__block home__block--journal" style="border-color:<?php echo $item->people()->toPage(); ?>">
+                <h4><?= $item->title() ?></h4>
                 <small>
-                  on: <?= $journalEntry->date()->toDate('d/m/Y') ?><br>
-                  <span style="position:absolute;bottom:1em;">by: <mark class="profile" style="background-color: <?php echo $journalEntry->people()->toPage()->color(); ?>"><?= $journalEntry->people()->toPage()->title() ?></mark></span>
+                  on: <?= $item->date()->toDate('d/m/Y') ?><br>
+                  <span style="position:absolute;bottom:1em;">
+                  by: 
+                  <?php $people =  $item->people()->toPages();
+                  foreach($people as $item): ?>
+                  <mark class="profile" style="background-color: <?php echo $item->color(); ?>" href="<?= $item->url() ?>">
+                    <?= $item->title() ?>
+                  </mark>
+                  <?php endforeach ?>
+                  </span>
                 </small>
-
             </a>
           <?php endforeach ?>
         </div>

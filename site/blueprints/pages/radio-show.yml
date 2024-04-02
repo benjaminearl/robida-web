@@ -27,7 +27,7 @@ fields:
     label: Host(s)
     type: pages
     empty: Select profiles
-    query: site.find('Community').find('People')
+    query: site.find('community').find('people')
     width: 2/6
   recording:
     type: embed

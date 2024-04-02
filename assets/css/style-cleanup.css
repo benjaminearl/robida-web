@@ -4,6 +4,8 @@
     --color-accent: lightgrey;
 
     --border-solid: 1px solid var(--color-main);
+    --border-solid-accent: 1px solid var(--color-accent);
+    --border-dashed-accent: 1px dashed var(--color-accent);
 }
 
 html {
@@ -23,6 +25,10 @@ body {
     font-family: 'IBM Plex Mono', monospace;
     background-color: var(--color-bg);
     color: var(--color-main);
+    margin: 0;
+}
+
+figure {
     margin: 0;
 }
 
@@ -106,7 +112,7 @@ header {
 .main__right {
     float: right;
     width: calc(50% - 2em - 1px);
-    border-left: 1px dashed lightgrey;
+    border-left: var(--border-dashed-accent);
 }
 
 .main__left--journal, 
@@ -119,7 +125,7 @@ header {
     width: calc(60% - 2rem - 2px);
     height: calc(100% - 2rem);
     padding: 1em;
-    border-left: 1px dashed lightgrey;
+    border-left: var(--border-dashed-accent);
     float: left;
     overflow: scroll;
     background-color: whitesmoke;
@@ -174,9 +180,6 @@ background-color: whitesmoke;
     margin: 0;
 }
 
-#calendar {
-    /* font-size: 0.8rem; */
-}
 
 .home__block--journal {
     border: 1px solid lightgrey ;
@@ -200,6 +203,83 @@ background-color: whitesmoke;
     margin: 0;
     margin-block-start: 0;
     margin-block-end: 0;
+}
+
+/* -------------------- PAGE -------------------- */
+.section__title {
+    color: var(--color-accent);
+}
+
+
+.page__parent {
+    padding-bottom: 1em;
+}
+.page__parent a {
+    color: lightgrey;
+    text-decoration: none;
+    font-size: 0.8rem;
+}
+
+.page__info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 1em;
+    grid-row-gap: 2em;
+    color: lightgrey;
+
+}
+.page__text p {
+    font-family: serif;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-family: serif;
+    font-size: 1.2rem;
+    line-height: 1.2;
+}
+  
+.page__text li {
+    list-style: disc;
+    margin-left: 1.5rem;
+}
+  
+
+.page__text figure {
+    margin-bottom: 1rem;
+}
+  
+.page__text a {
+    color: #00f;
+}
+
+.page__subitems--grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 1em;
+    grid-row-gap: 2em;
+}
+.page__subitems--grid figure {
+    margin: 0;
+}
+
+.subitem {
+
+}
+
+.subitem__title {
+    color: var(--color-main);
+    font-size: 1.2rem;
+    text-transform: none;
+    margin: 0;
+}
+.subitem__figure {
+    background-color: whitesmoke;
+    aspect-ratio: 3 / 2;
+}
+.subitem__figure img {
+
+}
+
 /* -------------------- RADIO -------------------- */
 
 .radioSchedule li {
@@ -279,8 +359,8 @@ background-color: whitesmoke;
     .main__right {
         float: none;
         width: calc(100% - 2em);
-        border-left: 0px solid;
-        border-top: 1px solid;
+        border-left: none;
+        border-top: var(--border-dashed-accent);
     }
 
     .main__left--journal, .main__right--journal, .main__center--journal {

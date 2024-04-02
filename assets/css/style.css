@@ -356,19 +356,6 @@ h4, h5, h6, small {
 }
 
 
-.bodytext p {
-  margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  font-family: serif;
-  font-size: 1.2rem;
-  line-height: 1.2;
-}
-
-.bodytext li {
-  list-style: disc;
-  margin-left: 1.5rem;
-}
 
 hr {
   border-top: 0px;
@@ -376,18 +363,12 @@ hr {
   margin: 2rem 0 2rem 0;
 }
 
-.bodytext figure {
-  margin: 0;
-  margin-bottom: 1rem;
-}
 
 a {
   text-decoration: none;
   color: inherit;
 }
-.bodytext a {
-  color: #00f;
-}
+
 
 a.active {
   color: blue;
@@ -400,7 +381,7 @@ nav a:hover {
 
 img {
   width: 100%;
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
 }
 
 section {
@@ -409,15 +390,6 @@ section {
 
 section a {
   color: blue;
-}
-
-.parent {
-  padding-bottom: 1em;
-}
-.parent a {
-  color: lightgrey;
-  text-decoration: none;
-  font-size: 0.8rem;
 }
 
 .roundBorder {
@@ -482,13 +454,7 @@ ul.mag-overview {
   text-transform: none;
 }
 
-.issue-info {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-column-gap: 1em;
-  grid-row-gap: 2em;
-  color: lightgrey;
-}
+
 
 
 /* Collapsible */

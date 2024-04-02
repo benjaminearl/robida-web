@@ -14,7 +14,6 @@
           </section>
         </div>
         <div class="main__right">
-          <section>
           <?php 
             $futureBroadcasts = $page->children()->sortBy('date', 'asc')->filterBy('date', 'date >=', 'today');
 
@@ -24,6 +23,7 @@
           ?>
 
             <?php if($futureBroadcasts->isNotEmpty()): ?>
+              <section>
               <h2>Next Broadcast: <span style="color:#333"><?= $nextBroadcast->date()->toDate('d M Y') ?></span></h2>
 
               
@@ -41,24 +41,8 @@
                     </li>
                   <?php endforeach ?>
                 </ul>
-              <?php else: ?>
-                <?php $lastBroadcast = $page->children()->sortBy('num', 'asc')->filterBy('date', 'date <=', 'today')->first(); ?>
-                <h2>Last broadcast: <span style="color:#333"><?= $lastBroadcast->date()->toDate('d M Y') ?></span></h2>
-                  <ul class="radioSchedule">
-                    <?php $shows = $lastBroadcast->children()->sortBy('startTime', 'Asc'); foreach($shows as $show): ?>
-                      <a href="<?= $show->url() ?>">
-                        <li class="roundBorder">
-                          <?= $show->startTime()->toDate('H:i') ?>-<?= $show->endTime()->toDate('H:i') ?> |
-                          <?= $show->title()->html() ?>
-                          <?php $hosts =  $show->people()->toPages();  foreach($hosts as $host): ?>
-                          | <a class="profile" style="background-color: <?php echo $host->color(); ?>" href="<?= $host->url() ?>"><?= $host->title() ?></a>
-                        <?php endforeach ?>
-                        </li>
-                      </a>
-                    <?php endforeach ?>
-                  </ul>
+              </section>
             <?php endif ?>
-          </section>
           
 
           <section>

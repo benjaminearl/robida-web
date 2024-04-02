@@ -8,18 +8,14 @@ columns:
       content:
         type: fields
         fields:
-          number:
-            label: Issue Number
-            type: number
-            width: 1/3
-            required: true
-          theme:
-            label: Theme
+          subtitle:
+            label: Subtitle
             type: text
             width: 1/3
-          published:
-            label: Published
-            type: date
+            help: (Theme)
+          when:
+            label: Year published
+            type: text
             width: 1/3
 
 
