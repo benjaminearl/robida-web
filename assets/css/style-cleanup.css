@@ -142,6 +142,20 @@ background-color: whitesmoke;
     overflow: scroll;
 }
 
+/* -------------------- RADIO -------------------- */
+
+.radioSchedule li {
+    color: black;
+}
+
+.radioSchedule li:hover {
+    border: 1px dashed lightgray;
+}
+
+#radio-host {
+    color: black;
+}
+
 
 /* ------------- MOBILE --------------- */
 
