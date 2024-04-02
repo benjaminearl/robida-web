@@ -10,20 +10,20 @@ columns:
       info:
         type: fields
         fields:
-          startDate:
-            label: Start
+          date:
+            label: Date
             type: date
             width: 1/2
             default: today
-          startTime:
-            label: Start Time
-            type: time
-            width: 1/2
           endDate:
             label: End Date
             type: date
             width: 1/2
             default: today + 1day
+          startTime:
+            label: Start Time
+            type: time
+            width: 1/2
           endTime:
             label: End Time
             type: time

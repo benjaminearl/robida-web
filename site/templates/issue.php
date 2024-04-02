@@ -31,6 +31,7 @@
                   <?php $people = $item->person()->toPages(); foreach ($people as $person): ?>
                     <a href="<?= $person->url() ?>"><?= $person->title() ?></a><br>
                   <?php endforeach ?>
+                  <?= $item->other()->kt() ?>
                 <br>
               </li>
             <?php endforeach ?>

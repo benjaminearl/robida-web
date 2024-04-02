@@ -33,15 +33,16 @@
           if ($related->count() > 0):?>
               <h3>Related</h3>
               <ul>
-                <?php foreach($related as $entry): ?>
-                  <a href="<?= $entry->url() ?>">
-                  <li class="entry" style="border-color: <?php echo $entry->people()->toPage()->color(); ?>">
-                      <h4><?= $entry->title() ?></h4>
-                      <small>
-                        on: <?= $entry->date()->toDate('d/m') ?><br>
-                        by: <mark class="profile" style="background-color: <?php echo $entry->people()->toPage()->color(); ?>;margin-top:0.5em;"><?= $entry->people()->toPage()->title() ?></mark>
-
-                      </small>
+                <?php foreach($related as $item): ?>
+                  <a href="<?= $item->url() ?>">
+                  <li class="entry" style="border-color:
+                  <?php if ($item->people()->isNotEmpty()): ?>
+                    <?php echo $item->people()->toPage()->color(); ?>
+                  <?php else: ?>
+                    
+                  <?php endif ?>
+                  ">
+                    <h4 class="--no-margin"><?= $item->title() ?></h4>
                   </li>
                   </a>
                 <?php endforeach ?>
@@ -53,7 +54,7 @@
             <a href="<?= $page->nextListed()->url() ?>">
               <h3>↑ Newer</h3>
               <div class="entry" style="border-color: <?php echo $page->nextListed()->people()->toPage()->color(); ?>">
-                  <h4><?= $page->nextListed()->title() ?></h4>
+                  <h4 class="--no-margin"><?= $page->nextListed()->title() ?></h4>
 
               </div>
             </a>
@@ -62,7 +63,7 @@
             <a href="<?= $page->prevListed()->url() ?>">
               <h3>↓ Older</h3>
               <div class="entry" style="border-color: <?php echo $page->prevListed()->people()->toPage()->color(); ?>">
-                  <h4><?= $page->prevListed()->title() ?></h4>
+                  <h4 class="--no-margin"><?= $page->prevListed()->title() ?></h4>
               </div>
             </a>
           <?php endif ?>

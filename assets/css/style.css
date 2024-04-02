@@ -1,33 +1,8 @@
-html {
-  font-size: calc(0.8vw);
-}
 
-* {
-  scrollbar-width: none; /* hide scrollbar in firefox */
-}
-
-*::-webkit-scrollbar {
-  width: 0px; /* hide scrollbar in edge and opera */
-}
-
-
-body {
-  font-family: 'IBM Plex Mono', monospace;
-  background-color: white;
-  color: #333;
-  margin: 0;
-}
 
 
 /* -------------------- HEADER + contents ------------------- */
-header {
-  position: fixed;
-  height: 4rem;
-  width: 100%;
-  border-bottom: 1px solid;
-  background-color: white;
-  z-index: 1;
-}
+
 
 /* Start AUDIO PLAYER */
 .audio.green-audio-player {
@@ -150,16 +125,6 @@ header {
 }
 /* End AUDIO PLAYER */
 
-#logo {
-  height: 50%;
-  padding: 1em;
-  width: 5em;
-}
-
-.logo {
-  display: inline-block;
-  width: 20%;
-}
 
 .radio-link {
   display: inline-block;
@@ -428,9 +393,6 @@ a.active {
   color: blue;
 }
 
-a.profile {
-  color: inherit;
-}
 
 nav a:hover {
   color: blue;
@@ -468,12 +430,13 @@ section a {
 .profile {
   display: inline-block;
   background-color: lightgrey;
-  color: inherit;
+  color:initial;
   border-radius: 1.5em;
   padding: 0.5em;
   padding-left: 0.75em;
   padding-right: 0.75em;
   text-decoration: none;
+  font-size: 0.8rem;
 }
 
 ul#people-overview {
@@ -661,9 +624,9 @@ marquee {
   margin-left: -15px; /* events start at rounded edge so need to be moved forward slightly */
   margin-top: 10px;
 }
-
 .jqtl-ruler-line-item span {
   font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.8rem;
 }
 
 .jqtl-event-label {

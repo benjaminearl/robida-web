@@ -42,8 +42,13 @@ columns:
               person:
                 label: Person
                 type: pages
+                help: Select profiles from the people page
                 multiple: true
                 query: site.find('community').find('people')
+              other:
+                label: Other
+                type: textarea
+                help: Add people without a profile
 
 
   # right/down

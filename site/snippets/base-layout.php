@@ -28,38 +28,40 @@
 <body data-barba="wrapper">
     
     <header>
-        <div class="logo">
-        <a href="<?= $site->url() ?>"><img id="logo" src="https://robidacollective.com/assets/images/robida_logo_vector.png" alt="Robida"></a>
-        </div>
+        <a class="site-title" href="<?= $site->url() ?>">
+            <img class="site-title__img" src="https://robidacollective.com/assets/images/robida_logo_vector.png" alt="Robida">
+        </a>
         <div class="audio green-audio-player">
-        <p style="display:inline-block; padding-right: 1em;">Radio Robida</p>
-        <div class="play-pause-btn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="24" viewBox="0 0 18 24">
-            <path fill="#000000" fill-rule="evenodd" d="M18 12L0 24V0" class="play-pause-icon" id="playPause"/>
-            </svg>
-        </div>
-        <div class="controls">
-            <span class="current-time">0:00</span>
-            <div class="slider" data-direction="horizontal" style="display:none">
-            <div class="progress">
+            <p style="display:inline-block; padding-right: 1em;">
+                Radio Robida
+            </p>
+            <div class="play-pause-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="24" viewBox="0 0 18 24">
+                <path fill="#000000" fill-rule="evenodd" d="M18 12L0 24V0" class="play-pause-icon" id="playPause"/>
+                </svg>
             </div>
+            <div class="controls">
+                <span class="current-time">0:00</span>
+                <div class="slider" data-direction="horizontal" style="display:none">
+                <div class="progress">
+                </div>
+                </div>
             </div>
-        </div>
-        <div class="volume">
-            <div class="volume-btn">
+            <div class="volume">
+                <div class="volume-btn">
+                </div>
+                <div class="volume-controls hidden">
+                <div class="slider" data-direction="vertical">
+                </div>
+                </div>
             </div>
-            <div class="volume-controls hidden">
-            <div class="slider" data-direction="vertical">
-            </div>
-            </div>
-        </div>
-        <audio crossorigin>
-        <?php if ($page->radioStream()->isNotEmpty()) : ?>
-            <source src="<?= $page->radioStream()->url() ?>" type="audio/mpeg">
-        <?php else: ?>
-            <source src="https://radio.goodtimesbadtimes.club/radio/8060/radio.mp3" type="audio/mpeg">
-        <?php endif ?>
-        </audio>
+            <audio crossorigin>
+            <?php if ($page->radioStream()->isNotEmpty()) : ?>
+                <source src="<?= $page->radioStream()->url() ?>" type="audio/mpeg">
+            <?php else: ?>
+                <source src="https://radio.goodtimesbadtimes.club/radio/8060/radio.mp3" type="audio/mpeg">
+            <?php endif ?>
+            </audio>
         </div>
 
         </div>
@@ -118,20 +120,17 @@
         </div>
     </div>
     <footer>
-    <div id="currently-in-topolo">
-        <marquee scrollamount="5">
-        <span style="color:lightgrey;">Currently in Topolò:</span>
-        <?php foreach($site->find('community')->find('people')->children()->sortBy('num', 'desc')->filterBy('category', 'home') as $person): ?>
-        <a class="profile" style="background-color: <?php echo $person->color(); ?>" href="<?= $person->url() ?>"><?= html($person->title()) ?></a>
-        <?php endforeach ?>
-        </marquee>
-    </div>
-    <div id="contact">
-        <a href="https://www.instagram.com/r_o_b_i_d_a/" target="_blank">ig</a>
-    </div>
-
-
-
+        <div id="currently-in-topolo">
+            <marquee scrollamount="5">
+            <span style="color:lightgrey;">Currently in Topolò:</span>
+            <?php foreach($site->find('community')->find('people')->children()->sortBy('num', 'desc')->filterBy('category', 'home') as $person): ?>
+            <a class="profile" style="background-color: <?php echo $person->color(); ?>" href="<?= $person->url() ?>"><?= html($person->title()) ?></a>
+            <?php endforeach ?>
+            </marquee>
+        </div>
+        <div id="contact">
+            <a href="https://www.instagram.com/r_o_b_i_d_a/" target="_blank">IG</a>
+        </div>
     </footer>
     
 

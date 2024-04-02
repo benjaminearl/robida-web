@@ -15,11 +15,16 @@
         </div>
         <div class="main__right">
           <section>
-            <?php $upcomingBroadcasts = $page->children()->sortBy('date', 'asc')->filterBy('date', 'date >=', 'today'); ?>
+          <?php 
+            $futureBroadcasts = $page->children()->sortBy('date', 'asc')->filterBy('date', 'date >=', 'today');
 
-            <?php if($upcomingBroadcasts->isNotEmpty()): ?>
-              <?php $upcomingBroadcasts = $nextBroadcast->first(); ?>
-              <h2>Upcoming Broadcast: <span style="color:#333"><?= $nextBroadcast->startDate()->toDate('d M Y') ?></span></h2>
+            $lastBroadcast = $page->children()->sortBy('date', 'desc')->filterBy('date', 'date <=', 'today')->first();
+
+            $nextBroadcast = $futureBroadcasts->first(); 
+          ?>
+
+            <?php if($futureBroadcasts->isNotEmpty()): ?>
+              <h2>Next Broadcast: <span style="color:#333"><?= $nextBroadcast->date()->toDate('d M Y') ?></span></h2>
 
               
                 <h3><?= $nextBroadcast->date()->toDate('d M Y') ?> – <a href="<?= $nextBroadcast->url() ?>"> <?= $nextBroadcast->title() ?></a></h3>
@@ -29,16 +34,16 @@
                       <a href="<?= $show->url() ?>">
                         <?= $show->startTime()->toDate('H:i') ?>-<?= $show->endTime()->toDate('H:i') ?> |
                         <?= $show->title()->html() ?>
-                      </a> |
+                      </a>
                       <?php $hosts =  $show->people()->toPages();  foreach($hosts as $host): ?>
-                        <a class="profile" style="background-color: <?php echo $host->color(); ?>" href="<?= $host->url() ?>"><?= $host->title() ?></a>
+                        | <a class="profile" style="background-color: <?php echo $host->color(); ?>" href="<?= $host->url() ?>"><?= $host->title() ?></a>
                       <?php endforeach ?>
                     </li>
                   <?php endforeach ?>
                 </ul>
               <?php else: ?>
-                <?php $lastBroadcast = $page->children()->sortBy('num', 'asc')->filterBy('startDate', 'date <=', 'today')->first(); ?>
-                <h2>Most recent broadcast: <span style="color:#333"><?= $lastBroadcast->startDate()->toDate('d M Y') ?></span></h2>
+                <?php $lastBroadcast = $page->children()->sortBy('num', 'asc')->filterBy('date', 'date <=', 'today')->first(); ?>
+                <h2>Last broadcast: <span style="color:#333"><?= $lastBroadcast->date()->toDate('d M Y') ?></span></h2>
                   <ul class="radioSchedule">
                     <?php $shows = $lastBroadcast->children()->sortBy('startTime', 'Asc'); foreach($shows as $show): ?>
                       <a href="<?= $show->url() ?>">
@@ -46,40 +51,33 @@
                           <?= $show->startTime()->toDate('H:i') ?>-<?= $show->endTime()->toDate('H:i') ?> |
                           <?= $show->title()->html() ?>
                           <?php $hosts =  $show->people()->toPages();  foreach($hosts as $host): ?>
-                          <span class="profile" style="background-color: <?php echo $host->color(); ?>" href="<?= $host->url() ?>"><?= $host->title() ?>
-                          </span>
+                          | <a class="profile" style="background-color: <?php echo $host->color(); ?>" href="<?= $host->url() ?>"><?= $host->title() ?></a>
                         <?php endforeach ?>
                         </li>
                       </a>
                     <?php endforeach ?>
                   </ul>
-
-
-
-
             <?php endif ?>
           </section>
           
 
           <section>
             <h3>Archive</h3>
-          <?php $pastBroadcasts = $page->children()->sortBy('date', 'asc')->filterBy('startDate', 'date <=', 'today')->limit(6); ?>
-          <?php if($pastBroadcasts->isNotEmpty()): ?>
+          <?php 
+            $pastBroadcasts = $page->children()->sortBy('date', 'desc')->filterBy('date', 'date <=', 'today')->limit(6); 
+          ?>
           <ul class="mag-overview">
           <?php foreach($pastBroadcasts as $pastBroadcast): ?>
             <li>
-              <?php $images = $pastBroadcast->files();
-                foreach ($images as $image): ?>
-                  <a href="<?= $pastBroadcast->url() ?>">
-                    <img src="<?= $image->url() ?>" alt="">
-                  </a>
-                  <h2><?= $pastBroadcast->title() ?></h2>
-                  <h3><?= $pastBroadcast->startDate()->toDate('d M Y') ?></h3>
-                <?php endforeach ?>
+              <?php $image = $pastBroadcast->files()->first();?>
+                  <?php if ($pastBroadcast->hasFiles()): ?>
+                    <img src="<?= $pastBroadcast->files()->sortBy('sort', 'asc')->first()->url() ?>" alt="">
+                  <?php endif ?>
+                  <a href="<?= $pastBroadcast->url() ?>"><h2><?= $pastBroadcast->title() ?></h2></a>
+                  <h3><?= $pastBroadcast->date()->toDate('d M Y') ?></h3>
               </li>
             <?php endforeach ?>
           </ul>
-          <?php endif ?>
           </section>
           <h3><a href="<?= $page->archive() ?>" target="_blank">Visit our full archive →</a><h3>
         </div>

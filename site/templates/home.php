@@ -21,18 +21,18 @@
 
             <!-- RADIO BLOCK -->
             <?php elseif ($HomepageBlock->title() == 'Radio Robida'): ?>
-              <?php $futureBroadcasts = $HomepageBlock->children()->sortBy('num', 'desc')->filterBy('fromDate', 'date >=', 'today');
-                $lastBroadcast = $HomepageBlock->children()->sortBy('num', 'asc')->filterBy('fromDate', 'date <=', 'today')->first();
-                $upcomingBroadcast = $futureBroadcasts->first(); ?>
+              <?php $futureBroadcasts = $HomepageBlock->children()->sortBy('date', 'asc')->filterBy('date', 'date >=', 'today');
+                $lastBroadcast = $HomepageBlock->children()->sortBy('date', 'desc')->filterBy('date', 'date <=', 'today')->first();
+                $nextBroadcast = $futureBroadcasts->first(); ?>
               <div class="home__block">
                 <a href="<?= $HomepageBlock->url() ?>">
                   <h2><?= $HomepageBlock->title() ?></h2>
                 </a>
                 <div class="home__block__content">
                     <?php if ($futureBroadcasts->isNotEmpty()): ?>
-                          <h3>Upcoming broadcast: <span style="color:#333"><?= $upcomingBroadcast->fromDate()->toDate('d M Y') ?></span></h3>
+                          <h3>Next broadcast: <span style="color:#333"><?= $nextBroadcast->date()->toDate('d M Y') ?></span></h3>
                           <ul>
-                            <?php $shows = $upcomingBroadcast->children(); foreach($shows as $show): ?>
+                            <?php $shows = $nextBroadcast->children(); foreach($shows as $show): ?>
                             <li class="roundBorder">
                               <?= $show->starttime()->toDate('H:i') ?>-<?= $show->endtime()->toDate('H:i') ?> |
                               <?= $show->title()->html() ?>
@@ -43,7 +43,7 @@
                             <?php endforeach ?>
                           </ul>
                     <?php else: ?>
-                      <h3>Last broadcast: <span style="color:#333"><?= $lastBroadcast->fromDate()->toDate('d M Y') ?></span></h3>
+                      <h3>Last broadcast: <span style="color:#333"><?= $lastBroadcast->date()->toDate('d M Y') ?></span></h3>
                           <ul>
                             <?php $shows = $lastBroadcast->children()->sortBy('startTime', 'Asc'); foreach($shows as $show): ?>
                             <li class="roundBorder">
@@ -103,7 +103,7 @@
             <ul class="timeline-events">
             <?php $i = 0;
             foreach($items as $item): $i++; ?>                  
-                <li data-timeline-node="{ start:'<?= $item->startDate() ?> <?=$item->startTime() ?>', end:'<?= $item->endDate() ?> <?= $item->endTime() ?>', row:'<?php echo $i ?>' }">
+                <li data-timeline-node="{ start:'<?= $item->date() ?> <?=$item->startTime() ?>', end:'<?= $item->endDate() ?> <?= $item->endTime() ?>', row:'<?php echo $i ?>' }">
                   <a href="<?= $item->url() ?>"><?= $item->title() ?></a>
                 </li>
             <?php endforeach ?>
