@@ -4,16 +4,12 @@ Title: Home
 
 Homeblocks:
 
-- projects/summer-school
-- projects/robida-magazine
-- projects/radio-robida
-- projects/academy-of-margins
-- projects/residency
-- topolo
+- page://AH5mevZiOY2jMSjr
+- page://hJTRFrVjbbD9D2Bs
 
 ----
 
-Radiostream: https://radio.goodtimesbadtimes.club/radio/8000/radio.mp3
+Radiostream: https://radio.goodtimesbadtimes.club/radio/8060/radio.mp3
 
 ----
 
