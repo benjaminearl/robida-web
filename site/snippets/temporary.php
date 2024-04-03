@@ -1,3 +1,3 @@
-<div class="temporary-message">
+<div class="temporary">
     <?= $site->text() ?>
 </div>

@@ -133,13 +133,15 @@ header {
 
 /* -------------------- HOME -------------------- */
 
-.temporary-message {
+.temporary {
     font-size: 1rem;
     padding: 3rem;
     text-align: center;
-    height: calc(100vh - 20rem);
-    line-height: calc(100vh - 20rem);
-    
+    /* height: calc(100vh - 20rem); */
+    /* line-height: calc(100vh - 20rem); */
+}
+.temporary__text {
+
 }
 
 .main__top, 
