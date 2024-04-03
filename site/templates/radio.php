@@ -17,7 +17,7 @@
           <section>
 
           <?php 
-            $futureBroadcasts = $page->children()->sortBy('date', 'asc')->filterBy('date', 'date >=', 'today');
+            $futureBroadcasts = $page->children()->sortBy('startdate', 'asc')->filterBy('startdate', 'startdate >=', 'today');
 
 
             $nextBroadcast = $futureBroadcasts->first(); 
@@ -28,7 +28,7 @@
               <h2>Next Broadcast: <span style="color:#333"><?= $nextBroadcast->date()->toDate('d M Y') ?></span></h2>
 
               
-                <h3><?= $nextBroadcast->date()->toDate('d M Y') ?> – <a href="<?= $nextBroadcast->url() ?>"> <?= $nextBroadcast->title() ?></a></h3>
+                <h3><?= $nextBroadcast->startdate()->toDate('d M Y') ?> – <a href="<?= $nextBroadcast->url() ?>"> <?= $nextBroadcast->title() ?></a></h3>
                 <ul class="radioSchedule">
                   <?php $shows = $nextBroadcast->children()->sortBy('startTime', 'Asc'); foreach($shows as $show): ?>
                     <li class="roundBorder">
@@ -46,7 +46,7 @@
           <section>
             <h3>Archive</h3>
             <?php 
-            $pastBroadcasts = $page->children()->sortBy('date', 'desc')->filterBy('startDate', 'date <=', 'today')->limit(6); 
+            $pastBroadcasts = $page->children()->sortBy('startdate', 'desc')->filterBy('startDate', 'date <=', 'today')->limit(6); 
           ?>
           <ul class="mag-overview">
           <?php foreach($pastBroadcasts as $pastBroadcast): ?>

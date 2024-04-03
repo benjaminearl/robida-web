@@ -133,6 +133,15 @@ header {
 
 /* -------------------- HOME -------------------- */
 
+.temporary-message {
+    font-size: 1rem;
+    padding: 3rem;
+    text-align: center;
+    height: calc(100vh - 20rem);
+    line-height: calc(100vh - 20rem);
+    
+}
+
 .main__top, 
 .main__middle, 
 .main__bottom {

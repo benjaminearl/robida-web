@@ -22,4 +22,4 @@ columns:
         template: event
         title: Broadcast
         info: "{{ page.date }}"
-        sortBy: date Desc
+        sortBy: startdate Desc

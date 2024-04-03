@@ -1,2 +1,20 @@
-preset: pages
-unlisted: true
+title: Site
+
+sections:
+  pages:
+    type: pages
+  fields:
+    type: fields
+    fields:
+      toggleWebsite:
+        width: 1/2
+        label: Website online/offline
+        type: toggle
+        text:
+          - "offline"
+          - "online"
+      text:
+        width: 1/2
+        type: textarea
+        label: Offline message
+        help: What appears when website is offline

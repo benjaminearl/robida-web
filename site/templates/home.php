@@ -1,7 +1,12 @@
 <?php snippet('base-layout', slots: true) ?>
 
   <?php slot() ?>
-    <main id="center">
+    <?php if ($site->toggleWebsite()->toBool() === false): ?>
+      <main id="center">
+        <?php snippet('temporary') ?>
+      </main>
+    <?php else: ?>
+      <main id="center">
         <div class="main__top">
           <?php $HomepageBlocks =  $page->homeBlocks()->toPages();
           foreach($HomepageBlocks as $HomepageBlock): ?>
@@ -131,6 +136,7 @@
           <?php endforeach ?>
         </div>
       </main>
+    <?php endif ?>
   <?php endslot() ?>
 
 <?php endsnippet() ?>
