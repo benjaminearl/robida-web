@@ -48,10 +48,10 @@ volumeBtn.addEventListener('click', () => {
 
 window.addEventListener('resize', directionAware);
 
-sliders.forEach(slider => {
-  let pin = slider.querySelector('.pin');
-  slider.addEventListener('click', window[pin.dataset.method]);
-});
+// sliders.forEach(slider => {
+//   let pin = slider.querySelector('.pin');
+//   slider.addEventListener('click', window[pin.dataset.method]);
+// });
 
 directionAware();
 

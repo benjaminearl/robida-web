@@ -11,7 +11,7 @@ columns:
         type: fields
         fields:
           date:
-            label: Date
+            label: Start Date
             type: date
             width: 1/2
             default: today

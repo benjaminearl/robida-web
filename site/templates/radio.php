@@ -17,8 +17,7 @@
           <section>
 
           <?php 
-            $futureBroadcasts = $page->children()->sortBy('startdate', 'asc')->filterBy('startdate', 'startdate >=', 'today');
-
+            $futureBroadcasts = $page->children()->sortBy('startdate', 'asc')->filterBy('startdate', 'date >=', 'today');
 
             $nextBroadcast = $futureBroadcasts->first(); 
           ?>
@@ -35,7 +34,10 @@
                       <a href="<?= $show->url() ?>">
                         <?= $show->startTime()->toDate('H:i') ?>-<?= $show->endTime()->toDate('H:i') ?> |
                         <?= $show->title()->html() ?>
-                      <?php $hosts =  $show->people()->toPages();  foreach($hosts as $host): ?>
+                      </a>
+                      <?php $hosts =  $show->people()->toPages();  
+                      foreach($hosts as $host): ?>
+                      | <a class="profile" style="background-color: <?php echo $host->color(); ?>" href="<?= $host->url() ?>"><?= $host->title() ?></a>
                       <?php endforeach ?>
                     </li>
                   <?php endforeach ?>
@@ -56,11 +58,12 @@
                   <img src="<?= $pastBroadcast->files()->sortBy('sort', 'asc')->first()->url() ?>" alt="">
                 <?php endif ?>
                 <a href="<?= $pastBroadcast->url() ?>"><h2><?= $pastBroadcast->title() ?></h2></a>
-                  <h3><?= $pastBroadcast->Date()->toDate('d M Y') ?></h3>
+                  <h3><?= $pastBroadcast->startDate()->toDate('d M Y') ?></h3>
               </li>
             <?php endforeach ?>
           </ul>
           </section>
+          <h3><a href="<?= $page->archive() ?>" target="_blank">Visit our full archive →</a><h3>
 
         </div>
     </main>
