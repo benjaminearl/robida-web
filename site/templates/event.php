@@ -4,8 +4,10 @@
     <main id="center">
         <div class="main__left">
           <?php if ($page->parent()->isListed()): ?>
-            <div class="parent">
-              <a href="<?= $page->parent()->url() ?>"><< <?= $page->parent()->title() ?></a>
+            <div class="page__parent">
+                <a href="<?= $page->parent()->url() ?>">
+                  << <?= $page->parent()->title() ?>
+                </a>
             </div>
           <?php endif ?>
           <section>

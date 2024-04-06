@@ -3,9 +3,13 @@
   <?php slot() ?>
     <main id="center">
       <div class="main__left main__left--journal">
-        <div class="parent">
-          <a href="<?= $page->parent()->url() ?>"><< <?= $page->parent()->title() ?></a>
-        </div>
+        <?php if ($page->parent()): ?>
+              <div class="page__parent">
+                <a href="<?= $page->parent()->url() ?>">
+                  << <?= $page->parent()->title() ?>
+                </a>
+              </div>
+          <?php endif ?>
         <h1><?= $page->title() ?></h1>
         <section>
           <p>

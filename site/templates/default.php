@@ -57,8 +57,8 @@
                     <li>
                       <article class="subitem">
                         <figure class="subitem__figure">
-                          <?php if($coverImage = $item->cover()->toFile()): ?>
-                            <img src="<?= $coverImage->url() ?>" alt="">
+                          <?php if($cover = $item->files()->findBy('template', 'cover')): ?>
+                            <img src="<?= $cover->url() ?>"/>
                           <?php endif ?>
                         </figure>
                         <h3 class="subitem__title">
