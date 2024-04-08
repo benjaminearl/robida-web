@@ -10,24 +10,28 @@ columns:
       info:
         type: fields
         fields:
-          date:
-            label: Start Date
+          startDate:
+            label: Start date
             type: date
             width: 1/2
             default: today
+            required: true
           endDate:
             label: End Date
             type: date
             width: 1/2
             default: today + 1day
+            required: true
           startTime:
             label: Start Time
             type: time
             width: 1/2
+        
           endTime:
             label: End Time
             type: time
             width: 1/2
+   
           location:
             label: Location
             type: text
@@ -47,7 +51,7 @@ columns:
         template: 
           - radio-show
           - event-item
-        info: "{{ page.date }}"
+        info: "{{ page.startTime }}"
 
   # right/down
   right:

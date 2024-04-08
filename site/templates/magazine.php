@@ -3,6 +3,11 @@
   <?php slot() ?>
     <main id="center">
         <div class="main__left">
+          <div class="page__parent">
+            <a href="<?= $page->parent()->url() ?>">
+              << <?= $page->parent()->title() ?>
+            </a>
+          </div>
           <h1><?= $page->title() ?></h1>
           <section>
             <div class="bodytext">

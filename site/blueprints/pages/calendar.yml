@@ -16,3 +16,5 @@ sections:
     label: Events
     empty: add an event
     template: event
+    sortBy: startDate Desc
+    info: "{{ page.startDate.toDate('d/m/Y') }}"

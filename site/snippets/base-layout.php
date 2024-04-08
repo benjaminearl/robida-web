@@ -82,9 +82,13 @@
                     <?php foreach($items as $item): ?>
                     <?php if ($item->hasChildren()): ?>
                         <li class="container">
-                            <p><a<?php e($item->isOpen(), ' class="active"') ?> href="<?= $item->url() ?>"><?= $item->title()->html() ?></a></p>
+                            <?php if ($item->text()->isNotEmpty()): ?>
+                                <p><a<?php e($item->isOpen(), ' class="active"') ?> href="<?= $item->url() ?>"><?= $item->title()->html() ?></a></p>
+                            <?php else: ?>
+                                <p><?= $item->title()->html() ?></p>
+                            <?php endif; ?>
                         <ul>
-                            <?php $children =  $item->children();  foreach($children as $item): ?>
+                            <?php $children =  $item->children()->listed();  foreach($children as $item): ?>
                             <li>
                                 <p><a<?php e($item->isOpen(), ' class="active"') ?> href="<?= $item->url() ?>"><?= $item->title()->html() ?></a></p>
                             </li>
@@ -104,18 +108,31 @@
         <div id="right-sidebar" class="sidebar">
             <span id="openRight" onclick="openGlossary()">ABC</span>
             <div id="glossary-content">
-                <div id="glossary-title"><h1><?= page('glossary')->title() ?></h1><span id="closeRight" onclick="closeGlossary()">>></span>
+                <div id="glossary-title">
+                    <h1>
+                        <?= page('glossary')->title() ?>
+                    </h1>
+                    <span id="closeRight" onclick="closeGlossary()">
+                        >>
+                    </span>
                 </div>
                 <div class="bodytext" style="padding: 1rem;">
                     <ul>
-                    <?php $items = $site->find('glossary')->children()->listed()->sortBy('title', 'asc'); ?>
+                    <?php
+                        $items = $site->find('glossary')->children()->listed()->sortBy('title', 'asc');
+                    ?>
                     <?php foreach ($items as $item): ?>
-                        <h2 class="collapsible"><?= $item->title() ?></h2>
-                        <div class="content">
-                            <p><?= $item->text()->kt() ?></p>
-
-                        </div>
-                        <hr>
+                    <h2 class="collapsible"><?= $item->title() ?></h2>
+                    <div class="content">
+                        <p><?= $item->text()->kt() ?></p>
+                        <small>
+                            <?php $people = $item->people()->toPages();
+                            foreach ($people as $item): ?>
+                                <a href="<?= $item->url() ?>" class="profile" style="background-color: <?php echo $item->color(); ?>"><?= $item->title() ?></a> 
+                            <?php endforeach ?>
+                        </small>
+                    </div>
+                    <hr>
                     <?php endforeach ?>
                     <ul>
                 </div>

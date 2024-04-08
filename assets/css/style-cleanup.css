@@ -149,6 +149,10 @@ header {
     border-bottom: 1px solid;
 }
 
+#calendar {
+    height: calc(100% * 0.4); 
+}
+
 .main__bottom {
 height: calc(100% * 0.2 - 2px - 2rem);
 border-bottom: none;
@@ -234,7 +238,8 @@ background-color: whitesmoke;
     color: lightgrey;
 
 }
-.page__text p {
+.page__text p,
+.bodytext p {
     font-family: serif;
     margin-block-end: 1em;
     margin-inline-start: 0px;
